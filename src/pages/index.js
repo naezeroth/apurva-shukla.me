@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "gatsby"
+import { graphql, Link } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -7,8 +7,11 @@ import Button from "../components/button"
 
 class IndexPage extends React.Component {
   render() {
-    const siteTitle = "Gatsby Starter Personal Website"
-
+    console.log(this.props);
+    // console.log("QUERY IS", query);
+    const { data } = this.props //I'm assuming the query is populating the this.props, the {data} is extracting data variable inside this.props
+    const siteTitle = data.site.siteMetadata.title;
+    console.log(data);
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO
@@ -35,5 +38,17 @@ class IndexPage extends React.Component {
     )
   }
 }
+
+export const query = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+        description
+        author
+      }
+    }
+  }
+`
 
 export default IndexPage

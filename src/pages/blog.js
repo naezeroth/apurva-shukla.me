@@ -9,7 +9,9 @@ import Button from "../components/button"
 
 class Blog extends React.Component {
   render() {
+    // console.log(data);
     const { data } = this.props
+    console.log(this.props);
     const siteTitle = data.site.siteMetadata.title
     const posts = data.allMdx.edges
 
@@ -52,9 +54,7 @@ class Blog extends React.Component {
   }
 }
 
-export default Blog
-
-export const pageQuery = graphql`
+export const query = graphql`
   query {
     site {
       siteMetadata {
@@ -78,3 +78,4 @@ export const pageQuery = graphql`
     }
   }
 `
+export default Blog
