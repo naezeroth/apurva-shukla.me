@@ -6,6 +6,7 @@ import SEO from "../components/seo"
 import Button from "../components/button"
 import Terminal from 'terminal-in-react';
 import styled from "styled-components"
+import { rhythm, scale } from "../utils/typography"
 
 
 class IndexPage extends React.Component {
@@ -37,7 +38,7 @@ class IndexPage extends React.Component {
         <TerminalWrapper>
           <Terminal
             startState='maximised'
-            promptSymbol="$ "
+            promptSymbol="$"
             allowTabs={false}
             outputColor='#93a1a1'
             // hideTopBar={true}
@@ -86,13 +87,17 @@ export const query = graphql`
 const TerminalWrapper = styled.div`
   .terminal-base .sc-bxivhb { 
     max-width: 100% !important;
-    height: 35px !important;
+    height: ${rhythm(1.2)} !important;
+    border-radius: 20px 20px 0px 0px;
   }
   .terminal-base .sc-EHOje {
     max-width: 100% !important;
     overflow-y: auto !important;
-    max-height: 600px !important;
-    height: 600px !important;
+    height: ${rhythm(20)} !important;
+    border-radius: 0px 0px 20px 20px;
+  }
+  .sc-dnqmqq {
+    padding: 0px 10px 0px 0px;
   }
 `
 
