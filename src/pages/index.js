@@ -85,13 +85,13 @@ export const query = graphql`
 //Some specific CSS modifications to Terminal
 const TerminalWrapper = styled.div`
   .terminal-base .sc-bxivhb { 
-    max-width: 100% !important
-    height: 35px !important
+    max-width: 100% !important;
+    height: 35px !important;
   }
   .terminal-base .sc-EHOje {
     max-width: 100% !important;
     overflow-y: auto !important;
-    max-height: 600px !important
+    max-height: 600px !important;
     height: 600px !important;
   }
 `
