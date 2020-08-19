@@ -59,11 +59,12 @@ class Layout extends React.Component {
           style={{
             marginLeft: `auto`,
             marginRight: `auto`,
-            maxWidth: rhythm(24),
-            padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
+            maxWidth: rhythm(36),
+            padding: `${rhythm(1.5)} ${rhythm(3/4)}`
           }}
         >
           <header>{header}</header>
+          <script src="//instant.page/5.1.0" type="module" integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
           <main>{children}</main>
         </div>
         <Footer>

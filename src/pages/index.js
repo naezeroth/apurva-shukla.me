@@ -4,11 +4,11 @@ import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Button from "../components/button"
+import CustomTerminal from "../components/custom-terminal"
 
 class IndexPage extends React.Component {
   render() {
     console.log(this.props);
-    // console.log("QUERY IS", query);
     const { data } = this.props //I'm assuming the query is populating the this.props, the {data} is extracting data variable inside this.props
     const siteTitle = data.site.siteMetadata.title;
     console.log(data);
@@ -18,7 +18,7 @@ class IndexPage extends React.Component {
           title="Home"
           keywords={[`blog`, `gatsby`, `javascript`, `react`]}
         />
-        <img style={{ margin: 0 }} src="./GatsbyScene.svg" alt="Gatsby Scene" />
+        {/* <img style={{ margin: 0 }} src="./GatsbyScene.svg" alt="Gatsby Scene" />
         <h1>
           Hey people{" "}
           <span role="img" aria-label="wave emoji">
@@ -30,7 +30,8 @@ class IndexPage extends React.Component {
           This starter comes out of the box with styled components and Gatsby's
           default starter blog running on Netlify CMS.
         </p>
-        <p>Now go build something great!</p>
+        <p>Now go build something great!</p> */}
+        <CustomTerminal/>
         <Link to="/blog/">
           <Button marginTop="35px">Go to Blog</Button>
         </Link>
