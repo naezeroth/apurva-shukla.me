@@ -36,7 +36,16 @@ class CustomTerminal extends React.Component {
             // 'open-google': () => window.open('/blog', "_self"),
             'test': () => {return("TESTING")}, //console.log("TESTING"),
             'showmsg': console.log('Hello World'),
-            popup: () => alert('Terminal in React')
+            popup: () => alert('Terminal in React'),
+            'type-text': (args, print, runCommand) => {
+              const text = args.slice(1).join(' ');
+              print(<span><div style={{background: 'blue'}}>"TEST"</div></span>);
+              for (let i = 0; i < text.length; i += 1) {
+                setTimeout(() => {
+                  runCommand(`edit-line ${text.slice(0, i + 1)}`);
+                }, 100 * i);
+              }
+            },
           }}
           descriptions={{
             'blog': 'see my blog',
