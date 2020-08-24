@@ -2,7 +2,8 @@ import React from "react"
 import Terminal from 'terminal-in-react';
 import styled from "styled-components"
 import { rhythm } from "../utils/typography"
-
+import Bio from "./bio"
+import WelcomeBio from "./welcome-bio"
 class CustomTerminal extends React.Component {
   componentDidMount() {
     console.log("TERMINAL IS MOUNTED");
@@ -35,10 +36,12 @@ class CustomTerminal extends React.Component {
             'blog': () => window.open('/blog', "_self"),
             // 'open-google': () => window.open('/blog', "_self"),
             'test': () => {return("TESTING")}, //console.log("TESTING"),
-            'showmsg': console.log('Hello World'),
+            showmsg: console.log('Hello World'),
             popup: () => alert('Terminal in React'),
             'type-text': (args, print, runCommand) => {
               const text = args.slice(1).join(' ');
+              print(<img src="../../content/assets/profile-pic.jpg"></img>)
+              print(<Bio/>)
               print(<span><div style={{background: 'blue'}}>"TEST"</div></span>);
               for (let i = 0; i < text.length; i += 1) {
                 setTimeout(() => {
@@ -46,6 +49,7 @@ class CustomTerminal extends React.Component {
                 }, 100 * i);
               }
             },
+            show: () => {return(<WelcomeBio/>)}
           }}
           descriptions={{
             'blog': 'see my blog',
