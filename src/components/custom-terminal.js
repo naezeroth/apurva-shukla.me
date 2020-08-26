@@ -26,17 +26,15 @@ class CustomTerminal extends React.Component {
           commandPassThrough={(cmd, print) => {
             console.log(cmd);
             // do something async
-            // if(cmd[0] === 'blog'){
-            //   console.log('HELOO BLOG????')
-            // }
-            print(`-PassedThrough:${cmd}: command not found`);
+            print(`-bash:${cmd}: command not found, please type help to see all legal commands`);
           }}
           commands={{
             // 'help': () => {return('')},
             'blog': () => window.open('/blog', "_self"),
+            'resume': () => {return("RESUME ??? open")},
             // 'open-google': () => window.open('/blog', "_self"),
             'test': () => {return("TESTING")}, //console.log("TESTING"),
-            showmsg: console.log('Hello World'),
+            showmsg: () => console.log('Hello World'),
             popup: () => alert('Terminal in React'),
             'type-text': (args, print, runCommand) => {
               const text = args.slice(1).join(' ');
@@ -85,5 +83,12 @@ const TerminalWrapper = styled.div`
     padding: 0px 10px 0px 0px;
   }
 `
+
+const Container = styled.div`
+  display: flex;
+`
+
+
+
 
 export default CustomTerminal

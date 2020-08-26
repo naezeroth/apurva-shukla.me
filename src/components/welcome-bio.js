@@ -26,15 +26,17 @@ function WelcomeBio() {
               style={{
                 marginRight: rhythm(1 / 2),
                 marginBottom: 0,
-                minWidth: 50,
-                borderRadius: `100%`,
+                minWidth: 100,
+                // borderRadius: `100%`,
               }}
               imgStyle={{
-                borderRadius: `50%`,
+                borderRadius: `20%`,
               }}
             />
             <p>
-            Hello, my name is Apurva Shukla. Here you can find my <a href={'/blog/'}>blog</a>, photographs and projects. Type help to get started.
+            Hey there! Welcome to my website. My name is Apurva Shukla and 
+            here you can find my <a href={'/blog/'}>blog</a>, photographs and projects. 
+            Type help to get started.
             </p>
           </Container>
         )
@@ -45,9 +47,9 @@ function WelcomeBio() {
 
 const NewbioQuery = graphql`
   query NewbioQuery {
-    avatar: file(absolutePath: { regex: "/apu_flat_icon_blue.png/" }) {
+    avatar: file(absolutePath: { regex: "/profile.png/" }) {
       childImageSharp {
-        fixed(width: 50, height: 50) {
+        fixed(width: 100, height: 100) {
           ...GatsbyImageSharpFixed
         }
       }
@@ -64,7 +66,7 @@ const NewbioQuery = graphql`
 `
 
 const Container = styled.div`
-  display: flex;
+  display: flex
 `
 
 export default WelcomeBio
