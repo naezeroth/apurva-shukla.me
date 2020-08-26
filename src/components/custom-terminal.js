@@ -2,8 +2,8 @@ import React from "react"
 import Terminal from 'terminal-in-react';
 import styled from "styled-components"
 import { rhythm } from "../utils/typography"
-import Bio from "./bio"
 import WelcomeBio from "./welcome-bio"
+
 class CustomTerminal extends React.Component {
   componentDidMount() {
     console.log("TERMINAL IS MOUNTED");
@@ -16,8 +16,6 @@ class CustomTerminal extends React.Component {
           promptSymbol="$"
           allowTabs={false}
           outputColor='#93a1a1'
-          // hideTopBar={true}
-          // showActions ={false} //{False} 
           prompt='#d33682'
           color='#657b83'
           backgroundColor='#073642'
@@ -29,36 +27,27 @@ class CustomTerminal extends React.Component {
             print(`-bash:${cmd}: command not found, please type help to see all legal commands`);
           }}
           commands={{
-            // 'help': () => {return('')},
+            'whoami': () => {return(<p>
+              Hey there! Welcome to my website. My name is Apurva Shukla and 
+              here you can find my <a href={'/blog/'}>blog</a>, photographs and projects. 
+              Type help to get started.
+              </p>)}, //Add social icons like github, etc. in this            
             'blog': () => window.open('/blog', "_self"),
+            'projects': () => {return("Projects here")},
+            'photos': () => {return("Photos here")},
             'resume': () => {return("RESUME ??? open")},
-            // 'open-google': () => window.open('/blog', "_self"),
-            'test': () => {return("TESTING")}, //console.log("TESTING"),
+            // 'help': () => {return('')}, //Add custom colours etc to this by looping through commands
             showmsg: () => console.log('Hello World'),
-            popup: () => alert('Terminal in React'),
-            'type-text': (args, print, runCommand) => {
-              const text = args.slice(1).join(' ');
-              print(<img src="../../content/assets/profile-pic.jpg"></img>)
-              print(<Bio/>)
-              print(<span><div style={{background: 'blue'}}>"TEST"</div></span>);
-              for (let i = 0; i < text.length; i += 1) {
-                setTimeout(() => {
-                  runCommand(`edit-line ${text.slice(0, i + 1)}`);
-                }, 100 * i);
-              }
-            },
             show: () => {return(<WelcomeBio/>)}
           }}
           descriptions={{
             'blog': 'see my blog',
             showmsg: 'shows a message',
-            alert: 'alert', 
             popup: 'alert',
             show: false,
             help: false,
             clear: false,
           }}
-          msg='Hello, my name is Apurva Shukla. Here you can find my blog, photographs and projects. Type help to get started.'
         />
       </TerminalWrapper>
     )
@@ -79,16 +68,12 @@ const TerminalWrapper = styled.div`
     border-radius: 0px 0px 20px 20px;
     overflow: hidden;
   }
+  .sc-htoDjs {
+    padding-top: 0px;
+  }
   .sc-dnqmqq {
     padding: 0px 10px 0px 0px;
   }
 `
-
-const Container = styled.div`
-  display: flex;
-`
-
-
-
 
 export default CustomTerminal
