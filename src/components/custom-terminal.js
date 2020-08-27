@@ -36,6 +36,9 @@ class CustomTerminal extends React.Component {
             'projects': () => {return("Projects here")},
             'photos': () => {return("Photos here")},
             'resume': () => {return("RESUME ??? open")},
+            'Help': (args, print, runCommand) => {
+              runCommand('help');
+            },
             // 'help': () => {return('')}, //Add custom colours etc to this by looping through commands
             showmsg: () => console.log('Hello World'),
             show: () => {return(<WelcomeBio/>)}
@@ -47,6 +50,7 @@ class CustomTerminal extends React.Component {
             show: false,
             help: false,
             clear: false,
+            Help: false,
           }}
         />
       </TerminalWrapper>

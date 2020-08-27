@@ -1,9 +1,8 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Button from "../components/button"
 import CustomTerminal from "../components/custom-terminal"
 
 class IndexPage extends React.Component {
@@ -32,9 +31,9 @@ class IndexPage extends React.Component {
         </p>
         <p>Now go build something great!</p> */}
         <CustomTerminal/>
-        <Link to="/blog/">
+        {/* <Link to="/blog/">
           <Button marginTop="35px">Go to Blog</Button>
-        </Link>
+        </Link> */}
       </Layout>
     )
   }
