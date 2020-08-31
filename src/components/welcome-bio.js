@@ -17,7 +17,7 @@ function WelcomeBio() {
     <StaticQuery
       query={NewbioQuery}
       render={data => {
-        const { author, social } = data.site.siteMetadata
+        const { author } = data.site.siteMetadata
         return (
           <Container>
             <Image

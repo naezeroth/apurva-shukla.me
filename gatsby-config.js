@@ -4,9 +4,12 @@ module.exports = {
     title: `Apurva Shukla`,
     author: `Apurva Shukla`,
     description: `A starter personal blog with styled components, dark mode, and Netlify CMS.`,
-    siteUrl: `https://naezeroth.netlify.app`,
+    siteUrl: `https://apurva-shukla.me`,
     social: {
       twitter: `gatsbyjs`,
+      linkedin: `https://www.linkedin.com/in/apurva-shukla/`,
+      github: `https://github.com/naezeroth/`,
+      mail: `mailto:apurvashukla123@pm.me`
     },
   },
   plugins: [
@@ -78,7 +81,7 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         // edit below
-        icon: `content/assets/gatsby-icon.png`,
+        icon: `content/assets/favicon.ico`,
       },
     },
     {

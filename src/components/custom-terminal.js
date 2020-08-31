@@ -3,6 +3,9 @@ import Terminal from 'terminal-in-react';
 import styled from "styled-components"
 import { rhythm } from "../utils/typography"
 import WelcomeBio from "./welcome-bio"
+import { StaticQuery, graphql } from "gatsby"
+import { IconLink } from "./link"
+import { Github, Linkedin, Email } from "./social-icons"
 
 class CustomTerminal extends React.Component {
   componentDidMount() {
@@ -10,50 +13,66 @@ class CustomTerminal extends React.Component {
   }
   render() {
     return (
-      <TerminalWrapper>
-        <Terminal
-          startState='maximised'
-          promptSymbol="$"
-          allowTabs={false}
-          outputColor='#93a1a1'
-          prompt='#d33682'
-          color='#657b83'
-          backgroundColor='#073642'
-          barColor='black'
-          style={{ fontWeight: "bold", fontSize: "1.5em",  }}
-          commandPassThrough={(cmd, print) => {
-            console.log(cmd);
-            // do something async
-            print(`-bash:${cmd}: command not found, please type help to see all legal commands`);
-          }}
-          commands={{
-            'whoami': () => {return(<p>
-              Hey there! Welcome to my website. My name is Apurva Shukla and 
-              here you can find my <a href={'/blog/'}>blog</a>, photographs and projects. 
-              Type help to get started.
-              </p>)}, //Add social icons like github, etc. in this            
-            'blog': () => window.open('/blog', "_self"),
-            'projects': () => {return("Projects here")},
-            'photos': () => {return("Photos here")},
-            'resume': () => {return("RESUME ??? open")},
-            'Help': (args, print, runCommand) => {
-              runCommand('help');
-            },
-            // 'help': () => {return('')}, //Add custom colours etc to this by looping through commands
-            showmsg: () => console.log('Hello World'),
-            show: () => {return(<WelcomeBio/>)}
-          }}
-          descriptions={{
-            'blog': 'see my blog',
-            showmsg: 'shows a message',
-            popup: 'alert',
-            show: false,
-            help: false,
-            clear: false,
-            Help: false,
-          }}
+      <StaticQuery
+        query={terminalQuery}
+        render = {data => {
+          const { publicURL } = data.resume
+          const { social } = data.site.siteMetadata
+          return (
+            <TerminalWrapper>
+              <Terminal
+                startState='maximised'
+                promptSymbol="$"
+                allowTabs={false}
+                outputColor='#93a1a1'
+                prompt='#d33682'
+                color='#657b83'
+                backgroundColor='#073642'
+                barColor='black'
+                style={{ fontWeight: "bold", fontSize: "1.5em",  }}
+                commandPassThrough={(cmd, print) => {
+                  console.log(cmd);
+                  // do something async
+                  print(`-bash:${cmd}: command not found, please type help to see all legal commands`);
+                }}
+                commands={{
+                  'whoami': () => {return(<span><p>
+                    Hey there! Welcome to my website. My name is Apurva Shukla and 
+                    here you can find my <a href={'/blog/'} style={{color: '#859900'}}>blog</a>, photographs and projects. 
+                    Type help to get started. You can find me on {""}     
+                    <IconLink href={social.github}><Github/></IconLink>
+                    , {""}
+                    <IconLink href={social.linkedin}><Linkedin/></IconLink>
+                    {""} or {""}
+                    <IconLink href={social.mail}><Email/></IconLink>
+                    .
+                    </p>
+                    </span>)},       
+                  'blog': () => window.open('/blog', "_self"),
+                  'projects': () => {return("Projects here")},
+                  'photos': () => {return("Photos here")},
+                  'resume': () => window.open(publicURL, "_self"),
+                  'Help': (args, print, runCommand) => {
+                    runCommand('help');
+                  },
+                  'test': () => console.log(this),
+                  // 'help': () => {return('')}, //Add custom colours etc to this by looping through commands
+                  show: () => {return(<WelcomeBio/>)}
+                }}
+                descriptions={{
+                  'blog': 'see my blog',
+                  showmsg: 'shows a message',
+                  popup: 'alert',
+                  show: false,
+                  help: false,
+                  clear: false,
+                  Help: false,
+                }}
+              />
+            </TerminalWrapper>
+          )
+        }}
         />
-      </TerminalWrapper>
     )
   }
 }
@@ -79,5 +98,25 @@ const TerminalWrapper = styled.div`
     padding: 0px 10px 0px 0px;
   }
 `
-
+const terminalQuery = graphql`
+  query terminalQuery {
+    resume: file(
+      extension: {eq: "pdf"},
+      name: {eq: "ApurvaShukla_Resume"}
+      
+    ){
+      publicURL
+    } 
+    site {
+      siteMetadata {
+        social {
+          twitter,
+          linkedin, 
+          mail, 
+          github,
+        }
+      }
+    } 
+  }
+`
 export default CustomTerminal
