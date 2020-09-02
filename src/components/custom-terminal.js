@@ -7,6 +7,7 @@ import { StaticQuery, graphql } from "gatsby"
 import { IconLink } from "./link"
 import { Github, Linkedin, Email } from "./social-icons"
 
+var social;
 class CustomTerminal extends React.Component {
   componentDidMount() {
     console.log("TERMINAL IS MOUNTED");
@@ -17,7 +18,7 @@ class CustomTerminal extends React.Component {
         query={terminalQuery}
         render = {data => {
           const { publicURL } = data.resume
-          const { social } = data.site.siteMetadata
+          social = data.site.siteMetadata.social
           return (
             <TerminalWrapper>
               <Terminal
@@ -46,8 +47,8 @@ class CustomTerminal extends React.Component {
                   </span>);
                 }}
                 commands={{
-                  'whoami': whoamiCommand(social),
-                  'Whoami': whoamiCommand(social),       
+                  'whoami': whoamiCommand,
+                  'Whoami': whoamiCommand,       
                   'blog': () => window.open('/blog', "_self"),
                   'Blog': () => window.open('/blog', "_self"),
                   'projects': () => {return("Projects here")},
@@ -131,7 +132,7 @@ const helpCommand = () => {return(<span>
     <b style={{color: '#b58900'}}>resume</b> - check out my resume
 </span>)}
 
-const whoamiCommand = (social) => {return(<span><p>
+const whoamiCommand = () => {return(<span><p>
   Hey there! Welcome to my website. My name is Apurva Shukla and 
   here you can find my <a href={'/blog/'} style={{color: '#859900'}}>blog</a>, photographs and projects. 
   Type help to get started. You can find me on {""}     
