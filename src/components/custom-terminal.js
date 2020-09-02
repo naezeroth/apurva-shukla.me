@@ -30,43 +30,35 @@ class CustomTerminal extends React.Component {
                 backgroundColor='#073642'
                 barColor='black'
                 style={{ fontWeight: "bold", fontSize: "1.5em",  }}
-                commandPassThrough={(cmd, print) => {
+                actionHandlers={{
+                  handleClose: () => {
+                  },
+                  handleMaximise: () => {
+                  },
+                  handleMinimise: () => {
+                  }
+                }}
+                commandPassThrough={(cmd) => {
                   console.log(cmd);
                   // do something async
-                  print(`-bash:${cmd}: command not found, please type help to see all legal commands`);
+                  return(<span>
+                      -bash:${cmd}: command not found, please type  <b style={{color: '#d33682'}}>help</b> to see all legal commands
+                  </span>);
                 }}
                 commands={{
-                  'whoami': () => {return(<span><p>
-                    Hey there! Welcome to my website. My name is Apurva Shukla and 
-                    here you can find my <a href={'/blog/'} style={{color: '#859900'}}>blog</a>, photographs and projects. 
-                    Type help to get started. You can find me on {""}     
-                    <IconLink href={social.github}><Github/></IconLink>
-                    , {""}
-                    <IconLink href={social.linkedin}><Linkedin/></IconLink>
-                    {""} or {""}
-                    <IconLink href={social.mail}><Email/></IconLink>
-                    .
-                    </p>
-                    </span>)},       
+                  'whoami': whoamiCommand(social),
+                  'Whoami': whoamiCommand(social),       
                   'blog': () => window.open('/blog', "_self"),
+                  'Blog': () => window.open('/blog', "_self"),
                   'projects': () => {return("Projects here")},
+                  'Projects': () => {return("Projects here")},
                   'photos': () => {return("Photos here")},
+                  'Photos': () => {return("Photos here")},
                   'resume': () => window.open(publicURL, "_self"),
-                  'Help': (args, print, runCommand) => {
-                    runCommand('help');
-                  },
-                  'test': () => console.log(this),
-                  // 'help': () => {return('')}, //Add custom colours etc to this by looping through commands
+                  'Resume': () => window.open(publicURL, "_self"),
+                  'Help': helpCommand,
+                  'help': helpCommand, 
                   show: () => {return(<WelcomeBio/>)}
-                }}
-                descriptions={{
-                  'blog': 'see my blog',
-                  showmsg: 'shows a message',
-                  popup: 'alert',
-                  show: false,
-                  help: false,
-                  clear: false,
-                  Help: false,
                 }}
               />
             </TerminalWrapper>
@@ -119,4 +111,37 @@ const terminalQuery = graphql`
     } 
   }
 `
+
+const helpCommand = () => {return(<span>
+  <p style={{color: '#268bd2'}}>
+    To use this terminal, simply type any of the commands listed below.
+  </p>
+  <p>
+    <b style={{color: '#b58900'}}>whoami</b> - get to know me + how to contact me
+  </p>
+  <p>
+    <b style={{color: '#b58900'}}>blog</b> - checkout my blog
+  </p>
+  <p>
+    <b style={{color: '#b58900'}}>projects</b> - checkout the projects I've worked on
+  </p>
+  <p>
+    <b style={{color: '#b58900'}}>photos</b> - checkout my photography portfolio
+  </p>
+    <b style={{color: '#b58900'}}>resume</b> - check out my resume
+</span>)}
+
+const whoamiCommand = (social) => {return(<span><p>
+  Hey there! Welcome to my website. My name is Apurva Shukla and 
+  here you can find my <a href={'/blog/'} style={{color: '#859900'}}>blog</a>, photographs and projects. 
+  Type help to get started. You can find me on {""}     
+  <IconLink href={social.github}><Github/></IconLink>
+  , {""}
+  <IconLink href={social.linkedin}><Linkedin/></IconLink>
+  {""} or {""}
+  <IconLink href={social.mail}><Email/></IconLink>
+  .
+  </p>
+  </span>)}
+
 export default CustomTerminal
