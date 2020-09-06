@@ -3,6 +3,8 @@ import Gallery from "react-photo-gallery";
 import Carousel, { Modal, ModalGateway } from "react-images";
 import { IconLink } from "./link"
 import { Back } from "./social-icons"
+import Photo from "./photo"
+
 class CustomGallery extends React.Component {
   constructor(props) {
     super(props);
@@ -44,7 +46,9 @@ class CustomGallery extends React.Component {
       {this.state.openGallery ? (
       <div>
       <IconLink onClick={() => this.changeOpenGallery(0)}><Back/></IconLink>
-      <Gallery photos={this.props.photos[this.state.openGallery].map(({ image }) => image)} onClick={this.openLightbox} /> 
+      <Gallery photos={this.props.photos[this.state.openGallery].map(({ fluid }) => fluid)}
+        // renderImage={Photo}
+        onClick={this.openLightbox} /> 
       <ModalGateway>
         {this.state.viewerIsOpen ? (
           <Modal onClose={this.closeLightbox}>
