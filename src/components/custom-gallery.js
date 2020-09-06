@@ -3,6 +3,8 @@ import Gallery from "react-photo-gallery";
 import Carousel, { Modal, ModalGateway } from "react-images";
 import { IconLink } from "./link"
 import { Back } from "./social-icons"
+import Photo from "./photo"
+
 class CustomGallery extends React.Component {
   constructor(props) {
     super(props);
@@ -17,12 +19,10 @@ class CustomGallery extends React.Component {
   }
   
   openLightbox = (event, { photo, index }) => {
-    console.log("event", event, "photo is", photo, "index is", index);
     this.setState({
       currentImage: index,
       viewerIsOpen: true
     })
-    console.log("STATE IS", this.state)
   }
 
   closeLightbox = () => {
@@ -46,19 +46,18 @@ class CustomGallery extends React.Component {
       {this.state.openGallery ? (
       <div>
       <IconLink onClick={() => this.changeOpenGallery(0)}><Back/></IconLink>
-      <Gallery photos={this.props.photos[this.state.openGallery].map(({ image }) => image)} onClick={this.openLightbox} /> 
+      <Gallery photos={this.props.photos[this.state.openGallery].map(({ fluid }) => fluid)}
+        // renderImage={Photo}
+        onClick={this.openLightbox} /> 
       <ModalGateway>
         {this.state.viewerIsOpen ? (
           <Modal onClose={this.closeLightbox}>
             <Carousel
               currentIndex={this.state.currentImage}
-              views={this.props.photos[this.state.openGallery].map(({image}) => image)}
-              // ({
-              //   ...x,
-              //   source: 
-              //   // srcset: x.srcSet,
-              //   // caption: x.title
-              // }))}
+              views={this.props.photos[this.state.openGallery].map((x) => ({
+                ...x.image,
+                caption: JSON.stringify(x.data)
+              }))}
             />
           </Modal>
         ) : null}

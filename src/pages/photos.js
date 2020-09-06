@@ -14,12 +14,17 @@ class Photos extends React.Component {
     const { data } = this.props
     console.log(data);
     const siteTitle = data.site.siteMetadata.title
-    console.log(data.natural.edges);
+    // console.log("testing fluid", data.test.edges);
     var natural= data.natural.edges.map(({ node }) => ({
+      fluid: ({
+        ...node.childImageSharp.fluid,
+        height: 3,
+        width: 4,
+      }),
       image: {
-        src: node.childImageSharp.sizes.src,
-        srcSet: node.childImageSharp.sizes.srcSet,
-        sizes: node.childImageSharp.sizes.sizes,
+        src: node.childImageSharp.fluid.src,
+        srcSet: node.childImageSharp.fluid.srcSet,
+        sizes: node.childImageSharp.fluid.sizes,
         height: 3,
         width: 4,
       },
@@ -33,11 +38,16 @@ class Photos extends React.Component {
       }
     }))
     var built= data.built.edges.map(({ node }) => ({
-      image: {
-        src: node.childImageSharp.sizes.src,
-        srcSet: node.childImageSharp.sizes.srcSet,
-        sizes: node.childImageSharp.sizes.sizes,
+      fluid: ({
+        ...node.childImageSharp.fluid,
         height: 3,
+        width: 4,
+      }),
+      image: {
+        src: node.childImageSharp.fluid.src,
+        srcSet: node.childImageSharp.fluid.srcSet,
+        sizes: node.childImageSharp.fluid.sizes,
+        height: 3,  
         width: 4,
       },
       data: {
@@ -50,10 +60,15 @@ class Photos extends React.Component {
       }
     }))
     var people= data.people.edges.map(({ node }) => ({
+      fluid: ({
+        ...node.childImageSharp.fluid,
+        height: 3,
+        width: 4,
+      }),
       image: {
-        src: node.childImageSharp.sizes.src,
-        srcSet: node.childImageSharp.sizes.srcSet,
-        sizes: node.childImageSharp.sizes.sizes,
+        src: node.childImageSharp.fluid.src,
+        srcSet: node.childImageSharp.fluid.srcSet,
+        sizes: node.childImageSharp.fluid.sizes,
         height: 3,
         width: 4,
       },
@@ -93,9 +108,8 @@ export const query = graphql`
       edges {
         node {
           childImageSharp {
-            # originalName
-            sizes(maxWidth: 1000) {
-               ...GatsbyImageSharpSizes
+            fluid(maxWidth: 4096) {
+              ...GatsbyImageSharpFluid
             }
             fields {
             exif {
@@ -122,9 +136,8 @@ export const query = graphql`
       edges {
         node {
           childImageSharp {
-            # originalName
-            sizes(maxWidth: 1000) {
-               ...GatsbyImageSharpSizes
+            fluid(maxWidth: 4096) {
+              ...GatsbyImageSharpFluid
             }
             fields {
             exif {
@@ -151,9 +164,8 @@ export const query = graphql`
       edges {
         node {
           childImageSharp {
-            # originalName
-            sizes(maxWidth: 1000) {
-               ...GatsbyImageSharpSizes
+            fluid(maxWidth: 4096) {
+              ...GatsbyImageSharpFluid
             }
             fields {
             exif {
