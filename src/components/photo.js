@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Img from "gatsby-image";
+import Image from "gatsby-image"
 
 const imgWithClick = { cursor: 'pointer' };
 
@@ -15,26 +15,29 @@ const Photo = ({ index, onClick, photo, margin, direction, top, left, key }) => 
   const handleClick = event => {
     onClick(event, { photo, index });
   };
-
+  console.log("INSIDE PHOTO... ", photo);
+  
   return (
-    <Img
-      key={key}
-      style={onClick ? { ...imgStyle, ...imgWithClick } : imgStyle}
-      fluid={photo}
+    <span style={{width: photo.width}}>
+      <div key={key} style={onClick ? { ...imgStyle, ...imgWithClick } : imgStyle}
       onClick={onClick ? handleClick : null}
-    />
+      >
+        <Image
+          fluid={photo}
+        />
+    </div>
+    </span>
   );
 };
 
 export const photoPropType = PropTypes.shape({
-  key: PropTypes.string,
-  src: PropTypes.string.isRequired,
-  width: PropTypes.number.isRequired,
+  aspectRatio:  PropTypes.number,
+  base64: PropTypes.string, 
   height: PropTypes.number.isRequired,
-  alt: PropTypes.string,
-  title: PropTypes.string,
-  srcSet: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
-  sizes: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  sizes:  PropTypes.string,
+  src:  PropTypes.string,
+  srcSet:  PropTypes.string,
+  width: PropTypes.number.isRequired,
 });
 
 Photo.propTypes = {
