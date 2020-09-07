@@ -17,12 +17,10 @@ class CustomGallery extends React.Component {
   }
   
   openLightbox = (event, { photo, index }) => {
-    console.log("event", event, "photo is", photo, "index is", index);
     this.setState({
       currentImage: index,
       viewerIsOpen: true
     })
-    console.log("STATE IS", this.state)
   }
 
   closeLightbox = () => {
@@ -52,13 +50,10 @@ class CustomGallery extends React.Component {
           <Modal onClose={this.closeLightbox}>
             <Carousel
               currentIndex={this.state.currentImage}
-              views={this.props.photos[this.state.openGallery].map(({image}) => image)}
-              // ({
-              //   ...x,
-              //   source: 
-              //   // srcset: x.srcSet,
-              //   // caption: x.title
-              // }))}
+              views={this.props.photos[this.state.openGallery].map((x) => ({
+                ...x.image,
+                caption: JSON.stringify(x.data)
+              }))}
             />
           </Modal>
         ) : null}
