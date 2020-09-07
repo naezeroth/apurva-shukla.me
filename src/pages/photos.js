@@ -14,39 +14,61 @@ class Photos extends React.Component {
     const { data } = this.props
     console.log(data);
     const siteTitle = data.site.siteMetadata.title
-    var natural= data.natural.edges.map(x => ({
-      ...x,
-      // srcset: x.srcSet,
-      // caption: x.title
+    console.log(data.natural.edges);
+    var natural= data.natural.edges.map(({ node }) => ({
+      image: {
+        src: node.childImageSharp.sizes.src,
+        srcSet: node.childImageSharp.sizes.srcSet,
+        sizes: node.childImageSharp.sizes.sizes,
+        height: 3,
+        width: 4,
+      },
+      data: {
+        MakeAndModel: node.childImageSharp.fields.exif.raw.image.Make + " " + node.childImageSharp.fields.exif.raw.image.Model,
+        ApertureValue: node.childImageSharp.fields.exif.raw.exif.ApertureValue,
+        FNumber: node.childImageSharp.fields.exif.raw.exif.FNumber,
+        ShutterSpeedValue: node.childImageSharp.fields.exif.raw.exif.ShutterSpeedValue,
+        ISO: node.childImageSharp.fields.exif.raw.exif.ISO,
+        DateTimeOriginal: node.childImageSharp.fields.exif.raw.exif.DateTimeOriginal,
+      }
     }))
-    var built= data.natural.edges.map(x => ({
-      ...x,
-      // srcset: x.srcSet,
-      // caption: x.title
+    var built= data.built.edges.map(({ node }) => ({
+      image: {
+        src: node.childImageSharp.sizes.src,
+        srcSet: node.childImageSharp.sizes.srcSet,
+        sizes: node.childImageSharp.sizes.sizes,
+        height: 3,
+        width: 4,
+      },
+      data: {
+        MakeAndModel: node.childImageSharp.fields.exif.raw.image.Make + " " + node.childImageSharp.fields.exif.raw.image.Model,
+        ApertureValue: node.childImageSharp.fields.exif.raw.exif.ApertureValue,
+        FNumber: node.childImageSharp.fields.exif.raw.exif.FNumber,
+        ShutterSpeedValue: node.childImageSharp.fields.exif.raw.exif.ShutterSpeedValue,
+        ISO: node.childImageSharp.fields.exif.raw.exif.ISO,
+        DateTimeOriginal: node.childImageSharp.fields.exif.raw.exif.DateTimeOriginal,
+      }
     }))
-    var people= data.natural.edges.map(x => ({
-      ...x,
-      // srcset: x.srcSet,
-      // caption: x.title
+    var people= data.people.edges.map(({ node }) => ({
+      image: {
+        src: node.childImageSharp.sizes.src,
+        srcSet: node.childImageSharp.sizes.srcSet,
+        sizes: node.childImageSharp.sizes.sizes,
+        height: 3,
+        width: 4,
+      },
+      data: {
+        MakeAndModel: node.childImageSharp.fields.exif.raw.image.Make + " " + node.childImageSharp.fields.exif.raw.image.Model,
+        ApertureValue: node.childImageSharp.fields.exif.raw.exif.ApertureValue,
+        FNumber: node.childImageSharp.fields.exif.raw.exif.FNumber,
+        ShutterSpeedValue: node.childImageSharp.fields.exif.raw.exif.ShutterSpeedValue,
+        ISO: node.childImageSharp.fields.exif.raw.exif.ISO,
+        DateTimeOriginal: node.childImageSharp.fields.exif.raw.exif.DateTimeOriginal,
+      }
     }))
-    // console.log("test is ", test)
     var allPhotos = {natural, built, people}
     console.log("all photos is", allPhotos);
-    
-    // const posts = data.allMdx.edges
-    // const [currentImage, setCurrentImage] = useState(0);
-    // const [viewerIsOpen, setViewerIsOpen] = useState(false);
-
-    // const openLightbox = useCallback((event, { photo, index }) => { //TODO move this to own component instead of page
-    //   setCurrentImage(index);
-    //   setViewerIsOpen(true);
-    // }, []);
-
-    // const closeLightbox = () => {
-    //   setCurrentImage(0);
-    //   setViewerIsOpen(false);
-    // };
-
+  
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="All posts" />
@@ -77,9 +99,6 @@ export const query = graphql`
             }
             fields {
             exif {
-              meta {
-                dateTaken
-              }
               raw {
                 image {
                   Make
@@ -109,9 +128,6 @@ export const query = graphql`
             }
             fields {
             exif {
-              meta {
-                dateTaken
-              }
               raw {
                 image {
                   Make
@@ -141,9 +157,6 @@ export const query = graphql`
             }
             fields {
             exif {
-              meta {
-                dateTaken
-              }
               raw {
                 image {
                   Make
