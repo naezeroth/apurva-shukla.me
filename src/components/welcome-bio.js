@@ -35,7 +35,8 @@ function WelcomeBio() {
             />
             <p>
             Hey there! Welcome to my website. My name is Apurva Shukla and 
-            here you can find my <a href={'/blog/'} style={{color: '#859900'}}>blog</a>, photographs and projects. 
+            here you can find my <a href={'/blog/'} style={{color: '#859900'}}>blog</a>, {""} 
+            <a href={'/photos/'} style={{color: '#859900'}}>photographs</a> and projects. 
             Type <b style={{color: '#d33682'}}>help</b> to get started.
             </p>
           </Container>
