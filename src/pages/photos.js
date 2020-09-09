@@ -4,30 +4,20 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-// import { rhythm } from "../utils/typography"
 import Button from "../components/button"
 import CustomGallery from "../components/custom-gallery"
 
 class Photos extends React.Component {
   render() {
-    // console.log(data);
     const { data } = this.props
     console.log(data);
     const siteTitle = data.site.siteMetadata.title
-    // console.log("testing fluid", data.test.edges);
     var natural= data.natural.edges.map(({ node }) => ({
       fluid: ({
         ...node.childImageSharp.fluid,
         height: 3,
         width: 4,
       }),
-      image: {
-        src: node.childImageSharp.fluid.src,
-        srcSet: node.childImageSharp.fluid.srcSet,
-        sizes: node.childImageSharp.fluid.sizes,
-        height: 3,
-        width: 4,
-      },
       data: {
         MakeAndModel: node.childImageSharp.fields.exif.raw.image.Make + " " + node.childImageSharp.fields.exif.raw.image.Model,
         ApertureValue: node.childImageSharp.fields.exif.raw.exif.ApertureValue,
@@ -43,13 +33,6 @@ class Photos extends React.Component {
         height: 3,
         width: 4,
       }),
-      image: {
-        src: node.childImageSharp.fluid.src,
-        srcSet: node.childImageSharp.fluid.srcSet,
-        sizes: node.childImageSharp.fluid.sizes,
-        height: 3,  
-        width: 4,
-      },
       data: {
         MakeAndModel: node.childImageSharp.fields.exif.raw.image.Make + " " + node.childImageSharp.fields.exif.raw.image.Model,
         ApertureValue: node.childImageSharp.fields.exif.raw.exif.ApertureValue,
@@ -65,13 +48,6 @@ class Photos extends React.Component {
         height: 3,
         width: 4,
       }),
-      image: {
-        src: node.childImageSharp.fluid.src,
-        srcSet: node.childImageSharp.fluid.srcSet,
-        sizes: node.childImageSharp.fluid.sizes,
-        height: 3,
-        width: 4,
-      },
       data: {
         MakeAndModel: node.childImageSharp.fields.exif.raw.image.Make + " " + node.childImageSharp.fields.exif.raw.image.Model,
         ApertureValue: node.childImageSharp.fields.exif.raw.exif.ApertureValue,
@@ -108,7 +84,7 @@ export const query = graphql`
       edges {
         node {
           childImageSharp {
-            fluid(maxWidth: 4096) {
+            fluid(maxWidth: 2048) {
               ...GatsbyImageSharpFluid
             }
             fields {
@@ -136,7 +112,7 @@ export const query = graphql`
       edges {
         node {
           childImageSharp {
-            fluid(maxWidth: 4096) {
+            fluid(maxWidth: 2048) {
               ...GatsbyImageSharpFluid
             }
             fields {
@@ -164,7 +140,7 @@ export const query = graphql`
       edges {
         node {
           childImageSharp {
-            fluid(maxWidth: 4096) {
+            fluid(maxWidth: 2048) {
               ...GatsbyImageSharpFluid
             }
             fields {

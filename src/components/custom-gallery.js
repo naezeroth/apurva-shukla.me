@@ -4,7 +4,9 @@ import Carousel, { Modal, ModalGateway } from "react-images";
 import { IconLink } from "./link"
 import { Back } from "./social-icons"
 import Photo from "./photo"
-import Img from "gatsby-image";
+import { rhythm } from "../utils/typography"
+import styled from "styled-components"
+
 
 class CustomGallery extends React.Component {
   constructor(props) {
@@ -46,7 +48,10 @@ class CustomGallery extends React.Component {
     <div>
       {this.state.openGallery ? (
       <div>
+      <br/>
       <IconLink onClick={() => this.changeOpenGallery(0)}><Back/></IconLink>
+      <br/>
+      <br/>
       <Gallery photos={this.props.photos[this.state.openGallery].map(({ fluid }) => fluid)}
         renderImage={Photo}
         onClick={this.openLightbox} /> 
@@ -56,7 +61,7 @@ class CustomGallery extends React.Component {
             <Carousel
               currentIndex={this.state.currentImage}
               views={this.props.photos[this.state.openGallery].map((x) => ({
-                ...x.image,
+                ...x.fluid,
                 caption: JSON.stringify(x.data)
               }))}
             />
@@ -64,10 +69,16 @@ class CustomGallery extends React.Component {
         ) : null}
       </ModalGateway>
       </div>) : (
-        <div>
-        <button onClick={() => this.changeOpenGallery('natural')}> NATURAL </button>
-        <button onClick={() => this.changeOpenGallery('built')}> BUILT </button>
-        <button onClick={() => this.changeOpenGallery('people')}> PEOPLE </button>
+        <div style={{display: 'flex', 'flex-flow': 'row wrap'}}>
+          <Item>
+            <Button style= {{background: '#2aa198'}} onClick={() => this.changeOpenGallery('natural')}>natural</Button>
+          </Item>
+          <Item>
+            <Button style= {{background: '#b58900'}} onClick={() => this.changeOpenGallery('built')}>built</Button>
+          </Item>
+          <Item>
+            <Button style= {{background: '#d33682'}} onClick={() => this.changeOpenGallery('people')}>people</Button>
+          </Item>
         </div>
       )}
     </div>
@@ -75,3 +86,12 @@ class CustomGallery extends React.Component {
   }
 }
 export default CustomGallery
+
+const Item = styled.div`
+  padding: 30px 0 0 50px;
+`
+const Button = styled.button`
+  height: ${rhythm(5)}; 
+  width: ${rhythm(8)};
+  border-radius: 20px;
+`
