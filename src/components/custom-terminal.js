@@ -132,17 +132,26 @@ const helpCommand = () => {return(<span>
     <b style={{color: '#b58900'}}>resume</b> - check out my resume
 </span>)}
 
-const whoamiCommand = () => {return(<span><p>
-  Hey there! Welcome to my website. My name is Apurva Shukla and 
-  here you can find my <a href={'/blog/'} style={{color: '#859900'}}>blog</a>, photographs and projects. 
-  Type help to get started. You can find me on {""}     
+const whoamiCommand = () => {return(
+  <span>
+  <p>
+  I'm a final year of computer science student at UNSW. I'm currently writing software with purpose at <a href={'https://nomoss.co/'} style={{color: '#859900'}}>No Moss Co</a>.
+  </p>
+  <p>
+  I believe that underneath our responsibilities and roles that we wear through life, you and I are essentially the same. Human. 
+  I live through this philosophy, and channel my purpose by 
+  developing relationships and experiencing each other - from our diverse backgrounds and upbringings, to our shared achievements and goals.
+  </p>
+  <p>
+  My super-powers are an endless desire to learn, and an unrelenting commitment to the things I believe in - and a love for being a part of ecosystems in which everybody feels connected, valuable and one.
+  </p>
+  You can find me on {""}     
   <IconLink href={social.github}><Github/></IconLink>
   , {""}
   <IconLink href={social.linkedin}><Linkedin/></IconLink>
   {""} or {""}
   <IconLink href={social.mail}><Email/></IconLink>
   .
-  </p>
   </span>)}
 
 export default CustomTerminal
