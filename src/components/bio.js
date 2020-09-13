@@ -25,21 +25,19 @@ function Bio() {
               alt={author}
               style={{
                 marginRight: rhythm(1 / 2),
-                marginBottom: 0,
-                minWidth: 50,
-                borderRadius: `100%`,
+                // marginBottom: '50px',
+                minWidth: 100,
+
+                borderRadius: `50%`,
               }}
               imgStyle={{
-                borderRadius: `50%`,
+                borderRadius: `25%`,
               }}
             />
             <p>
               Written by <strong>{author}</strong>, a framework built upon the
               React library.
               {` `}
-              <a href={`https://twitter.com/${social.twitter}`}>
-                Follow me on Twitter
-              </a>
             </p>
           </Container>
         )
@@ -50,9 +48,9 @@ function Bio() {
 
 const bioQuery = graphql`
   query BioQuery {
-    avatar: file(absolutePath: { regex: "/gatsby-icon.png/" }) {
+    avatar: file(absolutePath: { regex: "/apu_flat_icon_blue.png/" }) {
       childImageSharp {
-        fixed(width: 50, height: 50) {
+        fixed(width: 75, height: 100) {
           ...GatsbyImageSharpFixed
         }
       }
