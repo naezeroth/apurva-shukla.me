@@ -71,13 +71,13 @@ class CustomGallery extends React.Component {
       </div>) : (
         <div style={{display: 'flex', 'flex-flow': 'row wrap'}}>
           <Item>
-            <Button style= {{background: '#2aa198'}} onClick={() => this.changeOpenGallery('natural')}>natural</Button>
+            <Button style= {{background: 'rgb(45 220 207)', 'font-weight': '400', 'font-size': 'xx-large'}} onClick={() => this.changeOpenGallery('natural')}>Natural</Button>
           </Item>
           <Item>
-            <Button style= {{background: '#b58900'}} onClick={() => this.changeOpenGallery('built')}>built</Button>
+            <Button style= {{background: 'rgb(255 206 55)', 'font-weight': '400', 'font-size': 'xx-large'}} onClick={() => this.changeOpenGallery('built')}>Built</Button>
           </Item>
           <Item>
-            <Button style= {{background: '#d33682'}} onClick={() => this.changeOpenGallery('people')}>people</Button>
+            <Button style= {{background: 'rgb(255 156 243)', 'font-weight': '400', 'font-size': 'xx-large'}} onClick={() => this.changeOpenGallery('people')}>People</Button>
           </Item>
         </div>
       )}

@@ -80,9 +80,13 @@ export const query = graphql`
         title
       }
     }
-    natural:allFile(filter:{extension:{regex:"/(jpeg|jpg)/"},  sourceInstanceName:{eq:"natural"}}) {
+    natural:allFile(filter:{extension:{regex:"/(jpeg|jpg)/"},  sourceInstanceName:{eq:"natural"}}, sort: {
+      fields: [name]
+      order: ASC
+    }) {
       edges {
         node {
+          name
           childImageSharp {
             fluid(maxWidth: 2048) {
               ...GatsbyImageSharpFluid
@@ -108,9 +112,13 @@ export const query = graphql`
         }
       }
     }
-    built:allFile(filter:{extension:{regex:"/(jpeg|jpg)/"},  sourceInstanceName:{eq:"built"}}) {
+    built:allFile(filter:{extension:{regex:"/(jpeg|jpg)/"},  sourceInstanceName:{eq:"built"}}, sort: {
+      fields: [name]
+      order: ASC
+    }) {
       edges {
         node {
+          name
           childImageSharp {
             fluid(maxWidth: 2048) {
               ...GatsbyImageSharpFluid
@@ -136,9 +144,13 @@ export const query = graphql`
         }
       }
     }
-    people:allFile(filter:{extension:{regex:"/(jpeg|jpg)/"},  sourceInstanceName:{eq:"people"}}) {
+    people:allFile(filter:{extension:{regex:"/(jpeg|jpg)/"},  sourceInstanceName:{eq:"people"}}, sort: {
+      fields: [name]
+      order: ASC
+    }) {
       edges {
         node {
+          name
           childImageSharp {
             fluid(maxWidth: 2048) {
               ...GatsbyImageSharpFluid
