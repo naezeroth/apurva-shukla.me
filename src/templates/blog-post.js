@@ -38,7 +38,7 @@ class BlogPostTemplate extends React.Component {
           }}
         />
         <Bio />
-
+        <br></br>
         <ul
           style={{
             display: `flex`,
@@ -64,7 +64,7 @@ class BlogPostTemplate extends React.Component {
           </li>
         </ul>
         <Link to="/">
-          <Button marginTop="85px">Go Home</Button>
+          <Button marginTop="35px">Go Home</Button>
         </Link>
       </Layout>
     )

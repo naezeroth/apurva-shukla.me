@@ -51,8 +51,8 @@ class CustomTerminal extends React.Component {
                   'Whoami': whoamiCommand,       
                   'blog': () => window.open('/blog', "_self"),
                   'Blog': () => window.open('/blog', "_self"),
-                  'projects': () => {return("Projects here")},
-                  'Projects': () => {return("Projects here")},
+                  // 'projects': () => {return("Projects here")},
+                  // 'Projects': () => {return("Projects here")},
                   'photos': () => window.open('/photos', "_self"),
                   'Photos': () => window.open('/photos', "_self"),
                   'resume': () => window.open(publicURL, "_self"),
@@ -122,9 +122,6 @@ const helpCommand = () => {return(<span>
   </p>
   <p>
     <b style={{color: '#b58900'}}>blog</b> - checkout my blog
-  </p>
-  <p>
-    <b style={{color: '#b58900'}}>projects</b> - checkout the projects I've worked on
   </p>
   <p>
     <b style={{color: '#b58900'}}>photos</b> - checkout my photography portfolio
