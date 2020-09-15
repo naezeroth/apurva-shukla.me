@@ -32,13 +32,13 @@ Over the next few months, we constantly refined our team norms and processes bas
 
 [![Scrum Process](./scrum_process.png "The processes and structure to faciliate scrum")](https://nomoss.co/resources)
 
-## Infrastructure set up Dev/Staging Infrastructure set up on AWS (EC2)
+## Initial Infrastructure set up
 
 Our approach to creating this game was to decouple the frontend game with the backend logic and database. This proved to be a very smart choice in the coming months as the backend server provided a robust API that could be consumed by the Unity application. 
 
 Our stack was a Unity frontend coupled with the photon networking engine, and PlayFab alongside a SailsJS backend with mySQL being our database of choice. 
 
-My first step after we all agreed on the tech stack was to set up a simple test project running on an EC2 that was accessible through a domain name. *Ahh!* This was my first time using AWS and its features, and it was so daunting. For an afternoon that week I was feeling super overwhelmed with my cards for the week.
+My first step after we all agreed on the tech stack was to set up a simple test SailsJS project running on an EC2 that was accessible through a domain name that handled authentication. *Ahh!* This was my first time using AWS and its features alongside SailsJS, and it was so daunting. For an afternoon that week I was feeling super overwhelmed with my cards for the week.
 
 Luckily my team was super supportive, and I had the courage to admit that I was uncertain on how to do something. **Aaand just like that, I was unblocked!** I was able to shadow a senior developer who did a speed run on setting up an EC2 instance as I took notes. They're detailed below:
 
@@ -60,12 +60,12 @@ Luckily my team was super supportive, and I had the courage to admit that I was 
 
 To set up a reverse proxy as mentioned in step 8 we needed to create an enabled site in /etc/apache2/sites-enabled/
 
-```clike
+```javascript
 <VirtualHost *:80>
 	#ServerName www.example.com
+        #DocumentRoot /var/www/html
 
 	ServerAdmin webmaster@localhost
-	#DocumentRoot /var/www/html
 
         ProxyPreserveHost On
         ProxyPass / http://127.0.0.1:1337/
@@ -75,15 +75,114 @@ To set up a reverse proxy as mentioned in step 8 we needed to create an enabled 
 	CustomLog ${APACHE_LOG_DIR}/access.log combined
 
 RewriteEngine on
-RewriteCond %{SERVER_NAME} =realdealdev.nomoss.dev
+RewriteCond %{SERVER_NAME} =dev.example.com
 RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
 </VirtualHost>
 ```
-## Model building & functionality (sailsJS with)
 
-## CI/CD with Gitlab, & Slack integration
+The above configuration does 2 things:
+1. Maps the request coming from dev.example.com on port 80 (i.e. HTTP traffic) to the internal port of 1337 (where the node app is running)
+1. Forces HTTPS by using the RewriteEngine
 
-## Documentation & Testing backseat --> how that was overcome by me
+## Model building & functionality
+
+The actual development of our SailsJS application came in at this stage. My first task was to have a way for users to register, log in and log out. After researching ways to accomplish this I settled on using [JSON Web Tokens](https://jwt.io/) (JWT) as our authentication method since it was stateless and our plan was that our game frontend would handle sessions, and from there it would communicate securely with our SailsJS application over HTTPS. This proved to be a very good choice for our architecture since it: 
+
+1. Allowed horizontal scaling to handle authentication as reliably as it did with 1 server.
+1. Fit in with the nature of Bridge gameplay (which is to say that it is turn based)
+
+One of the biggest hiccups we faced in the first couple of weeks was the lack of transparency between the frontend and backend, especially in relation to what the overall models and structure looked like. To combat this, we utilised [draw.io](https://draw.io) to help visualise everything, and ensure everyone was on the same page. As a tip for the future, this should be one of the first things everyone on the team should do to ensure a steady pace ahead. 
+
+![Drawio](./drawio.png "Our overall model structure")
+
+## CI/CD with Gitlab, & Slack integrations
+
+To aid in our velocity I set up a CI/CD pipeline using Gitlab. I'll let our .gitlab-ci.yml speak for itself. 
+
+```yaml
+image: node:12.16.3
+ 
+stages:
+  - tests
+  - deploy
+
+before_script:
+  - apt-get update -qq
+
+run_tests:
+  stage: tests
+  script:
+    - npm i
+    - npm run test-with-coverage
+    - npx nyc report --reporter=text-summary
+  coverage:
+    '/Statements.*?(\d+(?:\.\d+)?)%/' # This is a regex expression allowing coverage to be shown on Gitlab's pipeline itself
+  artifacts:
+    when: always
+    paths:
+      # save coverage results for 10 days
+      - coverage
+    expire_in: 10 days
+  only:
+    - dev
+    - master
+  
+deploy_dev_server:
+  stage: deploy
+  before_script:
+    - echo "I am preparing to copy the SSH key"
+    # Setup SSH deploy keys
+    - 'which ssh-agent || ( apt-get install -qq openssh-client )'
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$SSH_PRIVATE_KEY")
+    - mkdir -p ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  environment:
+    name: dev
+    url: dev.example.com
+  script:
+    - ssh ubuntu@dev.example.com "./dev-deploy.sh"
+  only:
+    - dev
+
+deploy_stage_server:
+  stage: deploy
+  before_script:
+    - echo "I am preparing to copy the SSH key"
+    # Setup SSH deploy keys
+    - 'which ssh-agent || ( apt-get install -qq openssh-client )'
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$SSH_PRIVATE_KEY")
+    - mkdir -p ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  environment:
+    name: staging
+    url: stage.example.com
+  script:
+    - ssh ubuntu@dev.example.com "./stage-deploy.sh"
+    - ssh ubuntu@dev.example.com "./stage_backup.sh"
+  only:
+    - master
+```
+
+The above script allowed us to deploy to our dev and stage server on changes to our **dev** and **master** branch, by running a deploy script like *./dev-deploy.sh* which is detailed below.
+
+```shell
+forever stop /var/www/real-deal-server-dev/app.js
+cd /var/www/real-deal-server-dev
+git pull
+npm install
+echo "Starting DB migrations"
+node_modules/db-migrate/bin/db-migrate up
+forever start /var/www/real-deal-server-dev/app.js 
+echo "Latest version of dev application deployed"
+```
+
+I utilised Slacks API to create a simple application that used [Gitlab's Webhooks feature](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html) to notify every time a push was made on dev, and master and the subsequent pipeline it ran. This was a **big** timesaver! Often at times members of our development team would ask questions like "Did our server just go down?" with no visibility on it's status. With this, the whole development team subscribed to a special channel which let us have relevant and contextual conversations relating to each new push.
+
+## Documentation & Testing backseat
+
+Unfortunately with the velocity we were going, and the prioritsation of feature cards in the backlog meant that for a period of a month we had virtually 0 testing and documentation.
 
 ## Multiplayer functionality (JWT etc.), sending mail, password forget flow, credits etc.
 
@@ -95,10 +194,5 @@ RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
 ## Start of greenfield project & issues in the first weeks
 
 
-```javascript
-export function foo () {
-    console.log("Hello world!");
-}
-```
 [1]: https://www.realdealbridge.com/about
 
