@@ -37,11 +37,12 @@ class Blog extends React.Component {
                   </Link>
                 </h3>
                 <small>{node.frontmatter.date}</small>
-                <p
+                <p style={{marginBottom: rhythm(1 / 8)}}
                   dangerouslySetInnerHTML={{
                     __html: node.frontmatter.description || node.excerpt,
                   }}
                 />
+                <small>{node.timeToRead} min read</small>
               </div>
             )
           })}
@@ -65,6 +66,7 @@ export const query = graphql`
       edges {
         node {
           excerpt
+          timeToRead
           fields {
             slug
           }

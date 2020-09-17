@@ -8,7 +8,7 @@ tags: ["development", "AWS", "NodeJS", "SailsJS"]
 Over a period of four months our game studio team at [No Moss Co](https://nomoss.co), led the development of [Real Deal Bridge](https://play.realdealbridge.com) - a realtime multiplayer, cross-platform card game available on iOS, Android, Windows, MacOS, and Web. This article will detail both personal and team learnings, as I developed the backend architecture for this game.  
 
 
-![Gameplay](./gameplay.png "Auction stage in gameplay")
+[![Gameplay](./gameplay.png "Auction stage in gameplay")](https://realdealbridge.com)
 
 ** So what is Real Deal Bridge? **
 
@@ -60,7 +60,7 @@ Luckily my team was super supportive, and I had the courage to admit that I was 
 
 To set up a reverse proxy as mentioned in step 8 we needed to create an enabled site in /etc/apache2/sites-enabled/
 
-```javascript
+```js {numberLines}
 <VirtualHost *:80>
 	#ServerName www.example.com
         #DocumentRoot /var/www/html
@@ -167,7 +167,7 @@ deploy_stage_server:
 
 The above script allowed us to deploy to our dev and stage server on changes to our **dev** and **master** branch, by running a deploy script like *./dev-deploy.sh* which is detailed below.
 
-```shell
+```shellscript
 forever stop /var/www/real-deal-server-dev/app.js
 cd /var/www/real-deal-server-dev
 git pull
@@ -182,16 +182,67 @@ I utilised Slacks API to create a simple application that used [Gitlab's Webhook
 
 ## Documentation & Testing backseat
 
-Unfortunately with the velocity we were going, and the prioritsation of feature cards in the backlog meant that for a period of a month we had virtually 0 testing and documentation.
+Unfortunately with the velocity we were going, and the prioritsation of feature cards in the backlog meant that for a period of a month we had virtually no testing and documentation. This was a **harsh** learning that we paid the price for by having to dedicate explicit resources and time to test. 
 
-## Multiplayer functionality (JWT etc.), sending mail, password forget flow, credits etc.
+I know the importance of automated unit tests, and integration tests after having to go back and comb through our existing code base and writing detailed tests for each controller and helper. The [tech debt](https://en.wikipedia.org/wiki/Technical_debt) that one accrues by opting to develop more features before testing is simply too much (and will continue to grow as the project increases in complexity). A tip for the future is to properly communciate the long term benefit of testing vs. the short term loss on new features to the client such they understand this.    
+
+Our code coverage went from 0% to a happy 61.57% as it became a team norm to include tests for our cards before we could define them as 'done'. There has now been multiple moments that our CI has stopped us from deploying a quick fix that suddenly broke tests in a seemingly unrelated place.
+
+The immediacy for API documentation became clear when members of our team were partway through their development process when by chance in a check in the specifics of the functionality differed entirely between the backend and frontend. I wished I had more time to explore the OpenAPI spec, and even found a nifty [hook](https://github.com/theoomoregbee/sails-hook-swagger-generator) to do most of the work but at the time it didn't work as intended. I ended up creating a shared spreadsheet that had different pages for different folders of our API's, and within each it housed the name, description, route, inputs, outputs, error/success codes, and any notes to accompany it. This just like testing was something that required upfront effort to create but the benefits only shone later in the project.
 
 ## Testing with Mocha & Supertest 
 
-## Production AWS (Autoscaling, load balancer, PM2 internal load balancing)
+Mocha was a fantastic testing framework to use with our SailsJS project. It was super easy to set up, with the ability to load anything we needed (such as mock JWT tokens) before the start of *all* tests, and then before a specific test, followed by any actions after tests. Here's a small excerpt of what it looks like to test with this setup. 
 
 
-## Start of greenfield project & issues in the first weeks
+```js
+var supertest = require('supertest'); //Used to send/recieve HTTP requests 
+var expect = require('chai').expect; //Chai is an excellent assertion library
+
+var agent;
+
+describe('auth', function() {
+  before(function(done) {
+    agent = supertest.agent(sails.hooks.http.app);
+    done();
+  })
+
+  describe('POST /api/auth/register', function() {
+    var pw;
+
+    before(async function() { //Execute the below before running any more tests within this describe
+      pw = await sails.helpers.hashThisPasswordPlease('test'); //Obfuscated password hash :)
+    })
+
+    it('should create a user and return relevant keys in body', function (done) {
+      agent
+      .post('/api/auth/register')
+      .send({
+        emailAddress: 'mocha@coffee.com',
+        firstName: 'Mocha',
+        lastName: 'Test',
+        acceptedPrivacy: true,
+        acceptedTOS: true,
+        uniqueGameNumber: '999999a',
+        password: pw,
+      })
+      .expect(hasAuthKeys)
+      .expect(200, done);
+    });
+  })
+
+  after( function(done) {
+    User.destroy({}) //Remove newly registered users
+    .then( () => {
+      return done();
+    });
+  });
+});
+```
+
+## Scaling for production 
+
+AWS (Autoscaling, load balancer, PM2 internal load balancing)
 
 
 [1]: https://www.realdealbridge.com/about
