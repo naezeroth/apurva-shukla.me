@@ -21,6 +21,7 @@ const Photo = ({ index, onClick, photo, margin, direction, top, left, key }) => 
     <span style={{width: photo.width}}>
       <div key={key} style={onClick ? { ...imgStyle, ...imgWithClick } : imgStyle}
       onClick={onClick ? handleClick : null}
+      onKeyDown={onClick ? handleClick : null}
       >
         <Image
           fluid={photo}

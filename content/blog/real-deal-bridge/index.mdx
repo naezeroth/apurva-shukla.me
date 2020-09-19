@@ -178,7 +178,7 @@ forever start /var/www/real-deal-server-dev/app.js
 echo "Latest version of dev application deployed"
 ```
 
-I utilised Slacks API to create a simple application that used [Gitlab's Webhooks feature](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html) to notify every time a push was made on dev, and master and the subsequent pipeline it ran. This was a **big** timesaver! Often at times members of our development team would ask questions like "Did our server just go down?" with no visibility on it's status. With this, the whole development team subscribed to a special channel which let us have relevant and contextual conversations relating to each new push.
+I utilised Slack's API to create a simple application that used [Gitlab's Webhooks feature](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html) to notify every time a push was made on dev, and master and the subsequent pipeline it ran. This was a **big** timesaver! Often at times members of our development team would ask questions like, "Did our server just go down?" with no visibility on it's status. With this, the whole development team subscribed to a special channel which let us have relevant and contextual conversations relating to each new push.
 
 ## Documentation & Testing backseat
 
@@ -188,7 +188,9 @@ I know the importance of automated unit tests, and integration tests after havin
 
 Our code coverage went from 0% to a happy 61.57% as it became a team norm to include tests for our cards before we could define them as 'done'. There has now been multiple moments that our CI has stopped us from deploying a quick fix that suddenly broke tests in a seemingly unrelated place.
 
-The immediacy for API documentation became clear when members of our team were partway through their development process when by chance in a check in the specifics of the functionality differed entirely between the backend and frontend. I wished I had more time to explore the OpenAPI spec, and even found a nifty [hook](https://github.com/theoomoregbee/sails-hook-swagger-generator) to do most of the work but at the time it didn't work as intended. I ended up creating a shared spreadsheet that had different pages for different folders of our API's, and within each it housed the name, description, route, inputs, outputs, error/success codes, and any notes to accompany it. This just like testing was something that required upfront effort to create but the benefits only shone later in the project.
+The immediacy for API documentation became clear when members of our team had completely different ideas on how things were being implemented. A perfect example was when we were partway through our development process, when by chance in our daily standup, the specifics of the functionality differed entirely between the backend and frontend.
+
+ I wished I had more time to explore the OpenAPI spec, and even found a nifty [hook](https://github.com/theoomoregbee/sails-hook-swagger-generator) to do most of the work but at the time it didn't work as intended. I ended up creating a shared spreadsheet that had different pages for different folders of our API's, and within each it housed the name, description, route, inputs, outputs, error/success codes, and any notes to accompany it. This just like testing was something that required upfront effort to create but the benefits only shone later in the project.
 
 ## Testing with Mocha & Supertest 
 
@@ -244,30 +246,31 @@ describe('auth', function() {
 
 Finally, the last topic to cover is the public release of our game! The long awaited version 1.0. I'll explore the set up we used to ensure our server was reliable and scalable. 
 
-After reading this excellent [series](https://medium.com/iquii/good-practices-for-high-performance-and-scalable-node-js-applications-part-1-3-bb06b6204197) I implemented both internal load balancing within our EC2's using [PM2](https://pm2.keymetrics.io/docs/usage/pm2-doc-single-page/), and external load balancing with AWS's load balancer connected to an autoscaling group that had a threshold of maintaining an average of 50% CPU usage in each server (i.e. if there was more, it would spin up another server and if there was less it would wind down a server). 
+After reading this excellent [series](https://medium.com/iquii/good-practices-for-high-performance-and-scalable-node-js-applications-part-1-3-bb06b6204197), I implemented both internal load balancing within our EC2's using [PM2](https://pm2.keymetrics.io/docs/usage/pm2-doc-single-page/), and external load balancing with AWS's load balancer connected to an autoscaling group that had a threshold of maintaining an average of 50% CPU usage in each server (i.e. if there was more, it would spin up another server and if there was less it would wind down a server). 
 
-First step is understanding what load balancers do:
+The first step was understanding what load balancers do:
 > Load balancing is defined as the methodical and efficient distribution of network or application traffic across multiple servers in a server farm. Each load balancer sits between client devices and backend servers, receiving and then distributing incoming requests to any available server capable of fulfilling them.
 > -- [Citrix][2]
 
 Fantastic! Then, I followed this [tutorial](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-register-lbs-with-asg.html) to create a load balanced application with EC2 Autoscaling.
 
 - [EC2 Autoscaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/):
-    - Amazon EC2 Auto Scaling helps you ensure that you have the correct number of Amazon EC2 instances available to handle the load for your application.
-    - Our current configuration is an autoscaled group having 1 EC2 minimum, 3 maximum. 
-        - Our scaling policy is set to be 50% average CPU Utilization meaning, based on all EC2's running if there is an imbalance of average CPU utilization past 50% it will auto-create a new EC2
-        - I've set it so the EC2 created runs the forever script meaning our server is ready to be reached
-        - To deploy production changes the ideal way is to manually run our prd-deploy.sh script which puills from git repo. Then we must create a new **golden image** . Then we would update our launch template to point to this new golden image, and then do an instance refresh on our Auto Scaling Group (this can specify how many healthy servers remain as they're restarted). I've set our autoscaling group to select the *latest* launch template so we will not need to do anything extra here.
+> Amazon EC2 Auto Scaling helps you ensure that you have the correct number of Amazon EC2 instances available to handle the load for your application.
+
+  - Our current configuration was an autoscaled group having 1 EC2 minimum, 3 maximum. 
+      - Our scaling policy is set to be 50% average CPU Utilization meaning, based on all EC2's running if there is an imbalance of average CPU utilization past 50% it will auto-create a new EC2
+      - To deploy production changes the ideal way is to manually run our prd-deploy.sh script on a new EC2 (detailed above). Then we must create a new **golden image** by saving the EC2's image. Then we would update our launch template to point to this new golden image, and then do an instance refresh on our Auto Scaling Group (this can specify how many healthy servers remain as they're restarted). I've set our autoscaling group to select the *latest* launch template so we will not need to do anything extra here.
 - AWS Load balancer:  
     - This is attached to our EC2 Autoscaling Group meaning any port 80 (http) or port 443 (https) when we hit play.realdealbridge.com will then be given to our EC2's within that group.
     - The way I binded play.realdealbridge.com was through a CNAME to our load balancers name. 
 - Instance type 
-    - To decide on instance type for our autoscaling group, I was mindful of the performance of our application. Throughout testing we noticed a large spike in CPU usage versus Memory or Disk IO and decided that our application was a compute bound application. 
-    - I was mindful of the cost vs. reward and decided to go for the C5a due to its cheap price and depending upon real world usage tweak it as required (if it is under/over provisioning).
+    - To decide on instance type for our autoscaling group, I was mindful of the performance of our application. Throughout testing we noticed a large spike in CPU usage versus Memory or Disk IO, and decided that our application was a compute bound application. 
+    - I was mindful of the cost vs. reward and decided to go for the [C5a](https://aws.amazon.com/ec2/instance-types/c5/) due to its cheap price and, depending upon real world usage, tweak it as required (if it is under/over provisioning).
+
 - PM2 
     - Since node processes are bound to a single core, if we had a multi-core machine we wouldn't be fully utilising the machine if we used forever to run our application. Using PM2 we can use something called cluster feature to scale our process across all the cores without having to worry about the [native cluster module](https://nodejs.org/api/cluster.html). 
 
-    All we have to do is have a file called ecosystem.config.js, and call *pm2 start ecosystem.config.js*
+    All we have to do is have a file called ecosystem.config.js, and call *pm2 start ecosystem.config.js*. This was reflected in the launch template for our autoscaling group as the startup command.
 
      ```js
       // ecosystem.config.js
@@ -286,7 +289,7 @@ Fantastic! Then, I followed this [tutorial](https://docs.aws.amazon.com/autoscal
 
 ## Final thoughts
 
-This project was my first ever greenfield project, where I took on the role of architect, and developer and it was very rewarding. I went from being paralysed by my ineptitude to being OK with that fact, and moving forward anyway. I learnt that the unknown is always scary, but what matters is having a positive outlook to it and a great team beside you to help! 
+This project was my first ever greenfield project, where I took on the role of architect and developer, and it was very rewarding. I went from being paralysed by my ineptitude to being OK with that fact, and moving forward anyway. I learnt that the unknown is always scary, but what matters is having a positive outlook to it and a great team beside you to help! 
 
 Have a go at playing our game here: https://play.realdealbridge.com/ 😃
 
