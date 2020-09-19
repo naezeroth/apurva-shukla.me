@@ -80,6 +80,14 @@ module.exports = {
           },
           {
             resolve: `gatsby-remark-vscode`,
+            options: {
+              plugins: [{
+                resolve: `gatsby-remark-vscode`,
+                options: {
+                  theme: 'Solarized Light' // Or install your favorite theme from GitHub
+                }
+              }]
+            }
           },
           {
             resolve: `gatsby-remark-copy-linked-files`,
@@ -107,7 +115,6 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        // edit below
         icon: `content/assets/favicon.ico`,
       },
     },

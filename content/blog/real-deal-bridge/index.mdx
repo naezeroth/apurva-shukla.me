@@ -242,8 +242,55 @@ describe('auth', function() {
 
 ## Scaling for production 
 
-AWS (Autoscaling, load balancer, PM2 internal load balancing)
+Finally, the last topic to cover is the public release of our game! The long awaited version 1.0. I'll explore the set up we used to ensure our server was reliable and scalable. 
+
+After reading this excellent [series](https://medium.com/iquii/good-practices-for-high-performance-and-scalable-node-js-applications-part-1-3-bb06b6204197) I implemented both internal load balancing within our EC2's using [PM2](https://pm2.keymetrics.io/docs/usage/pm2-doc-single-page/), and external load balancing with AWS's load balancer connected to an autoscaling group that had a threshold of maintaining an average of 50% CPU usage in each server (i.e. if there was more, it would spin up another server and if there was less it would wind down a server). 
+
+First step is understanding what load balancers do:
+> Load balancing is defined as the methodical and efficient distribution of network or application traffic across multiple servers in a server farm. Each load balancer sits between client devices and backend servers, receiving and then distributing incoming requests to any available server capable of fulfilling them.
+> -- [Citrix][2]
+
+Fantastic! Then, I followed this [tutorial](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-register-lbs-with-asg.html) to create a load balanced application with EC2 Autoscaling.
+
+- [EC2 Autoscaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/):
+    - Amazon EC2 Auto Scaling helps you ensure that you have the correct number of Amazon EC2 instances available to handle the load for your application.
+    - Our current configuration is an autoscaled group having 1 EC2 minimum, 3 maximum. 
+        - Our scaling policy is set to be 50% average CPU Utilization meaning, based on all EC2's running if there is an imbalance of average CPU utilization past 50% it will auto-create a new EC2
+        - I've set it so the EC2 created runs the forever script meaning our server is ready to be reached
+        - To deploy production changes the ideal way is to manually run our prd-deploy.sh script which puills from git repo. Then we must create a new **golden image** . Then we would update our launch template to point to this new golden image, and then do an instance refresh on our Auto Scaling Group (this can specify how many healthy servers remain as they're restarted). I've set our autoscaling group to select the *latest* launch template so we will not need to do anything extra here.
+- AWS Load balancer:  
+    - This is attached to our EC2 Autoscaling Group meaning any port 80 (http) or port 443 (https) when we hit play.realdealbridge.com will then be given to our EC2's within that group.
+    - The way I binded play.realdealbridge.com was through a CNAME to our load balancers name. 
+- Instance type 
+    - To decide on instance type for our autoscaling group, I was mindful of the performance of our application. Throughout testing we noticed a large spike in CPU usage versus Memory or Disk IO and decided that our application was a compute bound application. 
+    - I was mindful of the cost vs. reward and decided to go for the C5a due to its cheap price and depending upon real world usage tweak it as required (if it is under/over provisioning).
+- PM2 
+    - Since node processes are bound to a single core, if we had a multi-core machine we wouldn't be fully utilising the machine if we used forever to run our application. Using PM2 we can use something called cluster feature to scale our process across all the cores without having to worry about the [native cluster module](https://nodejs.org/api/cluster.html). 
+
+    All we have to do is have a file called ecosystem.config.js, and call *pm2 start ecosystem.config.js*
+
+     ```js
+      // ecosystem.config.js
+      module.exports = { 
+        apps : [{
+        name: 'production RDB',
+        script: '/var/www/real-deal-server-prod/app.js',
+        env: {
+	        "NODE_ENV": "production",
+        },
+        instances: "max", //Scales to the maximum amount of instances based on CPU cores
+        exec_mode: "cluster"
+      ],
+    };
+     ```
+
+## Final thoughts
+
+This project was my first ever greenfield project, where I took on the role of architect, and developer and it was very rewarding. I went from being paralysed by my ineptitude to being OK with that fact, and moving forward anyway. I learnt that the unknown is always scary, but what matters is having a positive outlook to it and a great team beside you to help! 
+
+Have a go at playing our game here: https://play.realdealbridge.com/ 😃
 
 
 [1]: https://www.realdealbridge.com/about
+[2]: https://www.citrix.com/en-au/glossary/load-balancing.html
 
