@@ -100,10 +100,11 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-matomo`,
       options: {
-        // edit below
-        // trackingId: `ADD YOUR TRACKING ID HERE`,
+        siteId: '1',
+        matomoUrl: 'https://matomo.apurva-shukla.me/',
+        siteUrl: 'https://apurva-shukla.me'
       },
     },
     {
