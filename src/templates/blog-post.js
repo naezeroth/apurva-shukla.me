@@ -6,7 +6,7 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
-import Button from "../components/button"
+import { Back } from "../components/social-icons"
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -20,7 +20,12 @@ class BlogPostTemplate extends React.Component {
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
         />
-        <h1>{post.frontmatter.title}</h1>
+        <Link to='/blog'>
+          <div style={{'text-decoration': `none !important`, 'box-shadow': 'none !important'}}>
+              <Back/>
+          </div>
+        </Link>
+        <h1 style={{marginTop: rhythm(1)}}>{post.frontmatter.title}</h1>
         <p
           style={{
             ...scale(-1 / 5),
@@ -63,9 +68,9 @@ class BlogPostTemplate extends React.Component {
             )}
           </li>
         </ul>
-        <Link to="/">
+        {/* <Link to="/">
           <Button marginTop="35px">Go Home</Button>
-        </Link>
+        </Link> */}
       </Layout>
     )
   }

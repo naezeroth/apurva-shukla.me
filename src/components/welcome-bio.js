@@ -6,7 +6,7 @@
  */
 
 import React from "react"
-import { StaticQuery, graphql } from "gatsby"
+import { StaticQuery, graphql, Link } from "gatsby"
 import Image from "gatsby-image"
 import styled from "styled-components"
 
@@ -35,8 +35,8 @@ function WelcomeBio() {
             />
             <p>
             Hey there! Welcome to my website. My name is Apurva Shukla and 
-            here you can find my <a href={'/blog/'} style={{color: '#859900'}}>blog</a>, {""} 
-            <a href={'/photos/'} style={{color: '#859900'}}>photographs</a> and projects. 
+            here you can find my <Link to={'/blog/'} style={{color: '#859900'}}>blog</Link>, {""} 
+            <Link to={'/photos/'} style={{color: '#859900'}}>photographs</Link> and projects. 
             Type <b style={{color: '#d33682'}}>help</b> to get started.
             </p>
           </Container>

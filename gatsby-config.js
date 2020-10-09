@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Apurva Shukla`,
     author: `Apurva Shukla`,
-    description: `A starter personal blog with styled components, dark mode, and Netlify CMS.`,
+    description: `Here you can find my blog, photographs and projects`,
     siteUrl: `https://apurva-shukla.me`,
     social: {
       twitter: `gatsbyjs`,
