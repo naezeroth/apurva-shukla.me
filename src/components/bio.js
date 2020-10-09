@@ -34,9 +34,9 @@ function Bio() {
                 borderRadius: `25%`,
               }}
             />
-            <p>
-              Written by <strong>{author}</strong>, a framework built upon the
-              React library.
+            <br/>
+            <p style={{marginTop: '35px'}}>
+              Written by <strong>{author}</strong>.
               {` `}
             </p>
           </Container>

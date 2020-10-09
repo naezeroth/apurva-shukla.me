@@ -1,5 +1,5 @@
 ---
-date: 2020-09-27T05:30:23.484Z
+date: 2020-10-09T05:30:23.484Z
 title: On the current state of privacy
 description: What can we do to fight back?
 tags: ["privacy", "self-hosted", "social-media", "technology"] 
@@ -9,7 +9,7 @@ tags: ["privacy", "self-hosted", "social-media", "technology"]
 
 It's 2020. The year so far has been nothing short of a global collapse of order, yet frighteningly the realities we're facing begin and end with ourselves. 
 
-Looking back over the past decade, it's easy to see that there's somehow there was a shift. It was as if the rug was pulled from under us, the cute videos of cats on Youtube replaced by polarised political commentary, world leaders people our we could look up to as role-models, to vitriol spreading bigots who we'd never associate with admiration, and family and friends around us increasingly alone, depressed, and misplaced with our own individual realities.
+Looking back over the past decade, it's easy to see that somehow there was a shift. It was as if the rug was pulled out from under us, the cute videos of cats on Youtube replaced by polarised political commentary, world leaders went from people we could look up to as role-models, to vitriol spreading bigots who we'd never associate with admiration, and family and friends around us went from connected, to disconnected - becoming increasingly alone, depressed, and misplaced with their own individual realities.
 
 ## How the hell did we get here?
 
@@ -17,11 +17,13 @@ Flashing headlines appear.
 
 > Trump pulls out of the Paris Agreement; Xi Jinping continues to exterminate Uyghur population; Bolsonaro fans the devastating Amazon fires 
 
-It's all to common to see these phrases, however there is a deep flaw in the way we think about geopoltical events as actions made by individual people. A great insight can be found in Leo Tolstoy's *War and Peace* - where he explores our reductive mindset towards events in history as logical step-by-step manoeuvers by 'great [people]'. In our case, it's far too easy to place the blame of the state of what is to people in power. The truth is, it is us who are swept up in the current of the times and are creating the waves that are crashing down; our world leaders and their actions are just a symptom of the disease growing within us. 
+It's all to common to see these phrases, however there is a deep flaw in the way we think about geopoltical events as actions made by individual people. A great insight can be found in Leo Tolstoy's *War and Peace* - where he explores our reductive mindset towards events in history as logical step-by-step manoeuvers by 'great [people]'.
 
-There is no silver bullet for how we got here. The world is unfathomably complex, each seven billion of us housing our dreams and moving forward with our own purpose. To distil the current state of events in a paragraph is unreasonable. However, I can offer a piece of the puzzle. This piece, is by no means small though - it can arguably be responsible for the looming threat to democracy, rise in unhappiness, and collapse of our shared[^1] inter-subjective[^2] reality. 
+What's happening in the world right now is not just caused by a handful of people (although this is not detracting from the immense power these leaders and organisations have which got us into this mess). It is also us, who are swept up in the current of the times and are creating the waves that are crashing down; our world leaders and their actions are just a symptom of the populism[^1] disease growing within society. 
 
-This is social media.
+There is no silver bullet for how we got here. The world is unfathomably complex, each seven billion of us housing our dreams and moving forward with our own purpose. To distil the current state of events in a paragraph is unreasonable. However, I can offer a piece of the puzzle. This piece is by no means small though - it can arguably be responsible for the looming threat to democracy, rise in unhappiness, and collapse of our shared[^2] inter-subjective[^3] reality. 
+
+**This is social media.**
 
 We have to begin at the advent of the new millenia - the 2000's, just after the dot-com crash that sent a wave of doubt over internet companies. Many companies during this time became bankrupt, but the ones that survived formed the backbone of the internet with increased market share and power. Most notable of these was Google. There came a crucial decision for this company which set a precedent for innumerable companies to follow. How should they make money? The answer could've come in 2 major ways; a paid subscription/per-use model or advertisements. We all know which one Google chose to [follow](https://en.wikipedia.org/wiki/Google_Ads).
 
@@ -29,13 +31,13 @@ The reason why this is a pivotal moment is because it changed the collective min
 
 > Facebook, Instagram, Youtube, Snapchat, TikTok, Twitter, Reddit
 
-Each of the products listed above are free to use for end-users (with some offering paid services),  but each cost hundreds of millions of dollars to develop and host every year[^3]. You might have have heard the phrase *if something is free, you are the product*. In reality the way these platforms work is that advertisers are the customers, and you are the product - and these companies are the glue binding both of you together. By providing advertisers with personal data such as your age, location and interests these platforms can create a profile of you that is *immensely* valuable and help advertisers target specific profiles with their ads. 
+Each of the products listed above are free to use for us, as users (with some offering paid services),  but each cost hundreds of millions of dollars to develop and host every year[^4]. You might have have heard the phrase *if something is free, you are the product*. In reality the way these platforms work is that advertisers are the customers, and you are the product - and these companies are the glue binding both of you together. By providing advertisers with personal data such as your age, location and interests these platforms can create a profile of you that is *immensely* valuable and help advertisers target specific profiles with their ads. 
 
 You might say what's wrong with more relevant ads? Isn't that better than irrelevant ads? 
 
 Well, the truth is these companies will stop at *nothing* to ensure you stay on their platform, so they can continue to sell your attention to advertisers - and hence gain profit. Have you ever caught yourself refreshing your feed? Have you ever wondered why there is no end to scrolling? Have you ever wondered why you keep glancing at your phone to check if you've got a notification? 
 
-The result is that our feeds are curated by algorithms designed to prioritze content that will keep us engaged - and this is more often than not means keeping us fearful or engraged[^4].
+The result is that our feeds are curated by algorithms designed to prioritze content that will keep us engaged - and this is more often than not means keeping us fearful or engraged[^5].
 
 You can start to appreciate this destructive cycle. This attention based economy has some very real world consequences beyond just serving you more relevant ads. 
 
@@ -43,17 +45,17 @@ You can start to appreciate this destructive cycle. This attention based economy
 >
 > -- [Arwa Mahdawi](https://www.theguardian.com/world/2019/nov/05/targeted-ads-fake-news-clickbait-surveillance-capitalism-data-mining-democracy)
 
-Cambridge Analytica was a poltical consulting firm that was hired by Donald Trump's presidential campaign for the 2016 election. What they did exposed just how powerful Facebook and other social media companies had become. The personal data of nearly 87 million [^5] Facebook users was exploited by Cambridge Analytica. They held 5,000 data points about each of these users and could determinate with the magic of machine learning the people who didn't yet make up their minds regarding the election - they referred to these on-the-fence people as "the persuadables". Using this data, they crafted campaigns set out to create a mixture of fear and anger to sway their vote. And it worked. By curating a specialised newsfeed, Cambridge Analytica was able to influence peoples world-view one ad at a time - changing the shared assumption of what is true and what is not true. 
+Cambridge Analytica was a poltical consulting firm that was hired by Donald Trump's presidential campaign for the 2016 election. What they did exposed just how powerful Facebook and other social media companies had become. The personal data of nearly 87 million [^6] Facebook users was exploited by Cambridge Analytica. They held 5,000 data points about each of these users and could determine, with the magic of machine learning, the people who didn't yet make up their minds regarding the election - they referred to these on-the-fence people as "the persuadables". Using this data, they crafted campaigns set out to create a mixture of fear and anger to sway their vote. And it worked. By curating a specialised newsfeed, Cambridge Analytica was able to influence people's world-view one ad at a time - changing the shared assumption of what is true and what is not true. 
 
 Think of it like this, what if when you searched something on Wikipedia it gave back a customised definition instead of the truth; now factor that to 2 billion personalised Wikipedias' each with conflicting contents. 
 
-Since then we can trace a growing number of examples of social media's role in defining key events such as Brexit, COVID-19, and most chillingly a call for a U.S. civil war based on the 2020 election results[^6]. This is compounded even more by malicious state actors using social media as a platform to sow even more disinformation and discord[^7], furthering confusion and distrust. Next time you hear of "Russia hacking the U.S. Election", in reality they're using tools provided all too eagerly by social media platforms to push their motive.  
+Since then we can trace a growing number of examples of social media's role in defining key events such as Brexit[^7], COVID-19[^8], and most chillingly a call for a U.S. civil war based on the 2020 election results[^9]. This is compounded even more by malicious state actors using social media as a platform to sow even more disinformation and discord[^10], furthering confusion and distrust. Next time you hear of "Russia hacking the U.S. Election", in reality they're using tools provided all too eagerly by social media platforms to push their motive.  
 
 ## What can we do?
 
 It's easy to feel overwhelmed, however I can assure you - reading this post was incredibly important. The first step in taking action is understanding why you're taking action. 
 
-Your data is worth more than oil[^8], and it's time for us to value it as such.
+Your data is worth more than oil[^11], and it's time for us to value it as such.
 
 > Ultimately, saying that you don't care about privacy because you have nothing to hide is no different from saying you don't care about freedom of speech because you have nothing to say. Or that you don't care about freedom of the press because you don't like to read. Or that you don't care about freedom of religion because you don't believe in God. Or that you don't care about the freedom to peacably assemble because you're a lazy, antisocial agoraphobe.
 >
@@ -61,13 +63,16 @@ Your data is worth more than oil[^8], and it's time for us to value it as such.
 
 These are my personal recommendations, and after listing these I will provide more resources that I think are really valuable.
 
+1. Change the privacy settings of your frequently used social media sites
+    - You can access all of Google's [here](https://myaccount.google.com/privacycheckup/) which can stop them tracking your web/app activity, location history, Youtube history and advertisement targeting.
+    - You can change your Facebook privacy settings [here](https://www.facebook.com/privacy/checkup/) 
 1. Use [Brave browser](https://brave.com/) on all devices (Windows, MacOS, iOS, Android, Linux)
     -  Brave has ad-blocking in built, grealty improving surfing speed and battery life of your devices. It's based on Chromium too, so all your Google Chrome extensions will still work! 
 1. Use [Ecosia](https://www.ecosia.org/) or [DuckDuckGo](https://duckduckgo.com/) as your primary search engine
     -  Ecosia is like any other search engine, with one major difference: they use their profits to plant trees. They have a big emphasis on [privacy](https://info.ecosia.org/privacy), and I personally think the search results are better than any alternatives.
     -  DuckDuckGo is one of the most popular privacy respecting search engines, with rich features and transparency.
 1. Use [Signal](https://signal.org/) for communications
-    -  Signal is a simple, powerful, and secure messenger that is open-source[^9], feature-rich (even with stickers, reactions and GIFS!), and very well respected in the privacy community. I totally recommend this, and this is my main way of communicating nowadays. 
+    -  Signal is a simple, powerful, and secure messenger that is open-source[^12], feature-rich (even with stickers, reactions and GIFS!), and very well respected in the privacy community. I totally recommend this, and this is my main way of communicating nowadays. 
 1. Use [Protonmail](https://protonmail.com/) for important emails
     - ProtonMail is a free, open-source, encrypted email provider based in Switzerland. It is widely regarded as *the* best privacy respecting email provider. 
 1. Use [Nextcloud](https://nextcloud.com/) for replacing Google Drive.
@@ -93,20 +98,26 @@ To end I'd like to propose this quote.
 > “A man on a thousand mile walk has to forget his goal and say to himself every morning, 'Today I'm going to cover twenty-five miles and then rest up and sleep.”
 > ― Leo Tolstoy, War and Peace
 
-[^1]: Bowe, Brian & Wohn, Donghee. (2015). [Are There Generational Differences?: Social Media Use and Perceived Shared Reality](https://www.researchgate.net/profile/Donghee_Wohn/publication/280644747_Are_There_Generational_Differences_Social_Media_Use_and_Perceived_Shared_Reality/links/566b048308ae1a797e397600/Are-There-Generational-Differences-Social-Media-Use-and-Perceived-Shared-Reality.pdf). 2015. 17:1-17:5. 10.1145/2789187.2789200. 
+[^1]: Populism refers to a range of political stances that emphasise the idea of "the people" and often juxtapose this group against "the elite".
 
-[^2]: "The inter-subjective is something that exists within the communication network linking the subjective consciousness of many individuals. If a single individual changes his or her beliefs, or even dies, it is of little importance. However, if most individuals in the network die or change their beliefs, the inter-subjective phenomenon will mutate or disappear." -- Yuval Harari in [*Sapiens*](https://www.goodreads.com/book/show/23692271-sapiens)
+[^2]: Bowe, Brian & Wohn, Donghee. (2015). [Are There Generational Differences?: Social Media Use and Perceived Shared Reality](https://www.researchgate.net/profile/Donghee_Wohn/publication/280644747_Are_There_Generational_Differences_Social_Media_Use_and_Perceived_Shared_Reality/links/566b048308ae1a797e397600/Are-There-Generational-Differences-Social-Media-Use-and-Perceived-Shared-Reality.pdf). 2015. 17:1-17:5. 10.1145/2789187.2789200. 
 
-[^3]: https://slate.com/technology/2009/04/the-high-costs-of-running-youtube.html 
+[^3]: "The inter-subjective is something that exists within the communication network linking the subjective consciousness of many individuals. If a single individual changes his or her beliefs, or even dies, it is of little importance. However, if most individuals in the network die or change their beliefs, the inter-subjective phenomenon will mutate or disappear." -- Yuval Harari in [*Sapiens*](https://www.goodreads.com/book/show/23692271-sapiens)
 
-[^4]: https://iapp.org/news/a/how-social-medias-use-of-personal-data-affects-democracy/
+[^4]: https://slate.com/technology/2009/04/the-high-costs-of-running-youtube.html 
 
-[^5]: "Facebook Says Cambridge Analytica Harvested Data of Up to 87 Million Users" in The New York Times". Nytimes.com. Retrieved 5 June 2018.
+[^5]: https://iapp.org/news/a/how-social-medias-use-of-personal-data-affects-democracy/
 
-[^6]: https://www.theguardian.com/us-news/2020/oct/04/revealed-trump-linked-consultant-facebook-pages-warning-election-cause-civil-war
+[^6]: https://www.nytimes.com/2018/04/04/technology/mark-zuckerberg-testify-congress.html
 
-[^7]: https://www.aspi.org.au/report/covid-19-disinformation
+[^7]: https://phys.org/news/2020-08-tribes-war-tribalism-polarized-brexit.html
 
-[^8]: https://www.economist.com/leaders/2017/05/06/the-worlds-most-valuable-resource-is-no-longer-oil-but-data 
+[^8]: https://www.smh.com.au/business/companies/the-other-viral-problem-in-the-covid-19-pandemic-online-misinformation-20200318-p54bd3.html
 
-[^9]: Open source software is software with source code that anyone can inspect, modify, and enhance. This means that anyone - yes even you! - can go ahead and look at what's going on in the application under the hood. 
+[^9]: https://www.theguardian.com/us-news/2020/oct/04/revealed-trump-linked-consultant-facebook-pages-warning-election-cause-civil-war
+
+[^10]: https://www.aspi.org.au/report/covid-19-disinformation
+
+[^11]: https://www.economist.com/leaders/2017/05/06/the-worlds-most-valuable-resource-is-no-longer-oil-but-data 
+
+[^12]: Open source software is software with source code that anyone can inspect, modify, and enhance. This means that anyone - yes even you! - can go ahead and look at what's going on in the application under the hood. 
