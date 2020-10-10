@@ -19,7 +19,7 @@ Flashing headlines appear.
 
 It's all to common to see these phrases, however there is a deep flaw in the way we think about geopoltical events as actions made by individual people. A great insight can be found in Leo Tolstoy's *War and Peace* - where he explores our reductive mindset towards events in history as logical step-by-step manoeuvers by 'great [people]'.
 
-What's happening in the world right now is not just caused by a handful of people (although this is not detracting from the immense power these leaders and organisations have which got us into this mess). It is also us, who are swept up in the current of the times and are creating the waves that are crashing down; our world leaders and their actions are just a symptom of the populism[^1] disease growing within society. 
+What's happening in the world right now is not just caused by a handful of people (although this is not detracting from the immense power these leaders and organisations have which got us into this mess). It is also us, who are swept up in the current of the times and are creating the waves that are crashing down; our world leaders and their actions just one of the symptoms of the populism[^1] disease growing within society. 
 
 There is no silver bullet for how we got here. The world is unfathomably complex, each seven billion of us housing our dreams and moving forward with our own purpose. To distil the current state of events in a paragraph is unreasonable. However, I can offer a piece of the puzzle. This piece is by no means small though - it can arguably be responsible for the looming threat to democracy, rise in unhappiness, and collapse of our shared[^2] inter-subjective[^3] reality. 
 
@@ -57,7 +57,7 @@ It's easy to feel overwhelmed, however I can assure you - reading this post was 
 
 Your data is worth more than oil[^11], and it's time for us to value it as such.
 
-> Ultimately, saying that you don't care about privacy because you have nothing to hide is no different from saying you don't care about freedom of speech because you have nothing to say. Or that you don't care about freedom of the press because you don't like to read. Or that you don't care about freedom of religion because you don't believe in God. Or that you don't care about the freedom to peacably assemble because you're a lazy, antisocial agoraphobe.
+> Ultimately, saying that you don't care about privacy because you have nothing to hide is no different from saying you don't care about freedom of speech because you have nothing to say. Or that you don't care about freedom of the press because you don't like to read. Or that you don't care about freedom of religion because you don't believe in God. Or that you don't care about the freedom to peaceably assemble because you're a lazy, antisocial agoraphobe.
 >
 > -- Edward Snowden in [*Permanent Record*](https://en.wikipedia.org/wiki/Permanent_Record_(autobiography))
 
