@@ -17,7 +17,7 @@ Flashing headlines appear.
 
 > Trump pulls out of the Paris Agreement; Xi Jinping continues to exterminate Uyghur population; Bolsonaro fans the devastating Amazon fires 
 
-It's all to common to see these phrases, however there is a deep flaw in the way we think about geopoltical events as actions made by individual people. A great insight can be found in Leo Tolstoy's *War and Peace* - where he explores our reductive mindset towards events in history as logical step-by-step manoeuvers by 'great [people]'.
+It's all to common to see these phrases, however there is a deep flaw in the way we think about geopolitical events as actions made by individual people. A great insight can be found in Leo Tolstoy's *War and Peace* - where he explores our reductive mindset towards events in history as logical step-by-step manoeuvers by 'great [people]'.
 
 What's happening in the world right now is not just caused by a handful of people (although this is not detracting from the immense power these leaders and organisations have which got us into this mess). It is also us, who are swept up in the current of the times and are creating the waves that are crashing down; our world leaders and their actions just one of the symptoms of the populism[^1] disease growing within society. 
 
