@@ -25,7 +25,7 @@ There is no silver bullet for how we got here. The world is unfathomably complex
 
 **This is social media.**
 
-We have to begin at the advent of the new millenia - the 2000's, just after the dot-com crash that sent a wave of doubt over internet companies. Many companies during this time became bankrupt, but the ones that survived formed the backbone of the internet with increased market share and power. Most notable of these was Google. There came a crucial decision for this company which set a precedent for innumerable companies to follow. How should they make money? The answer could've come in 2 major ways; a paid subscription/per-use model or advertisements. We all know which one Google chose to [follow](https://en.wikipedia.org/wiki/Google_Ads).
+We have to begin at the advent of the new millennia - the 2000's, just after the dot-com crash that sent a wave of doubt over internet companies. Many companies during this time became bankrupt, but the ones that survived formed the backbone of the internet with increased market share and power. Most notable of these was Google. There came a crucial decision for this company which set a precedent for innumerable companies to follow. How should they make money? The answer could've come in 2 major ways; a paid subscription/per-use model or advertisements. We all know which one Google chose to [follow](https://en.wikipedia.org/wiki/Google_Ads).
 
 The reason why this is a pivotal moment is because it changed the collective mindset of internet surfers, services were now meant to be 'free'.
 
@@ -37,15 +37,15 @@ You might say what's wrong with more relevant ads? Isn't that better than irrele
 
 Well, the truth is these companies will stop at *nothing* to ensure you stay on their platform, so they can continue to sell your attention to advertisers - and hence gain profit. Have you ever caught yourself refreshing your feed? Have you ever wondered why there is no end to scrolling? Have you ever wondered why you keep glancing at your phone to check if you've got a notification? 
 
-The result is that our feeds are curated by algorithms designed to prioritze content that will keep us engaged - and this is more often than not means keeping us fearful or engraged[^5].
+The result is that our feeds are curated by algorithms designed to prioritse content that will keep us engaged - and this is more often than not means keeping us fearful or enraged[^5].
 
 You can start to appreciate this destructive cycle. This attention based economy has some very real world consequences beyond just serving you more relevant ads. 
 
-> It has led to a proliferation of fake news and clickbait. It has fuelled surveillance capitalism and normalised pervasive tracking and data-mining. If we want to do something about the proliferation of misinformation and erosion of trust in traditional institutions, it is not enough to regulate or factcheck political adverts. We need to crack down on the use of personal information for all targeted advertising. Otherwise democracy will continue to erode, one highly optimised click at a time.
+> It has led to a proliferation of fake news and clickbait. It has fuelled surveillance capitalism and normalised pervasive tracking and data-mining. If we want to do something about the proliferation of misinformation and erosion of trust in traditional institutions, it is not enough to regulate or fact-check political adverts. We need to crack down on the use of personal information for all targeted advertising. Otherwise democracy will continue to erode, one highly optimised click at a time.
 >
 > -- [Arwa Mahdawi](https://www.theguardian.com/world/2019/nov/05/targeted-ads-fake-news-clickbait-surveillance-capitalism-data-mining-democracy)
 
-Cambridge Analytica was a poltical consulting firm that was hired by Donald Trump's presidential campaign for the 2016 election. What they did exposed just how powerful Facebook and other social media companies had become. The personal data of nearly 87 million [^6] Facebook users was exploited by Cambridge Analytica. They held 5,000 data points about each of these users and could determine, with the magic of machine learning, the people who didn't yet make up their minds regarding the election - they referred to these on-the-fence people as "the persuadables". Using this data, they crafted campaigns set out to create a mixture of fear and anger to sway their vote. And it worked. By curating a specialised newsfeed, Cambridge Analytica was able to influence people's world-view one ad at a time - changing the shared assumption of what is true and what is not true. 
+Cambridge Analytica was a political consulting firm that was hired by Donald Trump's presidential campaign for the 2016 election. What they did exposed just how powerful Facebook and other social media companies had become. The personal data of nearly 87 million [^6] Facebook users was exploited by Cambridge Analytica. They held 5,000 data points about each of these users and could determine, with the magic of machine learning, the people who didn't yet make up their minds regarding the election - they referred to these on-the-fence people as "the persuadables". Using this data, they crafted campaigns set out to create a mixture of fear and anger to sway their vote. And it worked. By curating a specialised newsfeed, Cambridge Analytica was able to influence people's world-view one ad at a time - changing the shared assumption of what is true and what is not true. 
 
 Think of it like this, what if when you searched something on Wikipedia it gave back a customised definition instead of the truth; now factor that to 2 billion personalised Wikipedias' each with conflicting contents. 
 
@@ -77,6 +77,10 @@ These are my personal recommendations, and after listing these I will provide mo
     - ProtonMail is a free, open-source, encrypted email provider based in Switzerland. It is widely regarded as *the* best privacy respecting email provider. 
 1. Use [Nextcloud](https://nextcloud.com/) for replacing Google Drive.
     - Nextcloud is a self-hosted open-source platform that allows you to do nearly anything, from storing & sharing files, contacts, photos, calendar, to allowing video communication. I personally love it a lot and use it for everything!
+1. Look into [Free and Open Source Software](https://itsfoss.com/category/list/) (FOSS)
+    - These are software that are free to use, copy, study and change in any way - meaning there is no owner!
+1. Change your OS to Linux
+    -  I personally made the switch to [Ubuntu](https://ubuntu.com/) and haven't looked back!
 
 These recommendations are by no means exhaustive, if you'd like more resources please check these out:
 1. https://switching.software/ 
