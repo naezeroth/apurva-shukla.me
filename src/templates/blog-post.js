@@ -21,7 +21,7 @@ class BlogPostTemplate extends React.Component {
           description={post.frontmatter.description || post.excerpt}
           meta={{
             property: `og:image`,
-            content: `https://apurva-shukla.me/${post.frontmatter.featuredimage.childImageSharp.original.src}`
+            content: `https://apurva-shukla.me${post.frontmatter.featuredimage.childImageSharp.original.src}`
           }}
         />
         <Link to='/blog'>
