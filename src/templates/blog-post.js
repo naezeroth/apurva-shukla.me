@@ -19,6 +19,10 @@ class BlogPostTemplate extends React.Component {
         <SEO
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
+          meta={{
+            property: `og:image`,
+            content: `https://apurva-shukla.me/${post.frontmatter.featuredimage.childImageSharp.original.src}`
+          }}
         />
         <Link to='/blog'>
           <div style={{'text-decoration': `none !important`, 'box-shadow': 'none !important'}}>
@@ -94,6 +98,13 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        featuredimage {
+          childImageSharp {
+            original {
+              src
+            }
+          }
+        }
       }
     }
   }
