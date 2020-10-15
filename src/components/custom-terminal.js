@@ -130,17 +130,15 @@ const helpCommand = () => {return(<span>
 </span>)}
 
 const whoamiCommand = () => {return(
-  <span>
-  <p>
-  I'm a final year of computer science student at UNSW. I'm currently writing software with purpose at <a href={'https://nomoss.co/'} style={{color: '#859900'}}>No Moss Co</a>.
+  <span >
+  <p style={{color: '#cb4b16'}}>
+  Hey there! Welcome to my website, thanks for taking the time to get to know me. 
   </p>
   <p>
-  I believe that underneath our responsibilities and roles that we wear through life, you and I are essentially the same. Human. 
-  I live through this philosophy, and channel my purpose by 
-  developing relationships and experiencing each other - from our diverse backgrounds and upbringings, to our shared achievements and goals.
+  I'm currently in my final year of computer science at UNSW, and am in love with technology; more specifically, how technology can be a force for improving the global quality of life - for humans and nature alike. 
   </p>
   <p>
-  My super-powers are an endless desire to learn, and an unrelenting commitment to the things I believe in - and a love for being a part of ecosystems in which everybody feels connected, valuable and one.
+    When I'm not typing away on my keyboard, you can find me reading books (please shoot through any recommendations!), trying my hand at photography, or simply being still.  
   </p>
   You can find me on {""}     
   <IconLink href={social.github}><Github/></IconLink>
