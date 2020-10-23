@@ -24,6 +24,7 @@ module.exports = {
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-feed-mdx`,
+    'gatsby-plugin-dark-mode',
     'gatsby-plugin-sharp-exif',
     {
       resolve: `gatsby-source-filesystem`,
