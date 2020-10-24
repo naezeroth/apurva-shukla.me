@@ -20,10 +20,7 @@ class Layout extends React.Component {
           marginBottom: '1.75rem',
           display: 'flex',
           justifyContent: 'space-between',
-          // 'text-align': 'center',
-          // clear: 'both',
         }}>
-        {/* <span> */}
         <div>
         <h1
           style={{
@@ -44,10 +41,15 @@ class Layout extends React.Component {
           </Link>
         </h1>
         </div>
-        {/* </span> */}
-        <ThemeToggler>
+          <ThemeToggler>
             {({ theme, toggleTheme }) => {
-              const iconClass = theme === 'light' ? 'fa fa-moon-o fa-2x' : 'fa fa-sun-o fa-2x';
+              var iconClass;
+              if(!theme){
+                iconClass = 'fa fa-moon-o fa-2x';
+              }
+              else{
+                iconClass = (theme === 'light') ? 'fa fa-moon-o fa-2x' : 'fa fa-sun-o fa-2x';
+              }
               return (
                 <div
                   style={{
@@ -72,6 +74,12 @@ class Layout extends React.Component {
       )
     } else {
       header = (
+        <div style={{
+          marginBottom: '1.75rem',
+          display: 'flex',
+          justifyContent: 'space-between',
+        }}>
+        <div>
         <h3
           style={{
             fontFamily: `Montserrat, sans-serif`,
@@ -89,6 +97,35 @@ class Layout extends React.Component {
             {title}
           </Link>
         </h3>
+        </div>
+        <div>
+          <ThemeToggler>
+            {({ theme, toggleTheme }) => {
+              var iconClass;
+              if(!theme){
+                iconClass = 'fa fa-moon-o fa-2x';
+              }
+              else{
+                iconClass = (theme === 'light') ? 'fa fa-moon-o fa-2x' : 'fa fa-sun-o fa-2x';
+              }
+              return (
+                <div>
+                  <i
+                    className={iconClass}
+                    style={{
+                      fontSize: '2rem',
+                    }}
+                    onClick={() => {
+                      const nextTheme = theme === 'light' ? 'dark' : 'light'
+                      toggleTheme(nextTheme)
+                    }}
+                  />
+                </div>
+              )
+            }}
+          </ThemeToggler>
+        </div>
+        </div>
       )
     }
     return (
@@ -127,20 +164,6 @@ const Wrapper = styled.div`
 const Footer = styled.footer`
   text-align: center;
   margin: 24px;
-`
-
-const DarkMode = styled.label`
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: -3px;
-
-  &:before,
-  &:after {
-    box-sizing: border-box;
-  }
-
 `
 
 export default Layout
