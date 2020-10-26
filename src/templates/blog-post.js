@@ -44,17 +44,17 @@ class BlogPostTemplate extends React.Component {
     formdata.set('fields[message]', msg);
     formdata.set('options[slug]', this.props.pageContext.slug);
     formdata.set('options[redirect]', "https://apurva-shukla.me/blog"+this.props.pageContext.slug);
-
+    
     const json = {}
     formdata.forEach((value, prop) => (json[prop] = value))
     const formBody = Object.keys(json)
       .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(json[key]))
       .join('&')
-
+      
     console.log("IN SUBMIT", formBody);
 
     axios.post('https://staticman-aus.herokuapp.com/v2/entry/naezeroth/personal-website/master/comments', 
-    {data: formBody}, 
+    formBody, 
     {headers: { 'Content-Type': 'application/x-www-form-urlencoded' }})
       .then((result) => {
         console.log(result, "SUCCESS!!!!");
