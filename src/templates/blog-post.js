@@ -51,14 +51,6 @@ class BlogPostTemplate extends React.Component {
       .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(json[key]))
       .join('&')
 
-    
-    // var bodyFormData = new URLSearchParams();
-    // bodyFormData.append('fields[name]', name);
-    // bodyFormData.append('fields[email]', email);
-    // bodyFormData.append('fields[message]', msg);
-    // bodyFormData.append('options[slug]', this.props.pageContext.slug);
-    // bodyFormData.append('options[redirect]', "https://apurva-shukla.me/blog"+this.props.pageContext.slug);
-
     console.log("IN SUBMIT", formBody);
 
     axios.post('https://staticman-aus.herokuapp.com/v2/entry/naezeroth/personal-website/master/comments', 
