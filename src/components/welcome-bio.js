@@ -34,10 +34,17 @@ function WelcomeBio() {
               }}
             />
             <p>
-            Hey there! Welcome to my website. My name is Apurva Shukla and 
-            here you can find my <Link to={'/blog/'} style={{color: '#859900'}}>blog</Link>, {""} 
-            <Link to={'/photos/'} style={{color: '#859900'}}>photographs</Link> and projects. 
-            Type <b style={{color: '#d33682'}}>help</b> to get started.
+              Hey there! Welcome to my website. My name is Apurva Shukla and
+              here you can find my{" "}
+              <Link to={"/blog/"} style={{ color: "#859900" }}>
+                blog
+              </Link>
+              , {""}
+              <Link to={"/photos/"} style={{ color: "#859900" }}>
+                photographs
+              </Link>{" "}
+              and projects. Type <b style={{ color: "#d33682" }}>help</b> to get
+              started.
             </p>
           </Container>
         )
@@ -67,7 +74,7 @@ const NewbioQuery = graphql`
 `
 
 const Container = styled.div`
-  display: flex
+  display: flex;
 `
 
 export default WelcomeBio

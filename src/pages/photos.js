@@ -10,61 +10,76 @@ import CustomGallery from "../components/custom-gallery"
 class Photos extends React.Component {
   render() {
     const { data } = this.props
-    console.log(data);
+    console.log(data)
     const siteTitle = data.site.siteMetadata.title
-    var natural= data.natural.edges.map(({ node }) => ({
-      fluid: ({
+    var natural = data.natural.edges.map(({ node }) => ({
+      fluid: {
         ...node.childImageSharp.fluid,
         height: 3,
         width: 4,
-      }),
+      },
       data: {
-        MakeAndModel: node.childImageSharp.fields.exif.raw.image.Make + " " + node.childImageSharp.fields.exif.raw.image.Model,
+        MakeAndModel:
+          node.childImageSharp.fields.exif.raw.image.Make +
+          " " +
+          node.childImageSharp.fields.exif.raw.image.Model,
         ApertureValue: node.childImageSharp.fields.exif.raw.exif.ApertureValue,
         FNumber: node.childImageSharp.fields.exif.raw.exif.FNumber,
-        ShutterSpeedValue: node.childImageSharp.fields.exif.raw.exif.ShutterSpeedValue,
+        ShutterSpeedValue:
+          node.childImageSharp.fields.exif.raw.exif.ShutterSpeedValue,
         ISO: node.childImageSharp.fields.exif.raw.exif.ISO,
-        DateTimeOriginal: node.childImageSharp.fields.exif.raw.exif.DateTimeOriginal,
-      }
+        DateTimeOriginal:
+          node.childImageSharp.fields.exif.raw.exif.DateTimeOriginal,
+      },
     }))
-    var built= data.built.edges.map(({ node }) => ({
-      fluid: ({
+    var built = data.built.edges.map(({ node }) => ({
+      fluid: {
         ...node.childImageSharp.fluid,
         height: 3,
         width: 4,
-      }),
+      },
       data: {
-        MakeAndModel: node.childImageSharp.fields.exif.raw.image.Make + " " + node.childImageSharp.fields.exif.raw.image.Model,
+        MakeAndModel:
+          node.childImageSharp.fields.exif.raw.image.Make +
+          " " +
+          node.childImageSharp.fields.exif.raw.image.Model,
         ApertureValue: node.childImageSharp.fields.exif.raw.exif.ApertureValue,
         FNumber: node.childImageSharp.fields.exif.raw.exif.FNumber,
-        ShutterSpeedValue: node.childImageSharp.fields.exif.raw.exif.ShutterSpeedValue,
+        ShutterSpeedValue:
+          node.childImageSharp.fields.exif.raw.exif.ShutterSpeedValue,
         ISO: node.childImageSharp.fields.exif.raw.exif.ISO,
-        DateTimeOriginal: node.childImageSharp.fields.exif.raw.exif.DateTimeOriginal,
-      }
+        DateTimeOriginal:
+          node.childImageSharp.fields.exif.raw.exif.DateTimeOriginal,
+      },
     }))
-    var people= data.people.edges.map(({ node }) => ({
-      fluid: ({
+    var people = data.people.edges.map(({ node }) => ({
+      fluid: {
         ...node.childImageSharp.fluid,
         height: 3,
         width: 4,
-      }),
+      },
       data: {
-        MakeAndModel: node.childImageSharp.fields.exif.raw.image.Make + " " + node.childImageSharp.fields.exif.raw.image.Model,
+        MakeAndModel:
+          node.childImageSharp.fields.exif.raw.image.Make +
+          " " +
+          node.childImageSharp.fields.exif.raw.image.Model,
         ApertureValue: node.childImageSharp.fields.exif.raw.exif.ApertureValue,
         FNumber: node.childImageSharp.fields.exif.raw.exif.FNumber,
-        ShutterSpeedValue: node.childImageSharp.fields.exif.raw.exif.ShutterSpeedValue,
+        ShutterSpeedValue:
+          node.childImageSharp.fields.exif.raw.exif.ShutterSpeedValue,
         ISO: node.childImageSharp.fields.exif.raw.exif.ISO,
-        DateTimeOriginal: node.childImageSharp.fields.exif.raw.exif.DateTimeOriginal,
-      }
+        DateTimeOriginal:
+          node.childImageSharp.fields.exif.raw.exif.DateTimeOriginal,
+      },
     }))
-    var allPhotos = {natural, built, people}
-    console.log("all photos is", allPhotos);
-  
+    var allPhotos = { natural, built, people }
+    console.log("all photos is", allPhotos)
+
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="All posts" />
         <Bio />
-        <CustomGallery photos={allPhotos}/>
+        <CustomGallery photos={allPhotos} />
         <Link to="/">
           <Button marginTop="85px">Go Home</Button>
         </Link>
@@ -80,10 +95,13 @@ export const query = graphql`
         title
       }
     }
-    natural:allFile(filter:{extension:{regex:"/(jpeg|jpg)/"},  sourceInstanceName:{eq:"natural"}}, sort: {
-      fields: [name]
-      order: ASC
-    }) {
+    natural: allFile(
+      filter: {
+        extension: { regex: "/(jpeg|jpg)/" }
+        sourceInstanceName: { eq: "natural" }
+      }
+      sort: { fields: [name], order: ASC }
+    ) {
       edges {
         node {
           name
@@ -92,30 +110,33 @@ export const query = graphql`
               ...GatsbyImageSharpFluid
             }
             fields {
-            exif {
-              raw {
-                image {
-                  Make
-                  Model
-                }
-                exif {
-                  DateTimeOriginal
-                  ISO
-                  FNumber
-                  ShutterSpeedValue
-                  ApertureValue
+              exif {
+                raw {
+                  image {
+                    Make
+                    Model
+                  }
+                  exif {
+                    DateTimeOriginal
+                    ISO
+                    FNumber
+                    ShutterSpeedValue
+                    ApertureValue
+                  }
                 }
               }
             }
-          }
           }
         }
       }
     }
-    built:allFile(filter:{extension:{regex:"/(jpeg|jpg)/"},  sourceInstanceName:{eq:"built"}}, sort: {
-      fields: [name]
-      order: ASC
-    }) {
+    built: allFile(
+      filter: {
+        extension: { regex: "/(jpeg|jpg)/" }
+        sourceInstanceName: { eq: "built" }
+      }
+      sort: { fields: [name], order: ASC }
+    ) {
       edges {
         node {
           name
@@ -124,30 +145,33 @@ export const query = graphql`
               ...GatsbyImageSharpFluid
             }
             fields {
-            exif {
-              raw {
-                image {
-                  Make
-                  Model
-                }
-                exif {
-                  DateTimeOriginal
-                  ISO
-                  FNumber
-                  ShutterSpeedValue
-                  ApertureValue
+              exif {
+                raw {
+                  image {
+                    Make
+                    Model
+                  }
+                  exif {
+                    DateTimeOriginal
+                    ISO
+                    FNumber
+                    ShutterSpeedValue
+                    ApertureValue
+                  }
                 }
               }
             }
-          }
           }
         }
       }
     }
-    people:allFile(filter:{extension:{regex:"/(jpeg|jpg)/"},  sourceInstanceName:{eq:"people"}}, sort: {
-      fields: [name]
-      order: ASC
-    }) {
+    people: allFile(
+      filter: {
+        extension: { regex: "/(jpeg|jpg)/" }
+        sourceInstanceName: { eq: "people" }
+      }
+      sort: { fields: [name], order: ASC }
+    ) {
       edges {
         node {
           name
@@ -156,22 +180,22 @@ export const query = graphql`
               ...GatsbyImageSharpFluid
             }
             fields {
-            exif {
-              raw {
-                image {
-                  Make
-                  Model
-                }
-                exif {
-                  DateTimeOriginal
-                  ISO
-                  FNumber
-                  ShutterSpeedValue
-                  ApertureValue
+              exif {
+                raw {
+                  image {
+                    Make
+                    Model
+                  }
+                  exif {
+                    DateTimeOriginal
+                    ISO
+                    FNumber
+                    ShutterSpeedValue
+                    ApertureValue
+                  }
                 }
               }
             }
-          }
           }
         }
       }

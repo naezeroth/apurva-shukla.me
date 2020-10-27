@@ -11,7 +11,7 @@ class Blog extends React.Component {
   render() {
     // console.log(data);
     const { data } = this.props
-    console.log(this.props);
+    console.log(this.props)
     const siteTitle = data.site.siteMetadata.title
     const posts = data.allMdx.edges
 
@@ -37,7 +37,8 @@ class Blog extends React.Component {
                   </Link>
                 </h3>
                 <small>{node.frontmatter.date}</small>
-                <p style={{marginBottom: rhythm(1 / 8)}}
+                <p
+                  style={{ marginBottom: rhythm(1 / 8) }}
                   dangerouslySetInnerHTML={{
                     __html: node.frontmatter.description || node.excerpt,
                   }}

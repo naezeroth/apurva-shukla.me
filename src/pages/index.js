@@ -7,10 +7,10 @@ import CustomTerminal from "../components/custom-terminal"
 
 class IndexPage extends React.Component {
   render() {
-    console.log(this.props);
+    console.log(this.props)
     const { data } = this.props //I'm assuming the query is populating the this.props, the {data} is extracting data variable inside this.props
-    const siteTitle = data.site.siteMetadata.title;
-    console.log(data);
+    const siteTitle = data.site.siteMetadata.title
+    console.log(data)
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO
@@ -30,7 +30,7 @@ class IndexPage extends React.Component {
           default starter blog running on Netlify CMS.
         </p>
         <p>Now go build something great!</p> */}
-        <CustomTerminal/>
+        <CustomTerminal />
         {/* <Link to="/blog/">
           <Button marginTop="35px">Go to Blog</Button>
         </Link> */}

@@ -34,10 +34,9 @@ function Bio() {
                 borderRadius: `25%`,
               }}
             />
-            <br/>
-            <p style={{marginTop: '35px'}}>
-              Written by <strong>{author}</strong>.
-              {` `}
+            <br />
+            <p style={{ marginTop: "35px" }}>
+              Written by <strong>{author}</strong>.{` `}
             </p>
           </Container>
         )
