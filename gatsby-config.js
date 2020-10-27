@@ -8,7 +8,7 @@ module.exports = {
       twitter: `gatsbyjs`,
       linkedin: `https://www.linkedin.com/in/apurva-shukla/`,
       github: `https://github.com/naezeroth/`,
-      mail: `mailto:apurvashukla123@pm.me`
+      mail: `mailto:apurvashukla123@pm.me`,
     },
   },
   plugins: [
@@ -24,8 +24,8 @@ module.exports = {
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-feed-mdx`,
-    'gatsby-plugin-dark-mode',
-    'gatsby-plugin-sharp-exif',
+    "gatsby-plugin-dark-mode",
+    "gatsby-plugin-sharp-exif",
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -81,13 +81,15 @@ module.exports = {
           {
             resolve: `gatsby-remark-vscode`,
             options: {
-              plugins: [{
-                resolve: `gatsby-remark-vscode`,
-                options: {
-                  theme: 'Solarized Light' // Or install your favorite theme from GitHub
-                }
-              }]
-            }
+              plugins: [
+                {
+                  resolve: `gatsby-remark-vscode`,
+                  options: {
+                    theme: "Solarized Light", // Or install your favorite theme from GitHub
+                  },
+                },
+              ],
+            },
           },
           {
             resolve: `gatsby-remark-copy-linked-files`,
@@ -102,9 +104,9 @@ module.exports = {
     {
       resolve: `gatsby-plugin-matomo`,
       options: {
-        siteId: '1',
-        matomoUrl: 'https://matomo.apurva-shukla.me/',
-        siteUrl: 'https://apurva-shukla.me'
+        siteId: "1",
+        matomoUrl: "https://matomo.apurva-shukla.me/",
+        siteUrl: "https://apurva-shukla.me",
       },
     },
     {
@@ -117,6 +119,14 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `content/assets/favicon.ico`,
+      },
+    },
+    "gatsby-transformer-yaml",
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        path: `${__dirname}/comments`,
+        name: "comments",
       },
     },
     {

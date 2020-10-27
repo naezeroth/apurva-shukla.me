@@ -41,7 +41,7 @@ class BlogPostTemplate extends React.Component {
     formdata.set("fields[name]", name)
     formdata.set("fields[email]", email)
     formdata.set("fields[message]", msg)
-    formdata.set("fields[slug]", this.props.pageContext.slug.slice(1, -1))
+    formdata.set("fields[slug]", this.props.pageContext.slug.slice(1, -1)) //necessary for staticman to write files (otherwise "/slug/" will throw GITHUB_WRITING_FILE error)
     formdata.set(
       "options[redirect]",
       "https://apurva-shukla.me/blog" + this.props.pageContext.slug
@@ -75,16 +75,19 @@ class BlogPostTemplate extends React.Component {
     const post = this.props.data.mdx
     const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next } = this.props.pageContext
-
+    const comments = this.props.data.comments.edges
+    console.log("COMMENTS ARE", comments)
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
-          meta={{
-            property: `og:image`,
-            content: `https://apurva-shukla.me${post.frontmatter.featuredimage.childImageSharp.original.src}`,
-          }}
+          meta={[
+            {
+              property: `og:image`,
+              content: `https://apurva-shukla.me${post.frontmatter.featuredimage.childImageSharp.original.src}`,
+            },
+          ]}
         />
         <Link to="/blog">
           <div
@@ -141,8 +144,6 @@ class BlogPostTemplate extends React.Component {
         </ul>
 
         <form>
-          {/* <input name="options[redirect]" type="hidden" value="https://apurva-shukla.me"/>
-          <input name="options[slug]" type="hidden" value="{{ this.props.pageContext.slug }}"/> */}
           <label>
             <input name="name" type="text" onChange={this.onChange} />
             Name
@@ -158,9 +159,26 @@ class BlogPostTemplate extends React.Component {
             Go!
           </button>
         </form>
-        {/* <Link to="/">
-          <Button marginTop="35px">Go Home</Button>
-        </Link> */}
+
+        {/* Comment Section */}
+        {comments && comments.length > 0 ? (
+          comments.map(comment => {
+            console.log(comment.node)
+            return (
+              <div key={comment.node.id}>
+                <p>
+                  Name: {comment.node.name}
+                  <br />
+                  Comment: {comment.node.message}
+                  <br />
+                  Date: {comment.node.date}
+                </p>
+              </div>
+            )
+          })
+        ) : (
+          <p>No comments yet.</p>
+        )}
       </Layout>
     )
   }
@@ -169,7 +187,7 @@ class BlogPostTemplate extends React.Component {
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
+  query BlogPostBySlug($slug: String!, $slugWithoutSlash: String!) {
     site {
       siteMetadata {
         title
@@ -190,6 +208,20 @@ export const pageQuery = graphql`
               src
             }
           }
+        }
+      }
+    }
+    comments: allCommentsYaml(
+      filter: { slug: { eq: $slugWithoutSlash } }
+      sort: { fields: [date], order: ASC }
+    ) {
+      edges {
+        node {
+          id
+          slug
+          name
+          date
+          message
         }
       }
     }

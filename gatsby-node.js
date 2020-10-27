@@ -42,6 +42,7 @@ exports.createPages = ({ graphql, actions }) => {
         component: blogPost,
         context: {
           slug: post.node.fields.slug,
+          slugWithoutSlash: post.node.fields.slug.slice(1, -1),
           previous,
           next,
         },
