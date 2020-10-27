@@ -41,7 +41,7 @@ class BlogPostTemplate extends React.Component {
     formdata.set("fields[name]", name)
     formdata.set("fields[email]", email)
     formdata.set("fields[message]", msg)
-    formdata.set("options[slug]", this.props.pageContext.slug)
+    formdata.set("fields[slug]", this.props.pageContext.slug)
     formdata.set(
       "options[redirect]",
       "https://apurva-shukla.me/blog" + this.props.pageContext.slug
