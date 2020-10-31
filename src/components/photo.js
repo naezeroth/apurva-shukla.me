@@ -24,7 +24,6 @@ const Photo = ({
   const handleClick = event => {
     onClick(event, { photo, index })
   }
-  console.log("INSIDE PHOTO... ", photo)
 
   return (
     <span style={{ width: photo.width }}>

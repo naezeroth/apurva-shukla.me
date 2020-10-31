@@ -8,6 +8,7 @@ import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
 import { Back } from "../components/social-icons"
 import axios from "axios"
+import Button from "../components/button"
 
 class BlogPostTemplate extends React.Component {
   constructor() {
@@ -142,22 +143,40 @@ class BlogPostTemplate extends React.Component {
             )}
           </li>
         </ul>
-
+        <div style={{margin: "0px 0px 10px 0px", fontSize: "xx-large"}}>Add a comment!</div>
         <form>
           <label>
-            <input name="name" type="text" onChange={this.onChange} />
-            Name
+            <input
+              name="name"
+              placeholder="Name"
+              type="text"
+              onChange={this.onChange}
+              style={{ height: "50px",border: "1px solid #ccc", margin: "10px 0px 10px 0px", fontWeight: "700", borderRadius: "6px", padding: "10px" }}
+            />
           </label>
+          <br></br>
           <label>
-            <input name="email" type="email" onChange={this.onChange} />
-            E-mail
+            <input
+              name="email"
+              placeholder="Email"
+              type="email"
+              onChange={this.onChange}
+              style={{ height: "50px", border: "1px solid #ccc", fontWeight: "700", borderRadius: "6px", padding: "10px", margin: "10px 0px 10px 0px" }}
+            />
           </label>
+          <br></br>
           <label>
-            <textarea name="msg" onChange={this.onChange}></textarea>Message
+            <textarea
+              name="msg"
+              placeholder="Message"
+              onChange={this.onChange}
+              style={{ height: "50px", border: "1px solid #ccc", fontWeight: "700", borderRadius: "6px", padding: "10px", margin: "10px 0px 10px 0px", width: "75%", height: "200px"}}
+            ></textarea>
           </label>
-          <button onClick={this.onSubmit} type="submit">
+          <br></br>
+          <Button onClick={this.onSubmit} type="submit">
             Go!
-          </button>
+          </Button>
         </form>
 
         {/* Comment Section */}

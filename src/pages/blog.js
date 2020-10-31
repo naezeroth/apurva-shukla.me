@@ -11,7 +11,6 @@ class Blog extends React.Component {
   render() {
     // console.log(data);
     const { data } = this.props
-    console.log(this.props)
     const siteTitle = data.site.siteMetadata.title
     const posts = data.allMdx.edges
 

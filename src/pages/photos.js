@@ -10,7 +10,6 @@ import CustomGallery from "../components/custom-gallery"
 class Photos extends React.Component {
   render() {
     const { data } = this.props
-    console.log(data)
     const siteTitle = data.site.siteMetadata.title
     var natural = data.natural.edges.map(({ node }) => ({
       fluid: {
@@ -73,7 +72,6 @@ class Photos extends React.Component {
       },
     }))
     var allPhotos = { natural, built, people }
-    console.log("all photos is", allPhotos)
 
     return (
       <Layout location={this.props.location} title={siteTitle}>

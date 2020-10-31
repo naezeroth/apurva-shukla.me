@@ -35,14 +35,12 @@ class CustomGallery extends React.Component {
   }
 
   changeOpenGallery = name => {
-    console.log(name)
     this.setState({
       openGallery: name,
     })
   }
 
   render() {
-    console.log("INSIDE custom gallery ", this.props.photos)
     return (
       <div>
         {this.state.openGallery ? (

@@ -37,7 +37,6 @@ class CustomTerminal extends React.Component {
                   handleMinimise: () => {},
                 }}
                 commandPassThrough={cmd => {
-                  console.log(cmd)
                   // do something async
                   return (
                     <span>
