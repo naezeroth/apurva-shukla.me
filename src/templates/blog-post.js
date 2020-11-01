@@ -1,79 +1,15 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
 import { Back } from "../components/social-icons"
-import axios from "axios"
-import Button from "../components/button"
+import CommentSubmit from "../components/comment-submit"
 
 class BlogPostTemplate extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      name: "",
-      msg: "",
-      email: "",
-      loading: false,
-    }
-    this.onChange = this.onChange.bind(this)
-    this.onSubmit = this.onSubmit.bind(this)
-  }
-
-  onChange = e => {
-    /*
-      Because we named the inputs to match their
-      corresponding values in state, it's
-      super easy to update the state
-    */
-    this.setState({ [e.target.name]: e.target.value })
-  }
-
-  onSubmit = e => {
-    e.preventDefault()
-
-    this.setState({ loading: true })
-    const { name, email, msg } = this.state
-
-    const formdata = new FormData()
-    formdata.set("fields[name]", name)
-    formdata.set("fields[email]", email)
-    formdata.set("fields[message]", msg)
-    formdata.set("fields[slug]", this.props.pageContext.slug.slice(1, -1)) //necessary for staticman to write files (otherwise "/slug/" will throw GITHUB_WRITING_FILE error)
-    formdata.set(
-      "options[redirect]",
-      "https://apurva-shukla.me/blog" + this.props.pageContext.slug
-    )
-
-    const json = {}
-    formdata.forEach((value, prop) => (json[prop] = value))
-    const formBody = Object.keys(json)
-      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(json[key]))
-      .join("&")
-
-    axios
-      .post(
-        "https://staticman-aus.herokuapp.com/v2/entry/naezeroth/personal-website/master/comments",
-        formBody,
-        { headers: { "Content-Type": "application/x-www-form-urlencoded" } }
-      )
-      .then(result => {
-        console.log(result, "SUCCESS!!!!")
-        this.setState({ loading: false, name: "", email: "", msg: "" })
-        alert("Your comment has been successfully submitted for moderation")
-      })
-      .catch(result => {
-        console.log(result, "FAILURE!!!!")
-        this.setState({ loading: false, name: "", email: "", msg: "" })
-        alert("Something went wrong with submitting your comment")
-      })
-  }
-
   render() {
-    console.log(this.state)
     const post = this.props.data.mdx
     const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next } = this.props.pageContext
@@ -146,79 +82,8 @@ class BlogPostTemplate extends React.Component {
         <div style={{ margin: "0px 0px 10px 0px", fontSize: "xx-large" }}>
           Add a comment!
         </div>
-        <form>
-          <label>
-            <input
-              name="name"
-              placeholder="Name"
-              type="text"
-              onChange={this.onChange}
-              value={this.state.name}
-              style={{
-                height: "50px",
-                border: "1px solid #ccc",
-                margin: "10px 0px 10px 0px",
-                fontWeight: "700",
-                borderRadius: "6px",
-                padding: "10px",
-              }}
-            />
-          </label>
-          <br></br>
-          <label>
-            <input
-              name="email"
-              placeholder="Email"
-              type="email"
-              value={this.state.email}
-              onChange={this.onChange}
-              style={{
-                height: "50px",
-                border: "1px solid #ccc",
-                fontWeight: "700",
-                borderRadius: "6px",
-                padding: "10px",
-                margin: "10px 0px 10px 0px",
-              }}
-            />
-          </label>
-          <br></br>
-          <label>
-            <textarea
-              name="msg"
-              placeholder="Message"
-              onChange={this.onChange}
-              value={this.state.msg}
-              style={{
-                height: "50px",
-                border: "1px solid #ccc",
-                fontWeight: "700",
-                borderRadius: "6px",
-                padding: "10px",
-                margin: "10px 0px 10px 0px",
-                width: "75%",
-                height: "200px",
-              }}
-            >
-              {this.state.msg}
-            </textarea>
-          </label>
-          <br></br>
-          <span
-            type="submit"
-            style={{
-              display: "flex",
-              WebkitAppearance: "none",
-              MozAppearance: "none",
-              appearance: "none",
-            }}
-          >
-            <div onClick={this.onSubmit}>
-              <Button marginRight="25px">Submit</Button>
-            </div>
-            {this.state.loading && <LoadingSpinner />}
-          </span>
-        </form>
+
+        <CommentSubmit slug={this.props.pageContext.slug}/>
 
         {/* Comment Section */}
         {comments && comments.length > 0 ? (
@@ -238,6 +103,7 @@ class BlogPostTemplate extends React.Component {
         ) : (
           <p>No comments yet.</p>
         )}
+        
       </Layout>
     )
   }
@@ -286,8 +152,3 @@ export const pageQuery = graphql`
     }
   }
 `
-const LoadingSpinner = () => (
-  <div>
-    <i className="fa fa-spinner fa-spin" style={{ fontSize: "42px" }} />
-  </div>
-)
