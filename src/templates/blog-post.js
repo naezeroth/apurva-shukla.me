@@ -37,7 +37,7 @@ class BlogPostTemplate extends React.Component {
 
     this.setState({ loading: true })
     const { name, email, msg } = this.state
-
+    console.log("In submit", this.state)
     const formdata = new FormData()
     formdata.set("fields[name]", name)
     formdata.set("fields[email]", email)
@@ -143,7 +143,9 @@ class BlogPostTemplate extends React.Component {
             )}
           </li>
         </ul>
-        <div style={{margin: "0px 0px 10px 0px", fontSize: "xx-large"}}>Add a comment!</div>
+        <div style={{ margin: "0px 0px 10px 0px", fontSize: "xx-large" }}>
+          Add a comment!
+        </div>
         <form>
           <label>
             <input
@@ -151,7 +153,14 @@ class BlogPostTemplate extends React.Component {
               placeholder="Name"
               type="text"
               onChange={this.onChange}
-              style={{ height: "50px",border: "1px solid #ccc", margin: "10px 0px 10px 0px", fontWeight: "700", borderRadius: "6px", padding: "10px" }}
+              style={{
+                height: "50px",
+                border: "1px solid #ccc",
+                margin: "10px 0px 10px 0px",
+                fontWeight: "700",
+                borderRadius: "6px",
+                padding: "10px",
+              }}
             />
           </label>
           <br></br>
@@ -161,7 +170,14 @@ class BlogPostTemplate extends React.Component {
               placeholder="Email"
               type="email"
               onChange={this.onChange}
-              style={{ height: "50px", border: "1px solid #ccc", fontWeight: "700", borderRadius: "6px", padding: "10px", margin: "10px 0px 10px 0px" }}
+              style={{
+                height: "50px",
+                border: "1px solid #ccc",
+                fontWeight: "700",
+                borderRadius: "6px",
+                padding: "10px",
+                margin: "10px 0px 10px 0px",
+              }}
             />
           </label>
           <br></br>
@@ -170,19 +186,27 @@ class BlogPostTemplate extends React.Component {
               name="msg"
               placeholder="Message"
               onChange={this.onChange}
-              style={{ height: "50px", border: "1px solid #ccc", fontWeight: "700", borderRadius: "6px", padding: "10px", margin: "10px 0px 10px 0px", width: "75%", height: "200px"}}
+              style={{
+                height: "50px",
+                border: "1px solid #ccc",
+                fontWeight: "700",
+                borderRadius: "6px",
+                padding: "10px",
+                margin: "10px 0px 10px 0px",
+                width: "75%",
+                height: "200px",
+              }}
             ></textarea>
           </label>
           <br></br>
-          <Button onClick={this.onSubmit} type="submit">
-            Go!
-          </Button>
+          <span onClick={this.onSubmit} type="submit">
+            <Button>Go!</Button>
+          </span>
         </form>
 
         {/* Comment Section */}
         {comments && comments.length > 0 ? (
           comments.map(comment => {
-            console.log(comment.node)
             return (
               <div key={comment.node.id}>
                 <p>
