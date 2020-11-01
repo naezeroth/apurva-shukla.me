@@ -37,7 +37,7 @@ class BlogPostTemplate extends React.Component {
 
     this.setState({ loading: true })
     const { name, email, msg } = this.state
-    
+
     const formdata = new FormData()
     formdata.set("fields[name]", name)
     formdata.set("fields[email]", email)
@@ -63,17 +63,17 @@ class BlogPostTemplate extends React.Component {
       .then(result => {
         console.log(result, "SUCCESS!!!!")
         this.setState({ loading: false, name: "", email: "", msg: "" })
-        alert("Your comment has been successfully submitted for moderation");
+        alert("Your comment has been successfully submitted for moderation")
       })
       .catch(result => {
         console.log(result, "FAILURE!!!!")
         this.setState({ loading: false, name: "", email: "", msg: "" })
-        alert("Something went wrong with submitting your comment");
+        alert("Something went wrong with submitting your comment")
       })
   }
 
   render() {
-    console.log(this.state);
+    console.log(this.state)
     const post = this.props.data.mdx
     const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next } = this.props.pageContext
@@ -199,12 +199,24 @@ class BlogPostTemplate extends React.Component {
                 width: "75%",
                 height: "200px",
               }}
-            >{this.state.msg}</textarea>
+            >
+              {this.state.msg}
+            </textarea>
           </label>
           <br></br>
-          <span onClick={this.onSubmit} type="submit" style={{display: "flex"}}>
-            <Button marginRight="25px">Go!</Button>
-            {this.state.loading && <LoadingSpinner/>}
+          <span
+            type="submit"
+            style={{
+              display: "flex",
+              WebkitAppearance: "none",
+              MozAppearance: "none",
+              appearance: "none",
+            }}
+          >
+            <div onClick={this.onSubmit}>
+              <Button marginRight="25px">Submit</Button>
+            </div>
+            {this.state.loading && <LoadingSpinner />}
           </span>
         </form>
 
@@ -276,6 +288,6 @@ export const pageQuery = graphql`
 `
 const LoadingSpinner = () => (
   <div>
-    <i className="fa fa-spinner fa-spin" style={{fontSize: "42px"}} />
+    <i className="fa fa-spinner fa-spin" style={{ fontSize: "42px" }} />
   </div>
-);
+)
