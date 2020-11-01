@@ -23,6 +23,7 @@ const ButtonWrapper = styled.button`
   border-radius: ${props => props.props.radius || "6px"};
   margin-top: ${props => props.props.marginTop};
   margin-bottom: ${props => props.props.marginBottom};
+  margin-right: ${props => props.props.marginRight};
 
   &:hover {
     box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.25);

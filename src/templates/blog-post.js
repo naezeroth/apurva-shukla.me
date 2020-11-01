@@ -37,7 +37,7 @@ class BlogPostTemplate extends React.Component {
 
     this.setState({ loading: true })
     const { name, email, msg } = this.state
-    console.log("In submit", this.state)
+    
     const formdata = new FormData()
     formdata.set("fields[name]", name)
     formdata.set("fields[email]", email)
@@ -62,22 +62,22 @@ class BlogPostTemplate extends React.Component {
       )
       .then(result => {
         console.log(result, "SUCCESS!!!!")
-        //access the results here..1
-        this.setState({ loading: false })
+        this.setState({ loading: false, name: "", email: "", msg: "" })
+        alert("Your comment has been successfully submitted for moderation");
       })
       .catch(result => {
-        //Deal with error..
         console.log(result, "FAILURE!!!!")
-        this.setState({ loading: false })
+        this.setState({ loading: false, name: "", email: "", msg: "" })
+        alert("Something went wrong with submitting your comment");
       })
   }
 
   render() {
+    console.log(this.state);
     const post = this.props.data.mdx
     const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next } = this.props.pageContext
     const comments = this.props.data.comments.edges
-    console.log("COMMENTS ARE", comments)
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO
@@ -153,6 +153,7 @@ class BlogPostTemplate extends React.Component {
               placeholder="Name"
               type="text"
               onChange={this.onChange}
+              value={this.state.name}
               style={{
                 height: "50px",
                 border: "1px solid #ccc",
@@ -169,6 +170,7 @@ class BlogPostTemplate extends React.Component {
               name="email"
               placeholder="Email"
               type="email"
+              value={this.state.email}
               onChange={this.onChange}
               style={{
                 height: "50px",
@@ -186,6 +188,7 @@ class BlogPostTemplate extends React.Component {
               name="msg"
               placeholder="Message"
               onChange={this.onChange}
+              value={this.state.msg}
               style={{
                 height: "50px",
                 border: "1px solid #ccc",
@@ -196,11 +199,12 @@ class BlogPostTemplate extends React.Component {
                 width: "75%",
                 height: "200px",
               }}
-            ></textarea>
+            >{this.state.msg}</textarea>
           </label>
           <br></br>
-          <span onClick={this.onSubmit} type="submit">
-            <Button>Go!</Button>
+          <span onClick={this.onSubmit} type="submit" style={{display: "flex"}}>
+            <Button marginRight="25px">Go!</Button>
+            {this.state.loading && <LoadingSpinner/>}
           </span>
         </form>
 
@@ -270,3 +274,8 @@ export const pageQuery = graphql`
     }
   }
 `
+const LoadingSpinner = () => (
+  <div>
+    <i className="fa fa-spinner fa-spin" style={{fontSize: "42px"}} />
+  </div>
+);
