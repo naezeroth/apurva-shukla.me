@@ -92,6 +92,9 @@ const TerminalWrapper = styled.div`
   .sc-dnqmqq {
     padding: 0px 10px 0px 0px;
   }
+  .sc-bxivhb {
+    line-height: normal;
+  }
 `
 const terminalQuery = graphql`
   query terminalQuery {
