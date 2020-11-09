@@ -21,7 +21,7 @@ class Comments extends React.Component {
   }
 
   onReply = (replying_to_uid, replying_to_name) => {
-    this.setState({replyTo: replying_to_uid, replyToName: replying_to_name})
+    this.setState({ replyTo: replying_to_uid, replyToName: replying_to_name })
   }
 
   onChange = e => {
@@ -43,7 +43,7 @@ class Comments extends React.Component {
     formdata.set("fields[email]", email)
     formdata.set("fields[message]", msg)
     formdata.set("fields[slug]", this.props.slug.slice(1, -1)) //necessary for staticman to write files (otherwise "/slug/" will throw GITHUB_WRITING_FILE error)
-    if(replyTo !== ''){
+    if (replyTo !== "") {
       formdata.set("fields[replying_to_uid]", replyTo)
     }
     formdata.set(
@@ -80,10 +80,16 @@ class Comments extends React.Component {
           Add a comment!
         </div>
         {this.state.replyToName && (
-          <div>Replying to {this.state.replyToName}
-          <i style={{marginLeft: "5px"}} className="fa fa-times-circle" aria-hidden="true" onClick={() => this.onReply('','')}></i>
+          <div>
+            Replying to {this.state.replyToName}
+            <i
+              style={{ marginLeft: "5px" }}
+              className="fa fa-times-circle"
+              aria-hidden="true"
+              onClick={() => this.onReply("", "")}
+            ></i>
           </div>
-        ) }
+        )}
         <form>
           <label>
             <input
@@ -159,7 +165,10 @@ class Comments extends React.Component {
 
         <div style={{ width: "100%" }}>
           {this.props.comments && this.props.comments.length > 0 ? (
-            <NestedComments comments={this.props.comments} action={this.onReply} />
+            <NestedComments
+              comments={this.props.comments}
+              action={this.onReply}
+            />
           ) : (
             <p>No comments yet.</p>
           )}
@@ -184,7 +193,7 @@ const LoadingSpinner = () => (
 
 //Can either use props here and do props.comments or use {} to pluck comments out of props
 const NestedComments = ({ comments, action }) => {
-  const commentObj =  {}
+  const commentObj = {}
   for (const c of comments) {
     if (c.node.replying_to_uid !== null) {
       commentObj[c.node.replying_to_uid].push(c)
@@ -225,8 +234,15 @@ const NestedComments = ({ comments, action }) => {
             </div>
             <div> {moment(comment.node.date).format("Do MMM YYYY")}</div>
             <div style={{ width: "100%" }}></div>
-            <div style={{flexGrow: "1"}}>{comment.node.message} </div>
-            <a style={{boxShadow: "none"}} href="#form"><i onClick={() => action(comment.node._id, comment.node.name)} style={{marginTop: "5px"}} className="fa fa-reply" aria-hidden="true"></i></a>
+            <div style={{ flexGrow: "1" }}>{comment.node.message} </div>
+            <a style={{ boxShadow: "none" }} href="#form">
+              <i
+                onClick={() => action(comment.node._id, comment.node.name)}
+                style={{ marginTop: "5px" }}
+                className="fa fa-reply"
+                aria-hidden="true"
+              ></i>
+            </a>
           </div>
         )
       } else {

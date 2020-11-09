@@ -1,9 +1,33 @@
 import Typography from "typography"
-import Wordpress2016 from "typography-theme-wordpress-2016"
+import fairyGatesTheme from "typography-theme-fairy-gates"
 
-Wordpress2016.overrideThemeStyles = () => ({
+const selectedTheme = fairyGatesTheme
+
+selectedTheme.overrideThemeStyles = () => ({
+  h1: {
+    color: "inherit",
+  },
+  h2: {
+    color: "inherit",
+  },
+  h3: {
+    color: "inherit",
+  },
+  h4: {
+    color: "inherit",
+  },
+  h5: {
+    color: "inherit",
+  },
   a: {
     color: "var(--textLink)",
+    backgroundImage: "none",
+    textShadow: "none",
+    // textDecoration: "inherit",
+    boxShadow: "0 1px 0 0 currentColor",
+  },
+  "a:hover": {
+    boxShadow: "none",
   },
   // gatsby-remark-autolink-headers - don't underline when hidden
   "a.anchor": {
@@ -16,17 +40,14 @@ Wordpress2016.overrideThemeStyles = () => ({
   hr: {
     background: "var(--hr)",
   },
-  "a.gatsby-resp-image-link": {
-    boxShadow: `none`,
-  },
   blockquote: {
     color: "var(--textNormal)",
   },
 })
 
-delete Wordpress2016.googleFonts
+delete selectedTheme.googleFonts
 
-const typography = new Typography(Wordpress2016)
+const typography = new Typography(selectedTheme)
 
 // Hot reload typography in development.
 if (process.env.NODE_ENV !== `production`) {

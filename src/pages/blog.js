@@ -25,7 +25,7 @@ class Blog extends React.Component {
               <div key={node.fields.slug}>
                 <h3
                   style={{
-                    marginBottom: rhythm(1 / 4),
+                    marginBottom: rhythm(1 / 6),
                   }}
                 >
                   <Link
@@ -37,7 +37,10 @@ class Blog extends React.Component {
                 </h3>
                 <small>{node.frontmatter.date}</small>
                 <p
-                  style={{ marginBottom: rhythm(1 / 8) }}
+                  style={{
+                    marginBottom: rhythm(1 / 8),
+                    marginTop: rhythm(1 / 8),
+                  }}
                   dangerouslySetInnerHTML={{
                     __html: node.frontmatter.description || node.excerpt,
                   }}
@@ -48,7 +51,7 @@ class Blog extends React.Component {
           })}
         </div>
         <Link to="/">
-          <Button marginTop="85px">Go Home</Button>
+          <Button>Go Home</Button>
         </Link>
       </Layout>
     )

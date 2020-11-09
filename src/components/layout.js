@@ -55,7 +55,7 @@ class Layout extends React.Component {
               return (
                 <div
                   style={{
-                    paddingTop: "1rem",
+                    paddingTop: "0.5rem",
                   }}
                 >
                   <i
@@ -86,7 +86,6 @@ class Layout extends React.Component {
           <div>
             <h3
               style={{
-                fontFamily: `Montserrat, sans-serif`,
                 marginTop: 0,
               }}
             >
