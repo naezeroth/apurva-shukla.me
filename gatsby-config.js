@@ -5,7 +5,6 @@ module.exports = {
     description: `Here you can find my blog, photographs and projects`,
     siteUrl: `https://apurva-shukla.me`,
     social: {
-      twitter: `gatsbyjs`,
       linkedin: `https://www.linkedin.com/in/apurva-shukla/`,
       github: `https://github.com/naezeroth/`,
       mail: `mailto:apurvashukla123@pm.me`,

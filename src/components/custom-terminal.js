@@ -30,7 +30,7 @@ class CustomTerminal extends React.Component {
                 color="#657b83"
                 backgroundColor="#073642"
                 barColor="black"
-                style={{ fontWeight: "bold", fontSize: "1.25em" }}
+                style={{ fontSize: "1.75em", lineHeight: "1.8em" }}
                 actionHandlers={{
                   handleClose: () => {},
                   handleMaximise: () => {},
@@ -82,7 +82,7 @@ const TerminalWrapper = styled.div`
   .terminal-base .sc-EHOje {
     max-width: 100% !important;
     overflow-y: auto !important;
-    height: ${rhythm(20)} !important;
+    height: ${rhythm(28)} !important;
     border-radius: 0px 0px 20px 20px;
     overflow: hidden;
   }
@@ -104,7 +104,6 @@ const terminalQuery = graphql`
     site {
       siteMetadata {
         social {
-          twitter
           linkedin
           mail
           github

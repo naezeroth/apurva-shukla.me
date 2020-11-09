@@ -24,7 +24,7 @@ function WelcomeBio() {
               fixed={data.avatar.childImageSharp.fixed}
               alt={author}
               style={{
-                marginRight: rhythm(1 / 2),
+                marginRight: rhythm(2/3),
                 marginBottom: 0,
                 minWidth: 100,
                 // borderRadius: `100%`,
@@ -65,9 +65,6 @@ const NewbioQuery = graphql`
     site {
       siteMetadata {
         author
-        social {
-          twitter
-        }
       }
     }
   }
