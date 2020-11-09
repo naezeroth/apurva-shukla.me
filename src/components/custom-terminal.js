@@ -30,7 +30,7 @@ class CustomTerminal extends React.Component {
                 color="#657b83"
                 backgroundColor="#073642"
                 barColor="black"
-                style={{ fontWeight: "bold", fontSize: "1.5em" }}
+                style={{ fontWeight: "bold", fontSize: "1.25em" }}
                 actionHandlers={{
                   handleClose: () => {},
                   handleMaximise: () => {},
