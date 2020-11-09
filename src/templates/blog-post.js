@@ -6,7 +6,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
 import { Back } from "../components/social-icons"
-import CommentSubmit from "../components/comment-submit"
+import Comments from "../components/comments"
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -79,31 +79,16 @@ class BlogPostTemplate extends React.Component {
             )}
           </li>
         </ul>
-        <div style={{ margin: "0px 0px 10px 0px", fontSize: "xx-large" }}>
+        <hr
+          style={{
+            marginBottom: rhythm(1),
+          }}
+        />
+        {/* <div style={{ margin: "0px 0px 10px 0px", fontSize: "xx-large" }}>
           Add a comment!
-        </div>
-
-        <CommentSubmit slug={this.props.pageContext.slug}/>
-
-        {/* Comment Section */}
-        {comments && comments.length > 0 ? (
-          comments.map(comment => {
-            return (
-              <div key={comment.node.id}>
-                <p>
-                  Name: {comment.node.name}
-                  <br />
-                  Comment: {comment.node.message}
-                  <br />
-                  Date: {comment.node.date}
-                </p>
-              </div>
-            )
-          })
-        ) : (
-          <p>No comments yet.</p>
-        )}
-        
+        </div> */}
+        {/* Comment form and comments */}
+        <Comments slug={this.props.pageContext.slug} comments={comments} />
       </Layout>
     )
   }
@@ -142,11 +127,12 @@ export const pageQuery = graphql`
     ) {
       edges {
         node {
-          id
+          _id
           slug
           name
           date
           message
+          replying_to_uid
         }
       }
     }

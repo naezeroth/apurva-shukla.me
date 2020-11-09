@@ -151,7 +151,7 @@ const whoamiCommand = () => {
       <p>
         When I'm not typing away on my keyboard, you can find me reading books
         (please shoot through any recommendations!), trying my hand at
-        photography, or simply being still.
+        photography, or simply being <a href="https://zenhabits.net/be-still/" target="_blank" rel="noopener noreferrer">still</a>.
       </p>
       You can find me on {""}
       <IconLink href={social.github}>

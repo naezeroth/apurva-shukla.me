@@ -1,5 +1,6 @@
 [[headers]]
   # Define which paths this specific [[headers]] block will cover.
+  # This is necessary for Staticman to redirect back to this website.
   for = "/*"
     [headers.values]
     Access-Control-Allow-Origin = "*"
