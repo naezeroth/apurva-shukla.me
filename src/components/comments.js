@@ -21,9 +21,7 @@ class Comments extends React.Component {
   }
 
   onReply = (replying_to_uid, replying_to_name) => {
-    // console.log("in OnReply", replying_to_uid, replying_to_name);
     this.setState({replyTo: replying_to_uid, replyToName: replying_to_name})
-    // console.log("state", this.state.replyTo);
   }
 
   onChange = e => {
@@ -187,7 +185,6 @@ const LoadingSpinner = () => (
 //Can either use props here and do props.comments or use {} to pluck comments out of props
 const NestedComments = ({ comments, action }) => {
   const commentObj =  {}
-  // console.log(comments)
   for (const c of comments) {
     if (c.node.replying_to_uid !== null) {
       commentObj[c.node.replying_to_uid].push(c)
