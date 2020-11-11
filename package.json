@@ -8,10 +8,12 @@
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "dependencies": {
+    "@jamesdanylik/gatsby-source-goodreads": "^0.1.0",
     "@mdx-js/mdx": "^1.5.1",
     "@mdx-js/react": "^1.5.1",
     "axios": "^0.21.0",
     "babel-plugin-styled-components": "^1.10.0",
+    "firacode": "^5.2.0",
     "font-awesome": "^4.7.0",
     "gatsby": "^2.24.85",
     "gatsby-image": "^2.0.39",

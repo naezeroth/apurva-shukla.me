@@ -19,12 +19,18 @@ function WelcomeBio() {
       render={data => {
         const { author } = data.site.siteMetadata
         return (
-          <Container>
+          <Container
+            style={{
+              fontFamily: "Fira Code",
+              fontVariantLigatures: "contextual",
+              lineHeight: "1.5em",
+            }}
+          >
             <Image
               fixed={data.avatar.childImageSharp.fixed}
               alt={author}
               style={{
-                marginRight: rhythm(2/3),
+                marginRight: rhythm(2 / 3),
                 marginBottom: 0,
                 minWidth: 100,
                 // borderRadius: `100%`,
@@ -33,7 +39,7 @@ function WelcomeBio() {
                 borderRadius: `20%`,
               }}
             />
-            <p>
+            <p style={{ fontWeight: "500" }}>
               Hey there! Welcome to my website. My name is Apurva Shukla and
               here you can find my{" "}
               <Link to={"/blog/"} style={{ color: "#859900" }}>

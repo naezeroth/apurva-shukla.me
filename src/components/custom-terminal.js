@@ -9,9 +9,6 @@ import { Github, Linkedin, Email } from "./social-icons"
 
 var social
 class CustomTerminal extends React.Component {
-  componentDidMount() {
-    console.log("TERMINAL IS MOUNTED")
-  }
   render() {
     return (
       <StaticQuery
@@ -30,7 +27,12 @@ class CustomTerminal extends React.Component {
                 color="#657b83"
                 backgroundColor="#073642"
                 barColor="black"
-                style={{ fontSize: "1.75em", lineHeight: "1.8em" }}
+                style={{
+                  fontFamily: "Fira Code",
+                  fontSize: "1.25em",
+                  fontWeight: "400",
+                  fontVariantLigatures: "contextual",
+                }}
                 actionHandlers={{
                   handleClose: () => {},
                   handleMaximise: () => {},
@@ -39,7 +41,7 @@ class CustomTerminal extends React.Component {
                 commandPassThrough={cmd => {
                   // do something async
                   return (
-                    <span>
+                    <span style={{ fontFamily: "Fira Code" }}>
                       -bash:${cmd}: command not found, please type{" "}
                       <b style={{ color: "#d33682" }}>help</b> to see all legal
                       commands
@@ -118,8 +120,8 @@ const terminalQuery = graphql`
 
 const helpCommand = () => {
   return (
-    <span>
-      <p style={{ color: "#268bd2" }}>
+    <span style={{ fontFamily: "Fira Code" }}>
+      <p style={{ color: "#268bd2", fontWeight: "bold" }}>
         To use this terminal, simply type any of the commands listed below.
       </p>
       <p>
@@ -140,8 +142,15 @@ const helpCommand = () => {
 
 const whoamiCommand = () => {
   return (
-    <span>
-      <p style={{ color: "#cb4b16" }}>
+    <span
+      style={{
+        fontFamily: "Fira Code",
+        fontWeight: "500",
+        fontSize: "1em",
+        lineHeight: "1.5em",
+      }}
+    >
+      <p style={{ color: "#cb4b16", fontWeight: "500" }}>
         Hey there! Welcome to my website, thanks for taking the time to get to
         know me.
       </p>
