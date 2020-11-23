@@ -157,7 +157,7 @@ class Layout extends React.Component {
           ></script>
           <main>{children}</main>
         </div>
-        <Footer>
+        <Footer style={{marginTop: "35px"}}>
           © {new Date().getFullYear()}, Built with ❤️ on
           {` `}
           <a href="https://www.gatsbyjs.org">Gatsby</a>

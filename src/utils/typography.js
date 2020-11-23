@@ -35,13 +35,13 @@ selectedTheme.overrideThemeStyles = () => ({
   },
   // gatsby-remark-autolink-headers - use theme colours for the link icon
   'a.anchor svg[aria-hidden="true"]': {
-    stroke: "var(--textLink)",
+    stroke: "var(--textLink) !important",
   },
   hr: {
-    background: "var(--hr)",
+    background: "var(--hr) !important",
   },
   blockquote: {
-    color: "var(--textNormal)",
+    color: "var(--textNormal) !important",
   },
 })
 
