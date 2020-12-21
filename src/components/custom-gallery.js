@@ -41,6 +41,12 @@ class CustomGallery extends React.Component {
   }
 
   render() {
+    
+    const naturalPhoto="url('"+this.props.photos['natural'][0]['fluid']['srcSet'].split(' ')[0]+"')";
+    const builtPhoto="url('"+this.props.photos['built'][0]['fluid']['srcSet'].split(' ')[0]+"')";
+    const peoplePhoto="url('"+this.props.photos['people'][0]['fluid']['srcSet'].split(' ')[0]+"')";
+
+    console.log(naturalPhoto);
     return (
       <div>
         {this.state.openGallery ? (
@@ -73,45 +79,39 @@ class CustomGallery extends React.Component {
             </ModalGateway>
           </div>
         ) : (
-          <div style={{ display: "flex", "flex-flow": "row wrap" }}>
-            <Item>
-              <Button
-                style={{
-                  background: "rgb(45 220 207)",
-                  "font-weight": "400",
-                  "font-size": "xx-large",
-                }}
-                onClick={() => this.changeOpenGallery("natural")}
-              >
-                Natural
-              </Button>
-            </Item>
-            <Item>
-              <Button
-                style={{
-                  background: "rgb(255 206 55)",
-                  "font-weight": "400",
-                  "font-size": "xx-large",
-                }}
-                onClick={() => this.changeOpenGallery("built")}
-              >
-                Built
-              </Button>
-            </Item>
-            <Item>
-              <Button
-                style={{
-                  background: "rgb(255 156 243)",
-                  "font-weight": "400",
-                  "font-size": "xx-large",
-                }}
-                onClick={() => this.changeOpenGallery("people")}
-              >
-                People
-              </Button>
-            </Item>
-          </div>
-        )}
+            <div style={{ display: "flex", flexFlow: "row wrap", justifyContent: 'space-evenly' }}>
+              <Item >
+                <div style={{backgroundImage: naturalPhoto, backgroundSize: "cover", borderRadius: "20px", backgroundPosition: "bottom"}}>
+                  <PhotoButton
+                    style={{background: "rgba(255, 255, 255, 0.2)" ,backdropFilter: "blur(2px)"}}
+                    onClick={() => this.changeOpenGallery("natural")}
+                  >
+                    Natural
+                    </PhotoButton>
+                </div>
+              </Item>                     
+              <Item>
+                <div style={{backgroundImage: builtPhoto, backgroundSize: "cover", borderRadius: "20px", backgroundPosition: "bottom"}}>
+                  <PhotoButton
+                    style={{background: "rgba(255, 255, 255, 0.2)" ,backdropFilter: "blur(2px)"}}
+                    onClick={() => this.changeOpenGallery("built")}
+                  >
+                    Built
+                  </PhotoButton>
+                </div>
+              </Item>
+              <Item >
+                <div style={{backgroundImage: peoplePhoto, backgroundSize: "cover", borderRadius: "20px", backgroundPosition: "bottom"}}>
+                  <PhotoButton
+                    style={{background: "rgba(255, 255, 255, 0.2)", backdropFilter: "blur(2px)"}}
+                    onClick={() => this.changeOpenGallery("people")}
+                  >
+                    People
+                  </PhotoButton>
+                </div>
+              </Item>
+            </div>
+          )}
       </div>
     )
   }
@@ -119,9 +119,16 @@ class CustomGallery extends React.Component {
 export default CustomGallery
 
 const Item = styled.div`
-  padding: 30px 0 0 50px;
+  padding: 30px 0 0 0;
 `
 const Button = styled.button`
+  height: ${rhythm(5)};
+  width: ${rhythm(8)};
+  border-radius: 20px;
+`
+const PhotoButton = styled.button`
+  font-weight: 400;
+  font-size: xx-large;
   height: ${rhythm(5)};
   width: ${rhythm(8)};
   border-radius: 20px;

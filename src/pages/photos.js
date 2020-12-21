@@ -79,7 +79,7 @@ class Photos extends React.Component {
         <Bio />
         <CustomGallery photos={allPhotos} />
         <Link to="/">
-          <Button marginTop="85px">Go Home</Button>
+          <Button marginTop="75px">Go Home</Button>
         </Link>
       </Layout>
     )

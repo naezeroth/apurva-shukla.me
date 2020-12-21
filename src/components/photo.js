@@ -31,7 +31,7 @@ const Photo = ({
         key={key}
         style={onClick ? { ...imgStyle, ...imgWithClick } : imgStyle}
         onClick={onClick ? handleClick : null}
-        onKeyDown={onClick ? handleClick : null}
+        onKeyDown={handleClick}
       >
         <Image fluid={photo} />
       </div>
