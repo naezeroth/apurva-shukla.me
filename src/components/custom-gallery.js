@@ -88,8 +88,7 @@ class CustomGallery extends React.Component {
                   <PhotoButton
                     onClick={() => this.changeOpenGallery("natural")}
                   >
-                    <div style={{ background: "var(--bg)", opacity: "0.9", margin: "10px 20px", borderRadius: "20px", padding: "15px", color: "var(--textNormal)"}}>
-                        Natural
+                    <div style={{ background: "var(--bg)", opacity: "0.9", margin: "10px", borderRadius: "20px", padding: "15px 0px", color: "var(--textNormal)"}}>                        Natural
                     </div>
                     </PhotoButton>
                 </div>
@@ -99,8 +98,7 @@ class CustomGallery extends React.Component {
                   <PhotoButton
                     onClick={() => this.changeOpenGallery("built")}
                   >
-                    <div style={{ background: "var(--bg)", opacity: "0.9", margin: "10px 20px", borderRadius: "20px", padding: "15px", color: "var(--textNormal)"}}>
-                        Built
+                    <div style={{ background: "var(--bg)", opacity: "0.9", margin: "10px", borderRadius: "20px", padding: "15px 0px", color: "var(--textNormal)"}}>                        Built
                     </div>
                   </PhotoButton>
                 </div>
@@ -110,7 +108,7 @@ class CustomGallery extends React.Component {
                   <PhotoButton
                     onClick={() => this.changeOpenGallery("people")}
                   >
-                    <div style={{ background: "var(--bg)", opacity: "0.9", margin: "10px 20px", borderRadius: "20px", padding: "15px", color: "var(--textNormal)"}}>
+                    <div style={{ background: "var(--bg)", opacity: "0.9", margin: "10px", borderRadius: "20px", padding: "15px 0px", color: "var(--textNormal)"}}>
                         People
                     </div>
                   </PhotoButton>
