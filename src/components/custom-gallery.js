@@ -41,10 +41,13 @@ class CustomGallery extends React.Component {
   }
 
   render() {
-    
-    const naturalPhoto="url('"+this.props.photos['natural'][0]['fluid']['srcSet'].split(' ')[0]+"')";
-    const builtPhoto="url('"+this.props.photos['built'][0]['fluid']['srcSet'].split(' ')[0]+"')";
-    const peoplePhoto="url('"+this.props.photos['people'][0]['fluid']['srcSet'].split(' ')[0]+"')";
+    const naturalIndex = Math.floor((Math.random() * this.props.photos['natural'].length));
+    const builtIndex = Math.floor((Math.random() * this.props.photos['built'].length));
+    const peopleIndex = Math.floor((Math.random() * this.props.photos['people'].length));
+    console.log("INDEXES", naturalIndex, builtIndex,  peopleIndex);
+    const naturalPhoto = "url('" + this.props.photos['natural'][naturalIndex]['fluid']['srcSet'].split(' ')[0] + "')";
+    const builtPhoto = "url('" + this.props.photos['built'][builtIndex]['fluid']['srcSet'].split(' ')[0] + "')";
+    const peoplePhoto = "url('" + this.props.photos['people'][peopleIndex]['fluid']['srcSet'].split(' ')[0] + "')";
 
     console.log(naturalPhoto);
     return (
@@ -81,32 +84,35 @@ class CustomGallery extends React.Component {
         ) : (
             <div style={{ display: "flex", flexFlow: "row wrap", justifyContent: 'space-evenly' }}>
               <Item >
-                <div style={{backgroundImage: naturalPhoto, backgroundSize: "cover", borderRadius: "20px", backgroundPosition: "bottom"}}>
+                <div style={{ backgroundImage: naturalPhoto, backgroundSize: "cover", borderRadius: "20px", backgroundPosition: "bottom" }}>
                   <PhotoButton
-                    style={{background: "rgba(255, 255, 255, 0.2)" ,backdropFilter: "blur(2px)"}}
                     onClick={() => this.changeOpenGallery("natural")}
                   >
-                    Natural
+                    <div style={{ background: "var(--bg)", opacity: "0.9", margin: "10px 20px", borderRadius: "20px", padding: "15px", color: "var(--textNormal)"}}>
+                        Natural
+                    </div>
                     </PhotoButton>
                 </div>
-              </Item>                     
+              </Item>
               <Item>
-                <div style={{backgroundImage: builtPhoto, backgroundSize: "cover", borderRadius: "20px", backgroundPosition: "bottom"}}>
+                <div style={{ backgroundImage: builtPhoto, backgroundSize: "cover", borderRadius: "20px", backgroundPosition: "bottom" }}>
                   <PhotoButton
-                    style={{background: "rgba(255, 255, 255, 0.2)" ,backdropFilter: "blur(2px)"}}
                     onClick={() => this.changeOpenGallery("built")}
                   >
-                    Built
+                    <div style={{ background: "var(--bg)", opacity: "0.9", margin: "10px 20px", borderRadius: "20px", padding: "15px", color: "var(--textNormal)"}}>
+                        Built
+                    </div>
                   </PhotoButton>
                 </div>
               </Item>
               <Item >
-                <div style={{backgroundImage: peoplePhoto, backgroundSize: "cover", borderRadius: "20px", backgroundPosition: "bottom"}}>
+                <div style={{ backgroundImage: peoplePhoto, backgroundSize: "cover", borderRadius: "20px", backgroundPosition: "bottom" }}>
                   <PhotoButton
-                    style={{background: "rgba(255, 255, 255, 0.2)", backdropFilter: "blur(2px)"}}
                     onClick={() => this.changeOpenGallery("people")}
                   >
-                    People
+                    <div style={{ background: "var(--bg)", opacity: "0.9", margin: "10px 20px", borderRadius: "20px", padding: "15px", color: "var(--textNormal)"}}>
+                        People
+                    </div>
                   </PhotoButton>
                 </div>
               </Item>
@@ -121,15 +127,13 @@ export default CustomGallery
 const Item = styled.div`
   padding: 30px 0 0 0;
 `
-const Button = styled.button`
-  height: ${rhythm(5)};
-  width: ${rhythm(8)};
-  border-radius: 20px;
-`
+
 const PhotoButton = styled.button`
   font-weight: 400;
   font-size: xx-large;
   height: ${rhythm(5)};
   width: ${rhythm(8)};
   border-radius: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(0.5px);
 `
