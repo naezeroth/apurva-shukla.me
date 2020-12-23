@@ -59,7 +59,7 @@ class Comments extends React.Component {
 
     axios
       .post(
-        "https://staticman-aus.herokuapp.com/v2/entry/naezeroth/personal-website/master/comments",
+        "https://staticman.apurva-shukla.me/v2/entry/naezeroth/personal-website/master/comments",
         formBody,
         { headers: { "Content-Type": "application/x-www-form-urlencoded" } }
       )
