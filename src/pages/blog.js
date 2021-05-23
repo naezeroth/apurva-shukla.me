@@ -1,5 +1,5 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { Link, graphql, navigate } from "gatsby"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -21,6 +21,7 @@ class Blog extends React.Component {
         <div style={{ margin: "20px 0 40px" }}>
           {posts.map(({ node }) => {
             const title = node.frontmatter.title || node.fields.slug
+            console.log("node is ", node );
             return (
               <div key={node.fields.slug}>
                 <h3
@@ -46,6 +47,24 @@ class Blog extends React.Component {
                   }}
                 />
                 <small>{node.timeToRead} min read</small>
+                {node.frontmatter.tags && node.frontmatter.tags.map(tag => {
+                  console.log("inside node.tags map", tag);
+                  return [
+                    <div
+                      key={tag}
+                      variant="outlined"
+                      onClick={event => { navigate(`/blog/tag/${tag}`) }}
+                      style={{
+                        marginRight: "2.5%",
+                        marginLeft: "2.5%",
+                        cursor: "pointer",
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      <p>{tag}</p>
+                    </div>,
+                  ]
+                })}
               </div>
             )
           })}
@@ -77,6 +96,7 @@ export const query = graphql`
             date(formatString: "MMMM DD, YYYY")
             title
             description
+            tags
           }
         }
       }
