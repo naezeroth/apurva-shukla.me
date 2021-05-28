@@ -219,7 +219,7 @@ const NestedComments = ({ comments, action }) => {
         if (c.node.replying_to_uid !== null) {
             commentObj[c.node.replying_to_uid].push(c);
         } else if (commentObj[c.node._id] === undefined) {
-            commentObj[c.node._id] = [c];
+            commentObj[c.node._id] = [ c ];
         } else {
             commentObj[c.node._id].push(c);
         }

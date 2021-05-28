@@ -58,9 +58,9 @@ class Layout extends React.Component {
                                 iconClass = 'fa fa-moon-o fa-2x';
                             } else {
                                 iconClass =
-                                    theme === 'light'
-                                        ? 'fa fa-moon-o fa-2x'
-                                        : 'fa fa-sun-o fa-2x';
+                                    theme === 'light' ?
+                                        'fa fa-moon-o fa-2x' :
+                                        'fa fa-sun-o fa-2x';
                             }
                             return (
                                 <div
@@ -75,9 +75,9 @@ class Layout extends React.Component {
                                         }}
                                         onClick={() => {
                                             const nextTheme =
-                                                theme === 'light'
-                                                    ? 'dark'
-                                                    : 'light';
+                                                theme === 'light' ?
+                                                    'dark' :
+                                                    'light';
                                             toggleTheme(nextTheme);
                                         }}
                                     />
@@ -122,9 +122,9 @@ class Layout extends React.Component {
                                     iconClass = 'fa fa-moon-o fa-2x';
                                 } else {
                                     iconClass =
-                                        theme === 'light'
-                                            ? 'fa fa-moon-o fa-2x'
-                                            : 'fa fa-sun-o fa-2x';
+                                        theme === 'light' ?
+                                            'fa fa-moon-o fa-2x' :
+                                            'fa fa-sun-o fa-2x';
                                 }
                                 return (
                                     <div>
@@ -135,9 +135,9 @@ class Layout extends React.Component {
                                             }}
                                             onClick={() => {
                                                 const nextTheme =
-                                                    theme === 'light'
-                                                        ? 'dark'
-                                                        : 'light';
+                                                    theme === 'light' ?
+                                                        'dark' :
+                                                        'light';
                                                 toggleTheme(nextTheme);
                                             }}
                                         />
