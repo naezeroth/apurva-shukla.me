@@ -1,10 +1,3 @@
-/**
- * Bio component that queries for data
- * with Gatsby's StaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/static-query/
- */
-
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
@@ -36,7 +29,7 @@ function Bio() {
             />
             <br />
             <p style={{ marginTop: "35px" }}>
-              Written by <strong>{author}</strong>.{` `}
+              Created by <strong>{author}</strong>.{` `}
             </p>
           </Container>
         )

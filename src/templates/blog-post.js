@@ -26,7 +26,7 @@ class BlogPostTemplate extends React.Component {
             },
           ]}
         />
-        <Link to="/blog">
+        <Link to="/blog/">
           <div
             style={{
               textDecoration: `none !important`,

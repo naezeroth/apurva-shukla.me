@@ -13,8 +13,16 @@ class Layout extends React.Component {
     const rootPath = `${__PATH_PREFIX__}/`
     const blogPath = `${__PATH_PREFIX__}/blog/`
     let header
-
-    if (location.pathname === rootPath || location.pathname === blogPath) {
+    console.log(
+      "this.props for layout",
+      this.props,
+      location.pathname.includes(blogPath)
+    )
+    if (
+      location.pathname === rootPath ||
+      location.pathname === blogPath ||
+      location.pathname.includes(blogPath) //For all other /blog/ combinations
+    ) {
       header = (
         <div
           style={{
@@ -157,7 +165,7 @@ class Layout extends React.Component {
           ></script>
           <main>{children}</main>
         </div>
-        <Footer style={{marginTop: "35px"}}>
+        <Footer style={{ marginTop: "35px" }}>
           © {new Date().getFullYear()}, Built with ❤️ on
           {` `}
           <a href="https://www.gatsbyjs.org">Gatsby</a>
