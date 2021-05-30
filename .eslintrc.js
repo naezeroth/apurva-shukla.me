@@ -148,7 +148,6 @@ module.exports = exports = {
         'require-yield': ERROR,
 
         // Stylistic - everything here is a warning because of style.
-        'array-bracket-spacing': [WARN, 'always'],
         'block-spacing': [WARN, 'always'],
         'brace-style': [WARN, '1tbs', { allowSingleLine: false }],
         camelcase: WARN,
