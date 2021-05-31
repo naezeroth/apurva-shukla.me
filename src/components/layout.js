@@ -12,11 +12,6 @@ class Layout extends React.Component {
         const rootPath = `${__PATH_PREFIX__}/`;
         const blogPath = `${__PATH_PREFIX__}/blog/`;
         let header;
-        console.log(
-            'this.props for layout',
-            this.props,
-            location.pathname.includes(blogPath)
-        );
         if (
             location.pathname === rootPath ||
             location.pathname === blogPath ||

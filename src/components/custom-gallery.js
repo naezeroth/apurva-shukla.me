@@ -50,7 +50,6 @@ class CustomGallery extends React.Component {
         const peopleIndex = Math.floor(
             Math.random() * this.props.photos.people.length
         );
-        console.log('INDEXES', naturalIndex, builtIndex, peopleIndex);
         const naturalPhoto = `url('${
             this.props.photos.natural[naturalIndex].fluid.srcSet.split(' ')[0]
         }')`;
@@ -61,7 +60,6 @@ class CustomGallery extends React.Component {
             this.props.photos.people[peopleIndex].fluid.srcSet.split(' ')[0]
         }')`;
 
-        console.log(naturalPhoto);
         return (
             <div>
                 {this.state.openGallery ? (

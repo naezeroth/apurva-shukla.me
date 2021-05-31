@@ -5,21 +5,21 @@ import styled from 'styled-components';
 
 import { rhythm } from '../utils/typography';
 
-function Bio() {
+function Bio(props) {
+    const { style } = props;
     return (
         <StaticQuery
             query={bioQuery}
             render={data => {
                 const { author } = data.site.siteMetadata;
                 return (
-                    <Container>
+                    <Container style={{ ...style }}>
                         <Image
                             fixed={data.avatar.childImageSharp.fixed}
                             alt={author}
                             style={{
                                 // eslint-disable-next-line no-magic-numbers
                                 marginRight: rhythm(1 / 2),
-                                // marginBottom: '50px',
                                 minWidth: 100,
 
                                 borderRadius: '50%',

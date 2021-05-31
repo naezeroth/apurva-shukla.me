@@ -61,8 +61,6 @@ exports.createPages = ({ graphql, actions }) => {
             return result;
         })
         .then(result => {
-            console.log('result data is ', result.data);
-
             const tags = result.data.tagsGroup.group;
             tags.forEach(tag => {
                 createPage({

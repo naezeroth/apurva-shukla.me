@@ -24,9 +24,10 @@ const Tags = props => {
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
+                    flexWrap: 'wrap',
                 }}
             >
-                <Bio />
+                <Bio style={{ marginBottom: '10px' }} />
                 <RssButton />
             </div>
             <div>
