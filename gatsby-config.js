@@ -130,6 +130,7 @@ module.exports = {
                                         guid:
                                             site.siteMetadata.siteUrl +
                                             edge.node.fields.slug,
+                                        // eslint-disable-next-line camelcase
                                         custom_elements: [
                                             {
                                                 'content:encoded':
@@ -162,6 +163,7 @@ module.exports = {
                     }
                   `,
                         output: '/rss.xml',
+                        // eslint-disable-next-line quotes
                         title: "Apurva Shukla's RSS Feed",
                         match: '^/blog/',
                     },

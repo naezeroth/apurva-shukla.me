@@ -4,6 +4,7 @@ body {
   --bg: whitesmoke;
   --textNormal: #222;
   --tagNormal:rgb(100, 112, 125);
+  --rssNormal: #222;
   --textTitle: #222;
   --textLink: #007acc;
   --hr: hsla(0, 0%, 0%, 0.2);
@@ -18,6 +19,7 @@ body.dark {
   --bg: #25282a;
   --textNormal: rgba(255, 255, 255, 0.88);
   --tagNormal:rgb(101, 176, 255);
+  --rssNormal: #white;
   --textTitle: white;
   --textLink: rgb(224, 171, 6);
   --hr: hsla(0, 0%, 100%, 0.2);

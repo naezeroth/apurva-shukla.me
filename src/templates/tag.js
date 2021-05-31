@@ -7,6 +7,7 @@ import { Back } from '../components/social-icons';
 import { Link, graphql, navigate } from 'gatsby';
 import SEO from '../components/seo';
 import { TagBar } from '../components/tag-bar';
+import { RssButton } from '../components/rss';
 
 const Tags = props => {
     const { tag } = props.pageContext;
@@ -18,7 +19,16 @@ const Tags = props => {
     return (
         <Layout location={props.location} title={siteTitle}>
             <SEO title="Tagged posts" />
-            <Bio />
+            <div
+                style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                }}
+            >
+                <Bio />
+                <RssButton />
+            </div>
             <div>
                 <h1>{tagHeader}</h1>
                 <Link to="/blog/">

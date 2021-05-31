@@ -7,7 +7,8 @@ import SEO from '../components/seo';
 import { rhythm } from '../utils/typography';
 import Button from '../components/button';
 import { TagBar } from '../components/tag-bar';
-
+import { Rss } from '../components/social-icons';
+import { RssButton } from '../components/rss';
 class Blog extends React.Component {
     render() {
         const { data } = this.props;
@@ -17,7 +18,16 @@ class Blog extends React.Component {
         return (
             <Layout location={this.props.location} title={siteTitle}>
                 <SEO title="All posts" />
-                <Bio />
+                <div
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                    }}
+                >
+                    <Bio />
+                    <RssButton />
+                </div>
                 <div style={{ margin: '20px 0 40px' }}>
                     {posts.map(({ node }) => {
                         const title =
