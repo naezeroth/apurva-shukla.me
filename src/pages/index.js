@@ -13,7 +13,13 @@ class IndexPage extends React.Component {
             <Layout location={this.props.location} title={siteTitle}>
                 <SEO
                     title="Home"
-                    keywords={[ 'blog', 'gatsby', 'javascript', 'react' ]}
+                    keywords={['blog', 'gatsby', 'javascript', 'react']}
+                    meta={[
+                        {
+                            property: 'og:image',
+                            content: `https://apurva-shukla.me${data.avatar.childImageSharp.original.src}`,
+                        },
+                    ]}
                 />
                 <CustomTerminal />
             </Layout>
@@ -28,6 +34,13 @@ export const query = graphql`
                 title
                 description
                 author
+            }
+        }
+        avatar: file(absolutePath: { regex: "/profile.png/" }) {
+            childImageSharp {
+                original {
+                    src
+                }
             }
         }
     }
