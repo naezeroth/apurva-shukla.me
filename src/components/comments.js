@@ -125,6 +125,7 @@ class Comments extends React.Component {
                                 borderRadius: '6px',
                                 padding: '10px',
                             }}
+                            required
                         />
                     </label>
                     <br></br>
@@ -143,6 +144,7 @@ class Comments extends React.Component {
                                 padding: '10px',
                                 margin: '10px 0px 10px 0px',
                             }}
+                            required
                         />
                     </label>
                     <br></br>
@@ -161,6 +163,7 @@ class Comments extends React.Component {
                                 width: '75%',
                                 height: '200px',
                             }}
+                            required
                         >
                             {this.state.msg}
                         </textarea>
@@ -219,7 +222,7 @@ const NestedComments = ({ comments, action }) => {
         if (c.node.replying_to_uid !== null) {
             commentObj[c.node.replying_to_uid].push(c);
         } else if (commentObj[c.node._id] === undefined) {
-            commentObj[c.node._id] = [ c ];
+            commentObj[c.node._id] = [c];
         } else {
             commentObj[c.node._id].push(c);
         }

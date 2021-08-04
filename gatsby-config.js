@@ -8,6 +8,7 @@ module.exports = {
             linkedin: 'https://www.linkedin.com/in/apurva-shukla/',
             github: 'https://github.com/naezeroth/',
             mail: 'mailto:apurvashukla123@pm.me',
+            twitter: 'https://twitter.com/esaoky',
         },
     },
     plugins: [

@@ -8,14 +8,14 @@ import { Link, graphql, navigate } from 'gatsby';
 import SEO from '../components/seo';
 import { TagBar } from '../components/tag-bar';
 import { RssButton } from '../components/rss';
+import { SubscribeButton } from '../components/email-button';
 
 const Tags = props => {
     const { tag } = props.pageContext;
     const { edges, totalCount } = props.data.allMdx;
     const siteTitle = props.data.site.siteMetadata.title;
-    const tagHeader = `${totalCount} post${
-        totalCount === 1 ? '' : 's'
-    } tagged with "${tag}"`;
+    const tagHeader = `${totalCount} post${totalCount === 1 ? '' : 's'
+        } tagged with "${tag}"`;
     return (
         <Layout location={props.location} title={siteTitle}>
             <SEO title="Tagged posts" />
@@ -28,7 +28,10 @@ const Tags = props => {
                 }}
             >
                 <Bio style={{ marginBottom: '10px' }} />
-                <RssButton />
+                <div>
+                    <SubscribeButton />
+                    <RssButton />
+                </div>
             </div>
             <div>
                 <h1>{tagHeader}</h1>

@@ -7,6 +7,8 @@ import SEO from '../components/seo';
 import { rhythm, scale } from '../utils/typography';
 import { Back } from '../components/social-icons';
 import Comments from '../components/comments';
+import Button from '../components/button';
+
 class BlogPostTemplate extends React.Component {
     render() {
         const post = this.props.data.mdx;
@@ -54,6 +56,32 @@ class BlogPostTemplate extends React.Component {
                     {post.frontmatter.date}
                 </p>
                 <MDXRenderer>{post.body}</MDXRenderer>
+                <hr
+                    style={{
+                        marginBottom: rhythm(1),
+                    }}
+                />
+                <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexDirection: 'row',
+                    marginBottom: rhythm(1)
+
+                }}>
+                    <div style={{ boxShadow: 'var(--formShadow)', padding: "20px", borderRadius: "10px", backgroundColor: "var(--subscribeBackground)" }} >
+                        <form method="post" action="https://listmonk.apurva-shukla.me/subscription/form" class="listmonk-form">
+                            <div>
+                                <h3>Subscribe to my newsletter</h3>
+                                <p>I'll occasionally send you my writing, and things I've found interesting</p>
+                                <p><input type="text" name="name" placeholder="Your name" required style={{ padding: "8px", borderColor: "rgb(227, 227, 227)", borderRadius: "4px" }} /></p>
+                                <p><input type="email" name="email" placeholder="Your email" required style={{ padding: "8px", borderColor: "rgb(227, 227, 227)", borderRadius: "4px" }} /></p>
+                                <input id="8f133" type="hidden" name="l" checked value="8f1334ed-27f8-47be-ae6c-2eeb8f68a0f0" />
+                                <Button marginRight="25px">Subscribe</Button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
                 <hr
                     style={{
                         marginBottom: rhythm(1),
