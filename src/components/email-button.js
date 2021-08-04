@@ -31,5 +31,5 @@ export const SubscribeButton = () => (
         >
             Subscribe
         </span>
-    </a >
+    </a>
 );

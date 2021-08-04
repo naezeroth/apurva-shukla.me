@@ -14,8 +14,9 @@ const Tags = props => {
     const { tag } = props.pageContext;
     const { edges, totalCount } = props.data.allMdx;
     const siteTitle = props.data.site.siteMetadata.title;
-    const tagHeader = `${totalCount} post${totalCount === 1 ? '' : 's'
-        } tagged with "${tag}"`;
+    const tagHeader = `${totalCount} post${
+        totalCount === 1 ? '' : 's'
+    } tagged with "${tag}"`;
     return (
         <Layout location={props.location} title={siteTitle}>
             <SEO title="Tagged posts" />
