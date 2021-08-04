@@ -8,9 +8,12 @@ import { rhythm } from '../utils/typography';
 import Button from '../components/button';
 import { TagBar } from '../components/tag-bar';
 import { RssButton } from '../components/rss';
+import { SubscribeButton } from '../components/email-button';
+
 class Blog extends React.Component {
     render() {
         const { data } = this.props;
+        console.log('DATA IS', data);
         const siteTitle = data.site.siteMetadata.title;
         const posts = data.allMdx.edges;
 
@@ -26,7 +29,10 @@ class Blog extends React.Component {
                     }}
                 >
                     <Bio style={{ marginBottom: '10px' }} />
-                    <RssButton />
+                    <div>
+                        <SubscribeButton />
+                        <RssButton />
+                    </div>
                 </div>
                 <div style={{ margin: '20px 0 40px' }}>
                     {posts.map(({ node }) => {

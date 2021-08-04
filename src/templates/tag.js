@@ -8,6 +8,7 @@ import { Link, graphql, navigate } from 'gatsby';
 import SEO from '../components/seo';
 import { TagBar } from '../components/tag-bar';
 import { RssButton } from '../components/rss';
+import { SubscribeButton } from '../components/email-button';
 
 const Tags = props => {
     const { tag } = props.pageContext;
@@ -28,7 +29,10 @@ const Tags = props => {
                 }}
             >
                 <Bio style={{ marginBottom: '10px' }} />
-                <RssButton />
+                <div>
+                    <SubscribeButton />
+                    <RssButton />
+                </div>
             </div>
             <div>
                 <h1>{tagHeader}</h1>
