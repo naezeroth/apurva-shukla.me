@@ -14,6 +14,7 @@ class Comments extends React.Component {
             loading: false,
             replyTo: '',
             replyToName: '',
+            subscribe: false,
         };
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -33,6 +34,12 @@ class Comments extends React.Component {
       corresponding values in state, it's
       super easy to update the state
     */
+        console.log(this.state);
+        if (e.target.name === 'subscribe') {
+            this.setState({ [e.target.name]: !this.state.subscribe });
+
+            return;
+        }
         this.setState({ [e.target.name]: e.target.value });
     };
 
@@ -40,12 +47,18 @@ class Comments extends React.Component {
         e.preventDefault();
 
         this.setState({ loading: true });
-        const { name, email, msg, replyTo } = this.state;
+        const { name, email, msg, replyTo, subscribe } = this.state;
         const formdata = new FormData();
         formdata.set('fields[name]', name);
-        formdata.set('fields[email]', email);
         formdata.set('fields[message]', msg);
-        formdata.set('fields[slug]', this.props.slug.slice(1, -1)); // necessary for staticman to write files (otherwise "/slug/" will throw GITHUB_WRITING_FILE error)
+        // necessary for staticman to write files (otherwise "/slug/" will throw GITHUB_WRITING_FILE error)
+        formdata.set('fields[slug]', this.props.slug.slice(1, -1));
+        if (email !== '') {
+            formdata.set('fields[email]', email);
+            if (subscribe === true) {
+                formdata.set('fields[subscribe]', true);
+            }
+        }
         if (replyTo !== '') {
             formdata.set('fields[replying_to_uid]', replyTo);
         }
@@ -161,12 +174,22 @@ class Comments extends React.Component {
                                 width: '75%',
                                 height: '200px',
                             }}
-                            required
                         >
                             {this.state.msg}
                         </textarea>
                     </label>
                     <br></br>
+                    {this.state.replyTo === '' && (
+                        <label>
+                            <input
+                                type="checkbox"
+                                name="subscribe"
+                                onChange={this.onChange}
+                                checked={this.state.subscribe}
+                            />
+                            Send me an email when someone replies.
+                        </label>
+                    )}
                     <span
                         type="submit"
                         style={{
