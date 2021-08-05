@@ -113,7 +113,7 @@ class Comments extends React.Component {
                     <label>
                         <input
                             name="name"
-                            placeholder="Name"
+                            placeholder="Name (required)"
                             type="text"
                             onChange={this.onChange}
                             value={this.state.name}
@@ -125,14 +125,13 @@ class Comments extends React.Component {
                                 borderRadius: '6px',
                                 padding: '10px',
                             }}
-                            required
                         />
                     </label>
                     <br></br>
                     <label>
                         <input
                             name="email"
-                            placeholder="Email"
+                            placeholder="Email (optional)"
                             type="email"
                             value={this.state.email}
                             onChange={this.onChange}
@@ -144,14 +143,13 @@ class Comments extends React.Component {
                                 padding: '10px',
                                 margin: '10px 0px 10px 0px',
                             }}
-                            required
                         />
                     </label>
                     <br></br>
                     <label>
                         <textarea
                             name="msg"
-                            placeholder="Message"
+                            placeholder="Message (required)"
                             onChange={this.onChange}
                             value={this.state.msg}
                             style={{
@@ -257,12 +255,10 @@ const NestedComments = ({ comments, action }) => {
                             {comment.node.name}
                         </div>
                         <div>
-                            {' '}
                             {moment(comment.node.date).format('Do MMM YYYY')}
                         </div>
-                        <div style={{ width: '100%' }}></div>
-                        <div style={{ flexGrow: '1' }}>
-                            {comment.node.message}{' '}
+                        <div style={{ width: '95%' }}>
+                            {comment.node.message}
                         </div>
                         <a style={{ boxShadow: 'none' }} href="#form">
                             <i
@@ -303,11 +299,11 @@ const NestedComments = ({ comments, action }) => {
                             {comment.node.name}
                         </div>
                         <div>
-                            {' '}
                             {moment(comment.node.date).format('Do MMM YYYY')}
                         </div>
-                        <div style={{ width: '100%' }}></div>
-                        <div>{comment.node.message} </div>
+                        <div style={{ width: '100%' }}>
+                            {comment.node.message}{' '}
+                        </div>
                     </div>
                 );
             }
