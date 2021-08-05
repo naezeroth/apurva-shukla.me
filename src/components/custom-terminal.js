@@ -166,15 +166,22 @@ const whoamiCommand = () => {
                 get to know me.
             </p>
             <p>
-                I'm currently in my final year of computer science at UNSW, and
-                am in love with technology; more specifically, how technology
-                can be a force for improving the global quality of life - for
-                humans and nature alike.
+                I'm a software engineer by trade, and am in love with
+                technology; more specifically, how technology can be a force for
+                improving the global quality of life - for humans and nature
+                alike.
             </p>
             <p>
-                When I'm not typing away on my keyboard, you can find me reading
-                books (please shoot through any recommendations!), trying my
-                hand at photography, or simply being{' '}
+                When I'm not typing away on my keyboard, you can find me reading{' '}
+                <a
+                    href="https://www.goodreads.com/review/list/26643955?shelf=read&sort=date_read"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    books
+                </a>{' '}
+                (please shoot through any recommendations!), trying my hand at
+                photography, or simply being{' '}
                 <a
                     href="https://zenhabits.net/be-still/"
                     target="_blank"

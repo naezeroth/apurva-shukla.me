@@ -17,7 +17,7 @@ export const Linkedin = () => (
 );
 
 export const Email = props => {
-    if (props) {
+    if (props.width && props.height && props.viewBox) {
         return (
             <svg
                 width={props.width}
