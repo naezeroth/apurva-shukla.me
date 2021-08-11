@@ -94,7 +94,7 @@ class Comments extends React.Component {
                 <div
                     style={{ margin: '0px 0px 10px 0px', fontSize: 'xx-large' }}
                 >
-                    Add a comment!
+                    Leave a comment!
                 </div>
                 {this.state.replyToName && (
                     <div>
