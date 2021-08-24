@@ -176,6 +176,7 @@ const SubscribeForm = () => (
             <form
                 method="post"
                 action="https://listmonk.apurva-shukla.me/subscription/form"
+                id="newsletter"
             >
                 <div>
                     <h3>Subscribe to my newsletter</h3>
