@@ -37,3 +37,18 @@ body.dark {
 body.dark img {
   filter: brightness(0.8) contrast(1.2);
 }
+
+.gatsby-resp-image-link {
+  box-shadow: none;
+}
+
+.twitter-tweet-rendered {
+  margin: auto;
+}
+
+body.dark .tg td {border-color:white;border-style:solid;border-width:1px;}
+.tg td{border-color:black;border-style:solid;border-width:1px;}
+
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg .tg-bold{font-weight:bold;text-align:center;vertical-align:middle}
+.tg .tg-normal{text-align:center;vertical-align:middle}

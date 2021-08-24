@@ -14,6 +14,7 @@ module.exports = {
     plugins: [
         'gatsby-plugin-netlify-cms',
         'gatsby-plugin-styled-components',
+        'gatsby-plugin-twitter',
         'gatsby-transformer-sharp',
         {
             resolve: 'gatsby-plugin-sharp',
@@ -69,6 +70,8 @@ module.exports = {
                         resolve: 'gatsby-remark-images',
                         options: {
                             maxWidth: 590,
+                            showCaptions: true,
+                            wrapperStyle: "border-style: none; text-align: center",
                         },
                     },
                     {
@@ -96,8 +99,20 @@ module.exports = {
                     {
                         resolve: 'gatsby-remark-smartypants',
                     },
+                    {
+                        resolve: `gatsby-remark-embedder`,
+                        options: {
+                            customTransformers: [
+                                // Your custom transformers
+                            ],
+                            services: {
+                                // The service-specific options by the name of the service
+                            },
+                        },
+                    }
                 ],
                 plugins: ['gatsby-remark-images'],
+                remarkPlugins: [require('remark-unwrap-images')]
             },
         },
         {
