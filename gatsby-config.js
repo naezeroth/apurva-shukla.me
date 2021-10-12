@@ -61,6 +61,13 @@ module.exports = {
             },
         },
         {
+            resolve: 'gatsby-source-filesystem',
+            options: {
+                path: `${__dirname}/content/projects/flare`,
+                name: 'flare',
+            },
+        },
+        {
             resolve: 'gatsby-plugin-mdx',
             options: {
                 extensions: ['.mdx', '.md'],
