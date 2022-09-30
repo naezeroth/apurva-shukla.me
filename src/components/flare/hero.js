@@ -1,11 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import Button from './button';
-import headerImage from './images/header.png';
-import MockupContent from './image';
-import mockupFrame from './images/mockup-frame.png';
-import background from './images/background.svg';
+import MockupContent from './video';
 
 const Hero = ({ siteTitle }) => (
     <div
@@ -16,27 +11,18 @@ const Hero = ({ siteTitle }) => (
             padding: '4rem 1rem',
         }}
     >
-        <h1 style={{ textAlign: 'center' }}>Flare: Vocabulary Builder</h1>
-        <p style={{ textAlign: 'center', maxWidth: 440 }}>
-            This landing page looks great on all devices and is minimal in
-            design. Add what you want and deploy.
-        </p>
-        <div style={{ margin: 60, width: '250px', position: 'relative' }}>
-            <div style={{ clipPath: 'inset(2% 5% round 2% 5%)' }}>
-                <MockupContent />
-            </div>
-            <div
-                style={{
-                    position: 'absolute',
-                    width: '250px',
-                    top: 0,
-                }}
-            >
-                <img
-                    src={mockupFrame}
-                    alt="outlines of shapes and confetti in the background "
-                />
-            </div>
+        <h1 style={{ textAlign: 'center' }}>Flare</h1>
+        <h2 style={{ textAlign: 'center' }}>Vocabulary Builder</h2>
+        <div
+            style={{
+                marginBottom: 40,
+                marginTop: 20,
+                // width: '250px',
+                height: '600px',
+                position: 'relative',
+            }}
+        >
+            <MockupContent />
         </div>
         <a
             // eslint-disable-next-line max-len

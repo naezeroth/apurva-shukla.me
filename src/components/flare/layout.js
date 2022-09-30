@@ -29,7 +29,7 @@ const Layout = ({ children }) => (
                 <div
                     style={{
                         padding: '0 1rem',
-                        backgroundImage: `url(${background})`,
+                        // backgroundImage: `url(${background})`,
                     }}
                 >
                     <main>{children}</main>
