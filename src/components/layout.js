@@ -52,14 +52,17 @@ class Layout extends React.Component {
                                 iconClass = 'fa fa-moon-o fa-2x';
                             } else {
                                 iconClass =
-                                    theme === 'light'
-                                        ? 'fa fa-moon-o fa-2x'
-                                        : 'fa fa-sun-o fa-2x';
+                                    theme === 'light' ?
+                                        'fa fa-moon-o fa-2x' :
+                                        'fa fa-sun-o fa-2x';
                             }
                             return (
                                 <div
                                     style={{
                                         paddingTop: '0.5rem',
+                                        transitionProperty: 'all',
+                                        transitionTimingFunction: 'ease',
+                                        transitionDuration: '2s'
                                     }}
                                 >
                                     <i
@@ -69,9 +72,9 @@ class Layout extends React.Component {
                                         }}
                                         onClick={() => {
                                             const nextTheme =
-                                                theme === 'light'
-                                                    ? 'dark'
-                                                    : 'light';
+                                                theme === 'light' ?
+                                                    'dark' :
+                                                    'light';
                                             toggleTheme(nextTheme);
                                         }}
                                     />
@@ -116,9 +119,9 @@ class Layout extends React.Component {
                                     iconClass = 'fa fa-moon-o fa-2x';
                                 } else {
                                     iconClass =
-                                        theme === 'light'
-                                            ? 'fa fa-moon-o fa-2x'
-                                            : 'fa fa-sun-o fa-2x';
+                                        theme === 'light' ?
+                                            'fa fa-moon-o fa-2x' :
+                                            'fa fa-sun-o fa-2x';
                                 }
                                 return (
                                     <div>
@@ -129,9 +132,9 @@ class Layout extends React.Component {
                                             }}
                                             onClick={() => {
                                                 const nextTheme =
-                                                    theme === 'light'
-                                                        ? 'dark'
-                                                        : 'light';
+                                                    theme === 'light' ?
+                                                        'dark' :
+                                                        'light';
                                                 toggleTheme(nextTheme);
                                             }}
                                         />
@@ -174,6 +177,7 @@ class Layout extends React.Component {
                         marginTop: '35px',
                     }}
                 >
+                    {'     '}
                     © {new Date().getFullYear()}, Built with ❤️ on{' '}
                     <a href="https://www.gatsbyjs.org">Gatsby</a>
                     {'     '}

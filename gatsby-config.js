@@ -12,7 +12,6 @@ module.exports = {
         },
     },
     plugins: [
-        'gatsby-plugin-netlify-cms',
         'gatsby-plugin-styled-components',
         'gatsby-plugin-twitter',
         'gatsby-transformer-sharp',
@@ -22,7 +21,6 @@ module.exports = {
                 stripMetadata: false, // EXIF data in original should be preserved
             },
         },
-        'gatsby-plugin-offline',
         'gatsby-plugin-react-helmet',
         'gatsby-plugin-dark-mode',
         'gatsby-plugin-sharp-exif',
@@ -71,7 +69,7 @@ module.exports = {
                         options: {
                             maxWidth: 590,
                             showCaptions: true,
-                            wrapperStyle: "border-style: none; text-align: center",
+                            wrapperStyle: 'border-style: none; text-align: center',
                         },
                     },
                     {
@@ -81,26 +79,13 @@ module.exports = {
                         },
                     },
                     {
-                        resolve: 'gatsby-remark-vscode',
-                        options: {
-                            plugins: [
-                                {
-                                    resolve: 'gatsby-remark-vscode',
-                                    options: {
-                                        theme: 'Solarized Light', // Or install your favorite theme from GitHub
-                                    },
-                                },
-                            ],
-                        },
-                    },
-                    {
                         resolve: 'gatsby-remark-copy-linked-files',
                     },
                     {
                         resolve: 'gatsby-remark-smartypants',
                     },
                     {
-                        resolve: `gatsby-remark-embedder`,
+                        resolve: 'gatsby-remark-embedder',
                         options: {
                             customTransformers: [
                                 // Your custom transformers
@@ -184,14 +169,6 @@ module.exports = {
                         match: '^/blog/',
                     },
                 ],
-            },
-        },
-        {
-            resolve: 'gatsby-plugin-matomo',
-            options: {
-                siteId: '1',
-                matomoUrl: 'https://matomo.apurva-shukla.me/',
-                siteUrl: 'https://apurva-shukla.me',
             },
         },
         {

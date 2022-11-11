@@ -1,11 +1,11 @@
 {
-  "name": "gatsby-personal-starter-blog",
+  "name": "personal-website",
   "private": true,
-  "description": "A personal blog starter for a blog powered by Netlify CMS, based on the default blog starter",
+  "description": "Apurva Shukla's website",
   "version": "1.0.0",
   "author": "Apurva Shukla",
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/naezeroth/personal-website/issues"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.5.1",
@@ -18,12 +18,8 @@
     "gatsby-image": "^2.0.39",
     "gatsby-plugin-dark-mode": "^1.1.2",
     "gatsby-plugin-feed": "^3.6.0",
-    "gatsby-plugin-feed-mdx": "^1.0.0",
     "gatsby-plugin-manifest": "^2.0.29",
-    "gatsby-plugin-matomo": "^0.8.3",
     "gatsby-plugin-mdx": "^1.2.14",
-    "gatsby-plugin-netlify-cms": "^4.3.11",
-    "gatsby-plugin-offline": "^2.0.25",
     "gatsby-plugin-react-helmet": "^3.0.12",
     "gatsby-plugin-sharp": "^2.0.35",
     "gatsby-plugin-sharp-exif": "^1.0.2",
@@ -39,20 +35,16 @@
     "gatsby-source-filesystem": "^2.0.29",
     "gatsby-transformer-sharp": "^2.1.18",
     "gatsby-transformer-yaml": "^2.4.15",
-    "netlify-cms-app": "^2.9.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.0",
     "react-images": "^1.1.7",
     "react-photo-gallery": "^8.0.0",
-    "react-switch": "^5.0.0",
     "react-typography": "^0.16.19",
     "remark-unwrap-images": "^2.1.0",
     "styled-components": "^4.2.0",
     "terminal-in-react": "^4.3.1",
-    "typeface-merriweather": "0.0.72",
-    "typeface-montserrat": "0.0.54",
     "typography": "^0.16.19",
     "typography-theme-fairy-gates": "^0.16.19"
   },
@@ -60,16 +52,12 @@
     "eslint": "^7.27.0",
     "prettier": "^1.17.0"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "homepage": "https://apurva-shukla.me",
   "keywords": [
     "gatsby"
   ],
   "license": "MIT",
   "main": "n/a",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
-  },
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
