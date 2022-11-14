@@ -1,11 +1,11 @@
-// const wrapESMPlugin = (name) =>
-//     function wrapESM(opts) {
-//         return async (...args) => {
-//             const mod = await import(name);
-//             const plugin = mod.default(opts);
-//             return plugin(...args);
-//         };
-//     };
+const wrapESMPlugin = (name) =>
+    function wrapESM(opts) {
+        return async (...args) => {
+            const mod = await import(name);
+            const plugin = mod.default(opts);
+            return plugin(...args);
+        };
+    };
 
 module.exports = {
     siteMetadata: {
@@ -113,22 +113,23 @@ module.exports = {
                         },
                     },
                 ],
-                // mdxOptions: {
-                //     remarkPlugins: [
-                //       // Add GitHub Flavored Markdown (GFM) support
-                //     //   wrapESMPlugin(`remark-gfm`),
-                //       // To pass options, use a 2-element array with the
-                //       // configuration in an object in the second element
-                //     //   [require(`remark-external-links`), { target: false }],
-                //     ],
-                //     // rehypePlugins: [
-                //     //   // Generate heading ids for rehype-autolink-headings
-                //     //   require(`rehype-slug`),
-                //     //   // To pass options, use a 2-element array with the
-                //     //   // configuration in an object in the second element
-                //     //   [require(`rehype-autolink-headings`), { behavior: `wrap` }],
-                //     // ],
-                // },
+                mdxOptions: {
+                    remarkPlugins: [
+                      // Add GitHub Flavored Markdown (GFM) support
+                    //   wrapESMPlugin(`remark-gfm`),
+                      require(`remark-gfm`),
+                      // To pass options, use a 2-element array with the
+                      // configuration in an object in the second element
+                    //   [require(`remark-external-links`), { target: false }],
+                    ],
+                    // rehypePlugins: [
+                    //   // Generate heading ids for rehype-autolink-headings
+                    //   require(`rehype-slug`),
+                    //   // To pass options, use a 2-element array with the
+                    //   // configuration in an object in the second element
+                    //   [require(`rehype-autolink-headings`), { behavior: `wrap` }],
+                    // ],
+                },
                 // plugins: ['gatsby-remark-images'],
                 // remarkPlugins: [require('remark-unwrap-images')]
             },
