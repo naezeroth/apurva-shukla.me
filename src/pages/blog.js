@@ -63,7 +63,6 @@ class Blog extends React.Component {
                                             node.excerpt,
                                     }}
                                 />
-                                <small>{node.timeToRead} min read</small>
                                 {node.frontmatter.tags && (
                                     <TagBar tags={node.frontmatter.tags} />
                                 )}
@@ -79,30 +78,27 @@ class Blog extends React.Component {
     }
 }
 
-export const query = graphql`
-    query {
-        site {
-            siteMetadata {
-                title
-            }
-        }
-        allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
-            edges {
-                node {
-                    excerpt
-                    timeToRead
-                    fields {
-                        slug
-                    }
-                    frontmatter {
-                        date(formatString: "MMMM DD, YYYY")
-                        title
-                        description
-                        tags
-                    }
-                }
-            }
-        }
+export const query = graphql`{
+  site {
+    siteMetadata {
+      title
     }
-`;
+  }
+  allMdx(sort: {frontmatter: {date: DESC}}) {
+    edges {
+      node {
+        excerpt
+        fields {
+          slug
+        }
+        frontmatter {
+          date(formatString: "MMMM DD, YYYY")
+          title
+          description
+          tags
+        }
+      }
+    }
+  }
+}`;
 export default Blog;

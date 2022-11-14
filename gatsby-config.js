@@ -1,3 +1,12 @@
+// const wrapESMPlugin = (name) =>
+//     function wrapESM(opts) {
+//         return async (...args) => {
+//             const mod = await import(name);
+//             const plugin = mod.default(opts);
+//             return plugin(...args);
+//         };
+//     };
+
 module.exports = {
     siteMetadata: {
         title: 'Apurva Shukla',
@@ -24,6 +33,13 @@ module.exports = {
         'gatsby-plugin-react-helmet',
         'gatsby-plugin-dark-mode',
         'gatsby-plugin-sharp-exif',
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+                name: `pages`,
+                path: `${__dirname}/src/pages`,
+            },
+        },
         {
             resolve: 'gatsby-source-filesystem',
             options: {
@@ -69,7 +85,8 @@ module.exports = {
                         options: {
                             maxWidth: 590,
                             showCaptions: true,
-                            wrapperStyle: 'border-style: none; text-align: center',
+                            wrapperStyle:
+                                'border-style: none; text-align: center',
                         },
                     },
                     {
@@ -94,10 +111,26 @@ module.exports = {
                                 // The service-specific options by the name of the service
                             },
                         },
-                    }
+                    },
                 ],
-                plugins: ['gatsby-remark-images'],
-                remarkPlugins: [require('remark-unwrap-images')]
+                // mdxOptions: {
+                //     remarkPlugins: [
+                //       // Add GitHub Flavored Markdown (GFM) support
+                //     //   wrapESMPlugin(`remark-gfm`),
+                //       // To pass options, use a 2-element array with the
+                //       // configuration in an object in the second element
+                //     //   [require(`remark-external-links`), { target: false }],
+                //     ],
+                //     // rehypePlugins: [
+                //     //   // Generate heading ids for rehype-autolink-headings
+                //     //   require(`rehype-slug`),
+                //     //   // To pass options, use a 2-element array with the
+                //     //   // configuration in an object in the second element
+                //     //   [require(`rehype-autolink-headings`), { behavior: `wrap` }],
+                //     // ],
+                // },
+                // plugins: ['gatsby-remark-images'],
+                // remarkPlugins: [require('remark-unwrap-images')]
             },
         },
         {
@@ -118,7 +151,7 @@ module.exports = {
                 feeds: [
                     {
                         serialize: ({ query: { site, allMdx } }) => {
-                            return allMdx.edges.map(edge => {
+                            return allMdx.edges.map((edge) => {
                                 return Object.assign(
                                     {},
                                     edge.node.frontmatter,
@@ -142,45 +175,29 @@ module.exports = {
                                 );
                             });
                         },
-                        query: `
-                    {
-                      allMdx(
-                        sort: { fields: [frontmatter___date], order: DESC }
-                      ) {
-                        edges {
-                          node {
-                            excerpt
-                            html
-                            fields {
-                              slug
-                            }
-                            frontmatter {
-                              title
-                              date
-                            }
-                          }
-                        }
-                      }
-                    }
-                  `,
+                        query: `{
+                                    allMdx(sort: {frontmatter: {date: DESC}}) {
+                                        edges {
+                                        node {
+                                            excerpt
+                                            html
+                                            fields {
+                                            slug
+                                            }
+                                            frontmatter {
+                                            title
+                                            date
+                                            }
+                                        }
+                                        }
+                                    }
+                                }`,
                         output: '/rss.xml',
                         // eslint-disable-next-line quotes
                         title: "Apurva Shukla's RSS Feed",
                         match: '^/blog/',
                     },
                 ],
-            },
-        },
-        {
-            resolve: 'gatsby-plugin-manifest',
-            options: {
-                name: 'Gatsby Starter Blog',
-                short_name: 'GatsbyJS',
-                start_url: '/',
-                background_color: '#ffffff',
-                theme_color: '#663399',
-                display: 'minimal-ui',
-                icon: 'content/assets/favicon.ico',
             },
         },
         'gatsby-transformer-yaml',
@@ -197,5 +214,6 @@ module.exports = {
                 pathToConfigModule: 'src/utils/typography',
             },
         },
+        'gatsby-plugin-image',
     ],
 };

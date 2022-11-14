@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { StaticQuery, graphql, Link } from 'gatsby';
-import Image from 'gatsby-image';
+import { GatsbyImage } from "gatsby-plugin-image";
 import styled from 'styled-components';
 
 import { rhythm } from '../utils/typography';
@@ -26,8 +26,8 @@ function WelcomeBio() {
                             lineHeight: '1.5em',
                         }}
                     >
-                        <Image
-                            fixed={data.avatar.childImageSharp.fixed}
+                        <GatsbyImage
+                            image={data.avatar.childImageSharp.gatsbyImageData}
                             alt={author}
                             style={{
                                 marginRight: rhythm(2 / 3),
@@ -37,8 +37,7 @@ function WelcomeBio() {
                             }}
                             imgStyle={{
                                 borderRadius: '20%',
-                            }}
-                        />
+                            }} />
                         <p style={{ fontWeight: '500' }}>
                             Hey there! Welcome to my website. My name is Apurva
                             Shukla and here you can find my{' '}
@@ -60,22 +59,18 @@ function WelcomeBio() {
     );
 }
 
-const NewbioQuery = graphql`
-    query NewbioQuery {
-        avatar: file(absolutePath: { regex: "/profile.png/" }) {
-            childImageSharp {
-                fixed(width: 100, height: 100) {
-                    ...GatsbyImageSharpFixed
-                }
-            }
-        }
-        site {
-            siteMetadata {
-                author
-            }
-        }
+const NewbioQuery = graphql`query NewbioQuery {
+  avatar: file(absolutePath: {regex: "/profile.png/"}) {
+    childImageSharp {
+      gatsbyImageData(width: 100, height: 100, layout: FIXED)
     }
-`;
+  }
+  site {
+    siteMetadata {
+      author
+    }
+  }
+}`;
 
 const Container = styled.div`
     display: flex;

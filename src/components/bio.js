@@ -1,6 +1,6 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
-import Image from 'gatsby-image';
+import { GatsbyImage } from "gatsby-plugin-image";
 import styled from 'styled-components';
 
 import { rhythm } from '../utils/typography';
@@ -14,8 +14,8 @@ function Bio(props) {
                 const { author } = data.site.siteMetadata;
                 return (
                     <Container style={{ ...style }}>
-                        <Image
-                            fixed={data.avatar.childImageSharp.fixed}
+                        <GatsbyImage
+                            image={data.avatar.childImageSharp.gatsbyImageData}
                             alt={author}
                             style={{
                                 // eslint-disable-next-line no-magic-numbers
@@ -26,8 +26,7 @@ function Bio(props) {
                             }}
                             imgStyle={{
                                 borderRadius: '25%',
-                            }}
-                        />
+                            }} />
                         <br />
                         <p style={{ marginTop: '35px' }}>
                             Created by <strong>{author}</strong>.{' '}
@@ -39,22 +38,18 @@ function Bio(props) {
     );
 }
 
-const bioQuery = graphql`
-    query BioQuery {
-        avatar: file(absolutePath: { regex: "/profile.png/" }) {
-            childImageSharp {
-                fixed(width: 100, height: 100) {
-                    ...GatsbyImageSharpFixed
-                }
-            }
-        }
-        site {
-            siteMetadata {
-                author
-            }
-        }
+const bioQuery = graphql`query BioQuery {
+  avatar: file(absolutePath: {regex: "/profile.png/"}) {
+    childImageSharp {
+      gatsbyImageData(width: 100, height: 100, layout: FIXED)
     }
-`;
+  }
+  site {
+    siteMetadata {
+      author
+    }
+  }
+}`;
 
 const Container = styled.div`
     display: flex;

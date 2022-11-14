@@ -50,14 +50,16 @@ class CustomGallery extends React.Component {
         const peopleIndex = Math.floor(
             Math.random() * this.props.photos.people.length
         );
+        console.log(this.props.photos.built[builtIndex]);
+
         const naturalPhoto = `url('${
-            this.props.photos.natural[naturalIndex].fluid.srcSet.split(' ')[0]
+            this.props.photos.natural[naturalIndex].fluid.images.sources[0].srcSet.split(' ')[0]
         }')`;
         const builtPhoto = `url('${
-            this.props.photos.built[builtIndex].fluid.srcSet.split(' ')[0]
+            this.props.photos.built[builtIndex].fluid.images.sources[0].srcSet.split(' ')[0]
         }')`;
         const peoplePhoto = `url('${
-            this.props.photos.people[peopleIndex].fluid.srcSet.split(' ')[0]
+            this.props.photos.people[peopleIndex].fluid.images.sources[0].srcSet.split(' ')[0]
         }')`;
 
         return (
@@ -85,7 +87,7 @@ class CustomGallery extends React.Component {
                                         views={this.props.photos[
                                             this.state.openGallery
                                         ].map(x => ({
-                                            ...x.fluid,
+                                            ...x.fluid.images.sources,
                                             caption: JSON.stringify(x.data),
                                         }))}
                                     />

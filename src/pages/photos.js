@@ -13,7 +13,7 @@ class Photos extends React.Component {
         const siteTitle = data.site.siteMetadata.title;
         let natural = data.natural.edges.map(({ node }) => ({
             fluid: {
-                ...node.childImageSharp.fluid,
+                ...node.childImageSharp.gatsbyImageData,
                 height: 3,
                 width: 4,
             },
@@ -31,7 +31,7 @@ class Photos extends React.Component {
         }));
         let built = data.built.edges.map(({ node }) => ({
             fluid: {
-                ...node.childImageSharp.fluid,
+                ...node.childImageSharp.gatsbyImageData,
                 height: 3,
                 width: 4,
             },
@@ -49,7 +49,7 @@ class Photos extends React.Component {
         }));
         let people = data.people.edges.map(({ node }) => ({
             fluid: {
-                ...node.childImageSharp.fluid,
+                ...node.childImageSharp.gatsbyImageData,
                 height: 3,
                 width: 4,
             },
@@ -80,120 +80,103 @@ class Photos extends React.Component {
     }
 }
 
-export const query = graphql`
-    query {
-        site {
-            siteMetadata {
-                title
-            }
-        }
-        natural: allFile(
-            filter: {
-                extension: { regex: "/(jpeg|jpg)/" }
-                sourceInstanceName: { eq: "natural" }
-            }
-            sort: { fields: [name], order: ASC }
-        ) {
-            edges {
-                node {
-                    name
-                    childImageSharp {
-                        fluid(maxWidth: 2048) {
-                            ...GatsbyImageSharpFluid
-                        }
-                        fields {
-                            exif {
-                                raw {
-                                    image {
-                                        Make
-                                        Model
-                                    }
-                                    exif {
-                                        DateTimeOriginal
-                                        ISO
-                                        FNumber
-                                        ShutterSpeedValue
-                                        ApertureValue
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        built: allFile(
-            filter: {
-                extension: { regex: "/(jpeg|jpg)/" }
-                sourceInstanceName: { eq: "built" }
-            }
-            sort: { fields: [name], order: ASC }
-        ) {
-            edges {
-                node {
-                    name
-                    childImageSharp {
-                        fluid(maxWidth: 2048) {
-                            ...GatsbyImageSharpFluid
-                        }
-                        fields {
-                            exif {
-                                raw {
-                                    image {
-                                        Make
-                                        Model
-                                    }
-                                    exif {
-                                        DateTimeOriginal
-                                        ISO
-                                        FNumber
-                                        ShutterSpeedValue
-                                        ApertureValue
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        people: allFile(
-            filter: {
-                extension: { regex: "/(jpeg|jpg)/" }
-                sourceInstanceName: { eq: "people" }
-            }
-            sort: { fields: [name], order: ASC }
-        ) {
-            edges {
-                node {
-                    name
-                    childImageSharp {
-                        fluid(maxWidth: 2048) {
-                            ...GatsbyImageSharpFluid
-                        }
-                        fields {
-                            exif {
-                                raw {
-                                    image {
-                                        Make
-                                        Model
-                                    }
-                                    exif {
-                                        DateTimeOriginal
-                                        ISO
-                                        FNumber
-                                        ShutterSpeedValue
-                                        ApertureValue
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+export const query = graphql`{
+  site {
+    siteMetadata {
+      title
     }
-`;
+  }
+  natural: allFile(
+    filter: {extension: {regex: "/(jpeg|jpg)/"}, sourceInstanceName: {eq: "natural"}}
+    sort: {name: ASC}
+  ) {
+    edges {
+      node {
+        name
+        childImageSharp {
+          gatsbyImageData(layout: FULL_WIDTH)
+          fields {
+            exif {
+              raw {
+                image {
+                  Make
+                  Model
+                }
+                exif {
+                  DateTimeOriginal
+                  ISO
+                  FNumber
+                  ShutterSpeedValue
+                  ApertureValue
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  built: allFile(
+    filter: {extension: {regex: "/(jpeg|jpg)/"}, sourceInstanceName: {eq: "built"}}
+    sort: {name: ASC}
+  ) {
+    edges {
+      node {
+        name
+        childImageSharp {
+          gatsbyImageData(layout: FULL_WIDTH)
+          fields {
+            exif {
+              raw {
+                image {
+                  Make
+                  Model
+                }
+                exif {
+                  DateTimeOriginal
+                  ISO
+                  FNumber
+                  ShutterSpeedValue
+                  ApertureValue
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  people: allFile(
+    filter: {extension: {regex: "/(jpeg|jpg)/"}, sourceInstanceName: {eq: "people"}}
+    sort: {name: ASC}
+  ) {
+    edges {
+      node {
+        name
+        childImageSharp {
+          gatsbyImageData(layout: FULL_WIDTH)
+          fields {
+            exif {
+              raw {
+                image {
+                  Make
+                  Model
+                }
+                exif {
+                  DateTimeOriginal
+                  ISO
+                  FNumber
+                  ShutterSpeedValue
+                  ApertureValue
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}`;
 // https://www.npmjs.com/package/exif //For exif details
 // Sub this instead of ...GatsbyImageSharpSizes in igraphql
 // fluid(maxWidth: 300) {

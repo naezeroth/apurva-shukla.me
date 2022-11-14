@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Image from 'gatsby-image';
+import { GatsbyImage } from "gatsby-plugin-image";
 
 const imgWithClick = { cursor: 'pointer' };
 
@@ -33,7 +33,7 @@ const Photo = ({
                 onClick={onClick ? handleClick : null}
                 onKeyDown={handleClick}
             >
-                <Image fluid={photo} />
+                <GatsbyImage image={photo} />
             </div>
         </span>
     );
