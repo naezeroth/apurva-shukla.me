@@ -113,9 +113,6 @@ module.exports = {
                         },
                     },
                     {
-                        resolve: 'gatsby-remark-prismjs-copy-button'
-                    },
-                    {
                         resolve: `gatsby-remark-prismjs`,
                         options: {
                             classPrefix: 'language-',
