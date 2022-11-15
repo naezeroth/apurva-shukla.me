@@ -112,15 +112,33 @@ module.exports = {
                             },
                         },
                     },
+                    {
+                        resolve: 'gatsby-remark-prismjs-copy-button'
+                    },
+                    {
+                        resolve: `gatsby-remark-prismjs`,
+                        options: {
+                            classPrefix: 'language-',
+                            inlineCodeMarker: null,
+                            languageExtensions: [],
+                            // Customize the prompt used in shell output
+                            // Values below are default
+                            prompt: {
+                                user: 'root',
+                                host: 'localhost',
+                                global: false,
+                            },
+                        },
+                    },
                 ],
                 mdxOptions: {
                     remarkPlugins: [
-                      // Add GitHub Flavored Markdown (GFM) support
-                    //   wrapESMPlugin(`remark-gfm`),
-                      require(`remark-gfm`),
-                      // To pass options, use a 2-element array with the
-                      // configuration in an object in the second element
-                    //   [require(`remark-external-links`), { target: false }],
+                        // Add GitHub Flavored Markdown (GFM) support
+                        //   wrapESMPlugin(`remark-gfm`),
+                        require(`remark-gfm`),
+                        // To pass options, use a 2-element array with the
+                        // configuration in an object in the second element
+                        //   [require(`remark-external-links`), { target: false }],
                     ],
                     // rehypePlugins: [
                     //   // Generate heading ids for rehype-autolink-headings
