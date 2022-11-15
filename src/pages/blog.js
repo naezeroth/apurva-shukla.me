@@ -63,6 +63,7 @@ class Blog extends React.Component {
                                             node.excerpt,
                                     }}
                                 />
+                                <small>{node.fields.timeToRead.text}</small>
                                 {node.frontmatter.tags && (
                                     <TagBar tags={node.frontmatter.tags} />
                                 )}
@@ -90,6 +91,9 @@ export const query = graphql`{
         excerpt
         fields {
           slug
+          timeToRead {
+            text
+          }
         }
         frontmatter {
           date(formatString: "MMMM DD, YYYY")

@@ -49,7 +49,15 @@ const BlogPostTemplate = ({
             >
                 {mdx.frontmatter.title}
             </h1>
-            <p
+            <span
+                style={{
+                    ...scale(-1 / 5),
+                    display: 'block',
+                }}
+            >
+                {mdx.frontmatter.date}
+            </span>
+            <span
                 style={{
                     ...scale(-1 / 5),
                     display: 'block',
@@ -57,8 +65,8 @@ const BlogPostTemplate = ({
                     // marginTop: rhythm(-1),
                 }}
             >
-                {mdx.frontmatter.date}
-            </p>
+                <i>{mdx.fields.timeToRead.text}</i>
+            </span>
             {children}
             <hr
                 style={{
@@ -129,6 +137,14 @@ export const pageQuery = graphql`
                             src
                         }
                     }
+                }
+            }
+            fields {
+                timeToRead {
+                    minutes
+                    text
+                    time
+                    words
                 }
             }
         }
