@@ -17,6 +17,9 @@ class IndexPage extends React.Component {
     }
 }
 
+export default IndexPage;
+
+
 export const query = graphql`
     query {
         site {
@@ -36,8 +39,7 @@ export const query = graphql`
     }
 `;
 
+
 export const Head = ({ location, params, data, pageContext }) => (
     <SEO pathname={location.pathname} />
 );
-
-export default IndexPage;

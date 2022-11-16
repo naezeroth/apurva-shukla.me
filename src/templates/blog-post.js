@@ -105,20 +105,6 @@ const BlogPostTemplate = ({
 };
 export default BlogPostTemplate;
 
-export const Head = ({ location, params, data, pageContext }) => (
-    <SEO
-        title={data.mdx.frontmatter.title}
-        pathname={location.pathname}
-        description={data.mdx.frontmatter.description || data.mdx.excerpt}
-        image={
-            data.mdx.frontmatter.featuredimage
-                ? data.mdx.frontmatter.featuredimage.childImageSharp.original
-                      .src
-                : undefined
-        }
-    />
-);
-
 export const pageQuery = graphql`
     query BlogPostBySlug($slug: String!, $slugWithoutSlash: String!) {
         site {
@@ -168,3 +154,17 @@ export const pageQuery = graphql`
         }
     }
 `;
+
+export const Head = ({ location, params, data, pageContext }) => (
+    <SEO
+        title={data.mdx.frontmatter.title}
+        pathname={location.pathname}
+        description={data.mdx.frontmatter.description || data.mdx.excerpt}
+        image={
+            data.mdx.frontmatter.featuredimage
+                ? data.mdx.frontmatter.featuredimage.childImageSharp.original
+                      .src
+                : undefined
+        }
+    />
+);
