@@ -147,3 +147,7 @@ export const pageQuery = graphql`query ($tag: String) {
     }
   }
 }`;
+
+export const Head = ({ location, params, data, pageContext }) => (
+    <SEO pathname={location.pathname} />
+);

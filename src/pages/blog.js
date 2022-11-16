@@ -18,7 +18,6 @@ class Blog extends React.Component {
 
         return (
             <Layout location={this.props.location} title={siteTitle}>
-                <SEO title="All posts" />
                 <div
                     style={{
                         display: 'flex',
@@ -105,4 +104,9 @@ export const query = graphql`{
     }
   }
 }`;
+
 export default Blog;
+
+export const Head = ({ location, params, data, pageContext }) => (
+    <SEO pathname={location.pathname} title="All Blog Posts" />
+);

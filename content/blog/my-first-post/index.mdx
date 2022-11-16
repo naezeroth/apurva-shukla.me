@@ -4,10 +4,11 @@ title: My first post
 featuredimage: "./privacy_image.jpg"
 description: How does this all work?
 ---
+import { foo } from './foo';
 
 I'm learning React & Gatsby's framework all in one go in an effort to build my own personal website. I'm hoping for it to house my blog, photographs, and projects. **So excited!**
 
-```javascript{numberLines: true}
+```javascript{numberLines: 2}
 export function foo () {
     console.log("Hello world!");
 }
@@ -15,28 +16,4 @@ export function foo () {
 
 Hint, check your console!
 
-# GFM
-
-## Autolink literals
-
-www.example.com, https://example.com, and contact@example.com.
-
-## Footnote
-
-A note[^1]
-
-[^1]: Big note.
-
-## Strikethrough
-
-~one~ or ~~two~~ tildes.
-
-## Table
-
-| a | b  |  c |  d  |
-| - | :- | -: | :-: |
-
-## Tasklist
-
-* [ ] to do
-* [x] done
+{foo()}

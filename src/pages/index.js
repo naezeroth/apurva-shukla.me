@@ -11,16 +11,6 @@ class IndexPage extends React.Component {
         const siteTitle = data.site.siteMetadata.title;
         return (
             <Layout location={this.props.location} title={siteTitle}>
-                <SEO
-                    title="Home"
-                    keywords={['blog', 'gatsby', 'javascript', 'react']}
-                    meta={[
-                        {
-                            property: 'og:image',
-                            content: `https://apurva-shukla.me${data.avatar.childImageSharp.original.src}`,
-                        },
-                    ]}
-                />
                 <CustomTerminal />
             </Layout>
         );
@@ -45,5 +35,9 @@ export const query = graphql`
         }
     }
 `;
+
+export const Head = ({ location, params, data, pageContext }) => (
+    <SEO pathname={location.pathname} />
+);
 
 export default IndexPage;

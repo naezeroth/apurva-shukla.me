@@ -69,7 +69,6 @@ class Photos extends React.Component {
 
         return (
             <Layout location={this.props.location} title={siteTitle}>
-                <SEO title="All posts" />
                 <Bio />
                 <CustomGallery photos={allPhotos} />
                 <Link to="/">
@@ -188,3 +187,7 @@ export const query = graphql`{
 // }
 
 export default Photos;
+
+export const Head = ({ location, params, data, pageContext }) => (
+  <SEO pathname={location.pathname} />
+);

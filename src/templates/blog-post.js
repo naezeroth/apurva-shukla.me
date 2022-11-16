@@ -21,16 +21,6 @@ const BlogPostTemplate = ({
 
     return (
         <Layout location={location} title={siteTitle}>
-            <SEO
-                title={mdx.frontmatter.title}
-                description={mdx.frontmatter.description || mdx.excerpt}
-                meta={[
-                    {
-                        property: 'og:image',
-                        content: `https://apurva-shukla.me${mdx.frontmatter.featuredimage.childImageSharp.original.src}`,
-                    },
-                ]}
-            />
             <Link to="/blog/">
                 <div
                     style={{
@@ -114,6 +104,20 @@ const BlogPostTemplate = ({
     );
 };
 export default BlogPostTemplate;
+
+export const Head = ({ location, params, data, pageContext }) => (
+    <SEO
+        title={data.mdx.frontmatter.title}
+        pathname={location.pathname}
+        description={data.mdx.frontmatter.description || data.mdx.excerpt}
+        image={
+            data.mdx.frontmatter.featuredimage
+                ? data.mdx.frontmatter.featuredimage.childImageSharp.original
+                      .src
+                : undefined
+        }
+    />
+);
 
 export const pageQuery = graphql`
     query BlogPostBySlug($slug: String!, $slugWithoutSlash: String!) {

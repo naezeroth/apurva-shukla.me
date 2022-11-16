@@ -1,22 +1,14 @@
-const wrapESMPlugin = (name) =>
-    function wrapESM(opts) {
-        return async (...args) => {
-            const mod = await import(name);
-            const plugin = mod.default(opts);
-            return plugin(...args);
-        };
-    };
-
 module.exports = {
     siteMetadata: {
         title: 'Apurva Shukla',
         author: 'Apurva Shukla',
         description: 'Here you can find my blog, photographs and projects',
+        image: `/profile.png`,
         siteUrl: 'https://apurva-shukla.me',
         social: {
             linkedin: 'https://www.linkedin.com/in/apurva-shukla/',
             github: 'https://github.com/naezeroth/',
-            mail: 'mailto:apurvashukla123@pm.me',
+            mail: 'mailto:hello@apurva-shukla.me',
             twitter: 'https://twitter.com/esaoky',
         },
     },
@@ -131,22 +123,9 @@ module.exports = {
                 mdxOptions: {
                     remarkPlugins: [
                         // Add GitHub Flavored Markdown (GFM) support
-                        //   wrapESMPlugin(`remark-gfm`),
                         require(`remark-gfm`),
-                        // To pass options, use a 2-element array with the
-                        // configuration in an object in the second element
-                        //   [require(`remark-external-links`), { target: false }],
                     ],
-                    // rehypePlugins: [
-                    //   // Generate heading ids for rehype-autolink-headings
-                    //   require(`rehype-slug`),
-                    //   // To pass options, use a 2-element array with the
-                    //   // configuration in an object in the second element
-                    //   [require(`rehype-autolink-headings`), { behavior: `wrap` }],
-                    // ],
                 },
-                // plugins: ['gatsby-remark-images'],
-                // remarkPlugins: [require('remark-unwrap-images')]
             },
         },
         {
