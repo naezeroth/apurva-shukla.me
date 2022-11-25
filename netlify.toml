@@ -4,7 +4,4 @@
   for = "/*"
     [headers.values]
     Access-Control-Allow-Origin = "*"
-[build.environment]
-    NODE_VERSION = "18.12.0"
-    NPM_VERSION = "8.19.2" 
-    
+

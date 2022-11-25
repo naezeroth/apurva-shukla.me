@@ -169,9 +169,7 @@ class Comments extends React.Component {
                 height: '200px',
               }}
               required
-            >
-              {this.state.msg}
-            </textarea>
+            />
           </label>
           <br />
           <span
