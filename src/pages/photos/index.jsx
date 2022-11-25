@@ -1,26 +1,49 @@
 import React from 'react';
-import { Link, graphql } from 'gatsby';
-import Bio from '../components/shared/bio';
-import Layout from '../components/shared/layout';
-import Button from '../components/shared/button';
-import CustomGallery from '../components/photos/custom-gallery';
-import { Header } from '../components/header/header';
-import { transformExif } from '../utils/transformExif';
+import { Link, graphql, navigate } from 'gatsby';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import Gallery from 'react-photo-gallery';
+import styled from 'styled-components';
+import Bio from '../../components/shared/bio';
+import Layout from '../../components/shared/layout';
+import Button from '../../components/shared/button';
+import { Header } from '../../components/header/header';
+import { transformExif } from '../../utils/transformExif';
 
 function Photos(props) {
   const { data } = props;
   const siteTitle = data.site.siteMetadata.title;
 
-  const natural = data.natural.edges.map(({ node }) => (transformExif(node)));
-  const built = data.built.edges.map(({ node }) => (transformExif(node)));
-  const people = data.people.edges.map(({ node }) => (transformExif(node)));
+  const natural = data.natural.edges.map(({ node }) => transformExif(node));
+  const built = data.built.edges.map(({ node }) => transformExif(node));
+  const people = data.people.edges.map(({ node }) => transformExif(node));
 
-  const allPhotos = { natural, built, people };
+  const naturalIndex = Math.floor(Math.random() * natural.length);
+  const builtIndex = Math.floor(Math.random() * built.length);
+  const peopleIndex = Math.floor(Math.random() * people.length);
 
   return (
     <Layout location={props.location} title={siteTitle}>
       <Bio />
-      <CustomGallery photos={allPhotos} />
+      <div style={{ marginTop: '20px', marginInline: 'auto' }}>
+        <Gallery
+            photos={[
+              { ...natural[naturalIndex], link: '/photos/natural', text: 'Natural' },
+              { ...built[builtIndex], link: '/photos/built', text: 'Built' },
+              { ...people[peopleIndex], link: '/photos/people', text: 'People' },
+            ]}
+            direction="row"
+            renderImage={({ photo }) => (
+              <span style={{ width: '33%', paddingBlock: '1%', paddingInline: '2%' }}>
+                <ImageButton
+                    onClick={() => navigate(photo.link)}
+                >
+                  <GatsbyImage image={getImage(photo)} alt="" />
+                  <span style={{ display: 'block', paddingTop: '5px' }}>{photo.text}</span>
+                </ImageButton>
+              </span>
+            )}
+        />
+      </div>
       <Link to="/">
         <Button marginTop="75px">Go Home</Button>
       </Link>
@@ -48,7 +71,7 @@ export const query = graphql`
                 node {
                     name
                     childImageSharp {
-                        gatsbyImageData(layout: FULL_WIDTH)
+                        gatsbyImageData(layout: CONSTRAINED)
                         fields {
                             exif {
                                 raw {
@@ -81,7 +104,7 @@ export const query = graphql`
                 node {
                     name
                     childImageSharp {
-                        gatsbyImageData(layout: FULL_WIDTH)
+                        gatsbyImageData(layout: CONSTRAINED)
                         fields {
                             exif {
                                 raw {
@@ -114,7 +137,7 @@ export const query = graphql`
                 node {
                     name
                     childImageSharp {
-                        gatsbyImageData(layout: FULL_WIDTH)
+                        gatsbyImageData(layout: CONSTRAINED)
                         fields {
                             exif {
                                 raw {
@@ -140,5 +163,23 @@ export const query = graphql`
 `;
 
 export function Head({ location, data }) {
-  return <Header pathName={location.pathName} title={`Photos | ${data.site.siteMetadata.title}`} />;
+  return (
+    <Header
+        pathName={location.pathName}
+        title={`Photos | ${data.site.siteMetadata.title}`}
+    />
+  );
 }
+
+const ImageButton = styled.button`
+    display: block;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+
+    &:hover {
+        box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.25);
+    }
+`;

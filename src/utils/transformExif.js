@@ -1,9 +1,5 @@
 export const transformExif = (node) => ({
-  fluid: {
-    ...node.childImageSharp.gatsbyImageData,
-    height: 3,
-    width: 4,
-  },
+  ...node,
   data: {
     MakeAndModel: `${node.childImageSharp.fields.exif.raw.image.Make} ${node.childImageSharp.fields.exif.raw.image.Model}`,
     ApertureValue:
@@ -15,4 +11,6 @@ export const transformExif = (node) => ({
     DateTimeOriginal:
         node.childImageSharp.fields.exif.raw.exif.DateTimeOriginal,
   },
+  width: 4,
+  height: 3,
 });
