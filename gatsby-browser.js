@@ -1,4 +1,4 @@
 // custom typefaces
-import "typeface-montserrat"
-import "typeface-merriweather"
-import "firacode"
+import 'firacode';
+
+require('prism-solarized-dark/prism-solarizeddark.css');

@@ -1,88 +1,88 @@
 const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
-const _ = require('lodash');
 
-exports.createPages = ({ graphql, actions }) => {
-    const { createPage } = actions;
+const readingTime = require('reading-time');
 
-    const tagTemplate = path.resolve('./src/templates/tag.js');
-    const blogPost = path.resolve('./src/templates/blog-post.js');
-    return graphql(
-        `
-            {
-                allMdx(
-                    sort: { fields: [frontmatter___date], order: DESC }
-                    limit: 1000
-                ) {
-                    edges {
-                        node {
-                            fields {
-                                slug
-                            }
-                            frontmatter {
-                                title
-                            }
-                        }
-                    }
-                }
-                tagsGroup: allMdx(limit: 2000) {
-                    group(field: frontmatter___tags) {
-                        fieldValue
-                    }
-                }
-            }
-        `
-    )
-        .then(result => {
-            if (result.errors) {
-                throw result.errors;
-            }
+exports.createPages = async ({ graphql, actions, reporter }) => {
+  const { createPage } = actions;
 
-            // Create blog posts pages.
-            const posts = result.data.allMdx.edges;
+  const tagTemplate = path.resolve('./src/templates/tag.jsx');
+  const blogPost = path.resolve('./src/templates/blog-post.jsx');
 
-            posts.forEach((post, index) => {
-                const previous =
-                    index === posts.length - 1 ? null : posts[index + 1].node;
-                const next = index === 0 ? null : posts[index - 1].node;
+  const result = await graphql(
+    `{
+    allMdx(sort: {frontmatter: {date: DESC}}, limit: 1000) {
+      nodes {
+        id
+        fields {
+          slug
+        }
+        frontmatter {
+          title
+        }
+        internal {          
+          contentFilePath        
+        }
+      }
+    }
+    tagsGroup: allMdx(limit: 2000) {
+      group(field: {frontmatter: {tags: SELECT}}) {
+        fieldValue
+      }
+    }
+    }`,
+  );
 
-                createPage({
-                    path: `blog${post.node.fields.slug}`,
-                    component: blogPost,
-                    context: {
-                        slug: post.node.fields.slug,
-                        slugWithoutSlash: post.node.fields.slug.slice(1, -1),
-                        previous: previous,
-                        next: next,
-                    },
-                });
-            });
+  if (result.errors) {
+    reporter.panicOnBuild('Error loading MDX result', result.errors);
+  }
 
-            return result;
-        })
-        .then(result => {
-            const tags = result.data.tagsGroup.group;
-            tags.forEach(tag => {
-                createPage({
-                    path: `blog/tag/${tag.fieldValue}`,
-                    component: tagTemplate,
-                    context: {
-                        tag: tag.fieldValue,
-                    },
-                });
-            });
-        });
+  // Create blog posts pages.
+  const posts = result.data.allMdx.nodes;
+
+  posts.forEach((post, index) => {
+    const previous = index === posts.length - 1 ? null : posts[index + 1];
+    const next = index === 0 ? null : posts[index - 1];
+
+    createPage({
+      path: `blog${post.fields.slug}`,
+      component: `${blogPost}?__contentFilePath=${post.internal.contentFilePath}`,
+      context: {
+        id: post.id,
+        slug: post.fields.slug,
+        slugWithoutSlash: post.fields.slug.slice(1, -1),
+        previous,
+        next,
+      },
+    });
+  });
+
+  const tags = result.data.tagsGroup.group;
+  tags.forEach((tag) => {
+    createPage({
+      path: `blog/tag/${tag.fieldValue}`,
+      component: tagTemplate,
+      context: {
+        tag: tag.fieldValue,
+      },
+    });
+  });
 };
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
-    const { createNodeField } = actions;
+  const { createNodeField } = actions;
 
-    if (node.internal.type === 'Mdx') {
-        const value = createFilePath({ node: node, getNode: getNode });
-        createNodeField({
-            name: 'slug',
-            node: node,
-            value: value,
-        });
-    }
+  if (node.internal.type === 'Mdx') {
+    const value = createFilePath({ node, getNode });
+    createNodeField({
+      name: 'slug',
+      node,
+      value,
+    });
+    createNodeField({
+      node,
+      name: 'timeToRead',
+      value: readingTime(node.body),
+    });
+  }
 };
