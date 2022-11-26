@@ -175,23 +175,23 @@ module.exports = {
                 },
               ],
             })),
+            // https://github.com/gatsbyjs/gatsby/discussions/25068 - html not working
             query: `{
-                                    allMdx(sort: {frontmatter: {date: DESC}}) {
-                                        edges {
-                                        node {
-                                            excerpt
-                                            html
-                                            fields {
-                                            slug
-                                            }
-                                            frontmatter {
-                                            title
-                                            date
-                                            }
-                                        }
-                                        }
-                                    }
-                                }`,
+                      allMdx(sort: {frontmatter: {date: DESC}}) {
+                          edges {
+                            node {
+                                excerpt
+                                fields {
+                                  slug
+                                }
+                                frontmatter {
+                                  title
+                                  date
+                                }
+                            }
+                          }
+                      }
+                  }`,
             output: '/rss.xml',
             // eslint-disable-next-line quotes
             title: "Apurva Shukla's RSS Feed",
