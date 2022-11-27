@@ -13,4 +13,6 @@ export const transformExif = (node) => ({
   },
   width: 4,
   height: 3,
+  title: '',
+  description: '',
 });

@@ -1,20 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, graphql } from 'gatsby';
 import Gallery from 'react-photo-gallery';
+import Lightbox from 'yet-another-react-lightbox';
+// eslint-disable-next-line import/no-unresolved
+import Captions from 'yet-another-react-lightbox/plugins/captions';
 import Bio from '../../../components/shared/bio';
 import Layout from '../../../components/shared/layout';
 import Button from '../../../components/shared/button';
 import { Header } from '../../../components/header/header';
 import { transformExif } from '../../../utils/transformExif';
 import Photo from '../../../components/photos/photo';
-import 'react-image-lightbox/style.css';
 import { Back } from '../../../components/shared/social-icons';
+import { transformSlides } from '../../../utils/transformSlides';
 
 function Photos(props) {
   const { data } = props;
   const siteTitle = data.site.siteMetadata.title;
-
   const natural = data.natural.edges.map(({ node }) => transformExif(node));
+  const [openIndex, setOpenIndex] = useState(-1);
+  const slides = transformSlides(natural);
 
   return (
     <Layout location={props.location} title={siteTitle}>
@@ -34,8 +38,16 @@ function Photos(props) {
         <Gallery
             photos={natural}
             renderImage={Photo}
+            onClick={(_, { index }) => setOpenIndex(index)}
         />
       </div>
+      <Lightbox
+        slides={slides}
+        open={openIndex >= 0}
+        index={openIndex}
+        close={() => setOpenIndex(-1)}
+        plugins={[Captions]}
+      />
       <Link to="/">
         <Button marginTop="75px">Go Home</Button>
       </Link>
