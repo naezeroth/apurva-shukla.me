@@ -5,6 +5,10 @@ import './layout.css';
 import { ThemeToggler } from 'gatsby-plugin-dark-mode';
 import { rhythm, scale } from '../../utils/typography';
 import 'font-awesome/css/font-awesome.min.css';
+// eslint-disable-next-line import/no-unresolved
+import 'yet-another-react-lightbox/styles.css';
+// eslint-disable-next-line import/no-unresolved
+import 'yet-another-react-lightbox/plugins/captions.css';
 
 function Layout(props) {
   const { location, title, children } = props;
