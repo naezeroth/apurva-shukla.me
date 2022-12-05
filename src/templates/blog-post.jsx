@@ -22,61 +22,61 @@ function BlogPostTemplate({
     <Layout location={location} title={siteTitle}>
       <Link to="/blog/">
         <div
-                    style={{
-                      textDecoration: 'none !important',
-                      boxShadow: 'none !important',
-                    }}
+          style={{
+            textDecoration: 'none !important',
+            boxShadow: 'none !important',
+          }}
         >
           <Back />
         </div>
       </Link>
       <h1
-                style={{
-                  marginTop: rhythm(1 / 2),
-                  marginBottom: rhythm(1 / 8),
-                }}
+        style={{
+          marginTop: rhythm(1 / 2),
+          marginBottom: rhythm(1 / 8),
+        }}
       >
         {mdx.frontmatter.title}
       </h1>
       <span
-                style={{
-                  ...scale(-1 / 5),
-                  display: 'block',
-                }}
+        style={{
+          ...scale(-1 / 5),
+          display: 'block',
+        }}
       >
         {mdx.frontmatter.date}
       </span>
       <span
-                style={{
-                  ...scale(-1 / 5),
-                  display: 'block',
-                  marginBottom: rhythm(1),
-                }}
+        style={{
+          ...scale(-1 / 5),
+          display: 'block',
+          marginBottom: rhythm(1),
+        }}
       >
         <i>{mdx.fields.timeToRead.text}</i>
       </span>
       {children}
       <hr
-                style={{
-                  marginBottom: rhythm(1),
-                }}
+        style={{
+          marginBottom: rhythm(1),
+        }}
       />
       <SubscribeForm />
       <hr
-                style={{
-                  marginBottom: rhythm(1),
-                }}
+        style={{
+          marginBottom: rhythm(1),
+        }}
       />
       <Bio />
       <br />
       <ul
-                style={{
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  justifyContent: 'space-between',
-                  listStyle: 'none',
-                  padding: 0,
-                }}
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'space-between',
+          listStyle: 'none',
+          padding: 0,
+        }}
       >
         <li>
           {previous && (
@@ -98,9 +98,9 @@ function BlogPostTemplate({
         </li>
       </ul>
       <hr
-                style={{
-                  marginBottom: rhythm(1),
-                }}
+        style={{
+          marginBottom: rhythm(1),
+        }}
       />
       <Comments slug={pageContext.slug} comments={allComments} />
     </Layout>
@@ -161,7 +161,7 @@ export const pageQuery = graphql`
 export function Head({ location, data }) {
   return (
     <Header
-        title={data.mdx.frontmatter.title}
+        title={`${data.mdx.frontmatter.title} | ${data.site.siteMetadata.title}`}
         pathname={location.pathname}
         description={data.mdx.frontmatter.description || data.mdx.excerpt}
         image={
