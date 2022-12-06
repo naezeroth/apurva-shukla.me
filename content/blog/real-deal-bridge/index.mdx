@@ -168,7 +168,7 @@ deploy_stage_server:
 
 The above script allowed us to deploy to our dev and stage server on changes to our **dev** and **master** branch, by running a deploy script like *./dev-deploy.sh* which is detailed below.
 
-```shellscript
+```shell
 forever stop /var/www/real-deal-server-dev/app.js
 cd /var/www/real-deal-server-dev
 git pull

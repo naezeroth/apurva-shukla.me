@@ -6,6 +6,7 @@ import { rhythm } from '../utils/typography';
 import Button from '../components/shared/button';
 import { TagBar } from '../components/blog/tag-bar';
 import { RssButton } from '../components/blog/rss';
+import { PageNumber } from '../components/blog/page-number';
 import { SubscribeButton } from '../components/blog/blog-post/email-button';
 import { Header } from '../components/header/header';
 
@@ -13,6 +14,12 @@ function Blog(props) {
   const { data } = props;
   const siteTitle = data.site.siteMetadata.title;
   const posts = data.allMdx.edges;
+
+  const { currentPage, numPages } = props.pageContext;
+  const isFirst = currentPage === 1;
+  const isLast = currentPage === numPages;
+  const prevPage = currentPage - 1 === 1 ? '' : (currentPage - 1).toString();
+  const nextPage = (currentPage + 1).toString();
 
   return (
     <Layout location={props.location} title={siteTitle}>
@@ -55,18 +62,29 @@ function Blog(props) {
                 }}
                 // eslint-disable-next-line react/no-danger
                 dangerouslySetInnerHTML={{
-                  __html:
-                                              node.frontmatter.description
-                                              || node.excerpt,
+                  __html: node.frontmatter.description || node.excerpt,
                 }}
               />
               <small>{node.fields.timeToRead.text}</small>
-              {node.frontmatter.tags && (
-              <TagBar tags={node.frontmatter.tags} />
-              )}
+              {node.frontmatter.tags && <TagBar tags={node.frontmatter.tags} />}
             </div>
           );
         })}
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          alignContent: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        {!isFirst && <PageNumber text="«" link="/blog" />}
+        {!isFirst && <PageNumber text="‹" link={`/blog/${prevPage}`} />}
+        {/* {!isFirst && <PageNumber text="1" link="/blog" />}
+        {!isFirst && <PageNumber text="2" link="/blog/2" />}
+        {!isFirst && <PageNumber text="3" link="/blog/3" />} */}
+        {!isLast && <PageNumber text="›" link={`/blog/${nextPage}`} />}
+        {!isLast && <PageNumber text="»" link={`/blog/${numPages}`} />}
       </div>
       <Link to="/">
         <Button>Go Home</Button>
@@ -77,33 +95,40 @@ function Blog(props) {
 
 export default Blog;
 
-export const query = graphql`{
-  site {
-    siteMetadata {
-      title
+export const query = graphql`
+  query blogListQuery($skip: Int!, $limit: Int!) {
+    site {
+      siteMetadata {
+        title
+      }
     }
-  }
-  allMdx(sort: {frontmatter: {date: DESC}}) {
-    edges {
-      node {
-        excerpt
-        fields {
-          slug
-          timeToRead {
-            text
+    allMdx(sort: { frontmatter: { date: DESC } }, limit: $limit, skip: $skip) {
+      edges {
+        node {
+          excerpt
+          fields {
+            slug
+            timeToRead {
+              text
+            }
           }
-        }
-        frontmatter {
-          date(formatString: "MMMM DD, YYYY")
-          title
-          description
-          tags
+          frontmatter {
+            date(formatString: "MMMM DD, YYYY")
+            title
+            description
+            tags
+          }
         }
       }
     }
   }
-}`;
+`;
 
 export function Head({ location, data }) {
-  return <Header pathName={location.pathName} title={`Blog | ${data.site.siteMetadata.title}`} />;
+  return (
+    <Header
+      pathName={location.pathName}
+      title={`Blog | ${data.site.siteMetadata.title}`}
+    />
+  );
 }

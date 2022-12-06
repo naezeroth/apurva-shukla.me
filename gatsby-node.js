@@ -6,9 +6,6 @@ const readingTime = require('reading-time');
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
-  const tagTemplate = path.resolve('./src/templates/tag.jsx');
-  const blogPost = path.resolve('./src/templates/blog-post.jsx');
-
   const result = await graphql(
     `{
     allMdx(sort: {frontmatter: {date: DESC}}, limit: 1000) {
@@ -37,8 +34,27 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     reporter.panicOnBuild('Error loading MDX result', result.errors);
   }
 
-  // Create blog posts pages.
   const posts = result.data.allMdx.nodes;
+
+  const blogList = path.resolve('./src/templates/blog-list.jsx');
+  const postsPerPage = 10;
+  const numPages = Math.ceil(posts.length / postsPerPage);
+
+  for (let i = 0; i < numPages; i += 1) {
+    createPage({
+      path: i === 0 ? '/blog' : `/blog/${i + 1}`,
+      component: `${blogList}`,
+      context: {
+        limit: postsPerPage,
+        skip: i * postsPerPage,
+        numPages,
+        currentPage: i + 1,
+      },
+    });
+  }
+
+  // Create blog posts pages.
+  const blogPost = path.resolve('./src/templates/blog-post.jsx');
 
   posts.forEach((post, index) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1];
@@ -57,6 +73,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     });
   });
 
+  // Create tag page
+  const tagTemplate = path.resolve('./src/templates/tag.jsx');
   const tags = result.data.tagsGroup.group;
   tags.forEach((tag) => {
     createPage({
