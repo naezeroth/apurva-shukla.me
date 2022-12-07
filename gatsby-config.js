@@ -35,7 +35,6 @@ module.exports = {
         stripMetadata: false, // EXIF data in original should be preserved
       },
     },
-    'gatsby-plugin-react-helmet',
     'gatsby-plugin-dark-mode',
     'gatsby-plugin-sharp-exif',
     {
