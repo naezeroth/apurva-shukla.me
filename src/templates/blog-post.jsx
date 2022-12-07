@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, graphql } from 'gatsby';
+import { navigate, Link, graphql } from 'gatsby';
 import Bio from '../components/shared/bio';
 import Layout from '../components/shared/layout';
 import { rhythm, scale } from '../utils/typography';
@@ -20,16 +20,15 @@ function BlogPostTemplate({
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Link to="/blog/">
-        <div
+      <div
           style={{
             textDecoration: 'none !important',
             boxShadow: 'none !important',
           }}
-        >
-          <Back />
-        </div>
-      </Link>
+          onClick={() => navigate(-1)}
+      >
+        <Back />
+      </div>
       <h1
         style={{
           marginTop: rhythm(1 / 2),

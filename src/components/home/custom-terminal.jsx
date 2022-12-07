@@ -1,7 +1,9 @@
 import React from 'react';
 import Terminal from 'terminal-in-react';
 import styled from 'styled-components';
-import { useStaticQuery, graphql, navigate } from 'gatsby';
+import {
+  useStaticQuery, graphql, navigate, Link,
+} from 'gatsby';
 import { rhythm } from '../../utils/typography';
 import WelcomeBio from './welcome-bio';
 import { IconLink } from '../shared/link';
@@ -152,15 +154,11 @@ const whoamiCommand = (social) => (
       global quality of life - for humans and nature alike.
     </p>
     <p>
-      When I'm not typing away on my keyboard, you can find me reading
+      When I'm not typing away on my keyboard, you can find me
       {' '}
-      <a
-        href="https://www.goodreads.com/review/list/26643955?shelf=read&sort=date_read"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        books
-      </a>
+      <Link to="/blog/bookshelf">
+        reading books
+      </Link>
       {' '}
       (please shoot through any recommendations!), trying my hand at
       photography, or simply being
