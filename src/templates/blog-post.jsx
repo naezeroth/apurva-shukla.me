@@ -1,5 +1,5 @@
 import React from 'react';
-import { navigate, Link, graphql } from 'gatsby';
+import { Link, graphql } from 'gatsby';
 import Bio from '../components/shared/bio';
 import Layout from '../components/shared/layout';
 import { rhythm, scale } from '../utils/typography';
@@ -7,6 +7,7 @@ import { Back } from '../components/shared/social-icons';
 import Comments from '../components/blog/blog-post/comments';
 import { SubscribeForm } from '../components/blog/blog-post/subscribe-form';
 import { Header } from '../components/header/header';
+import { TagBar } from '../components/blog/tag-bar';
 
 function BlogPostTemplate({
   data: { mdx, site, comments },
@@ -17,43 +18,24 @@ function BlogPostTemplate({
   const siteTitle = site.siteMetadata.title;
   const { previous, next } = pageContext;
   const allComments = comments.edges;
+  const referringPage = location.state ? location.state.referringPage : '/blog';
 
   return (
     <Layout location={location} title={siteTitle}>
-      <div
+      {/* Below deals with case if referred by another page other than BlogList */}
+      <Link to={referringPage || '/blog'}>
+        <div
           style={{
             textDecoration: 'none !important',
             boxShadow: 'none !important',
           }}
-          onClick={() => navigate(-1)}
-      >
-        <Back />
-      </div>
-      <h1
-        style={{
-          marginTop: rhythm(1 / 2),
-          marginBottom: rhythm(1 / 8),
-        }}
-      >
-        {mdx.frontmatter.title}
-      </h1>
-      <span
-        style={{
-          ...scale(-1 / 5),
-          display: 'block',
-        }}
-      >
-        {mdx.frontmatter.date}
-      </span>
-      <span
-        style={{
-          ...scale(-1 / 5),
-          display: 'block',
-          marginBottom: rhythm(1),
-        }}
-      >
-        <i>{mdx.fields.timeToRead.text}</i>
-      </span>
+        >
+          <Back />
+        </div>
+      </Link>
+      <Title title={mdx.frontmatter.title} />
+      <Date date={mdx.frontmatter.date} />
+      <TimeToRead timeToRead={mdx.fields.timeToRead.text} />
       {children}
       <hr
         style={{
@@ -61,9 +43,13 @@ function BlogPostTemplate({
         }}
       />
       <SubscribeForm />
+      <hr />
+      {mdx.frontmatter.tags && (
+        <TagBar tags={mdx.frontmatter.tags} fontSize="100%" />
+      )}
       <hr
         style={{
-          marginBottom: rhythm(1),
+          marginTop: rhythm(1),
         }}
       />
       <Bio />
@@ -108,67 +94,101 @@ function BlogPostTemplate({
 export default BlogPostTemplate;
 
 export const pageQuery = graphql`
-    query BlogPostBySlug($slug: String!, $slugWithoutSlash: String!) {
-        site {
-            siteMetadata {
-                title
-                author
-            }
-        }
-        mdx(fields: { slug: { eq: $slug } }) {
-            id
-            excerpt(pruneLength: 160)
-            frontmatter {
-                title
-                date(formatString: "MMMM DD, YYYY")
-                description
-                featuredimage {
-                    childImageSharp {
-                        original {
-                            src
-                        }
-                    }
-                }
-            }
-            fields {
-                timeToRead {
-                    minutes
-                    text
-                    time
-                    words
-                }
-            }
-        }
-        comments: allCommentsYaml(
-            filter: { slug: { eq: $slugWithoutSlash } }
-            sort: { date: ASC }
-        ) {
-            edges {
-                node {
-                    _id
-                    slug
-                    name
-                    date
-                    message
-                    replying_to_uid
-                }
-            }
-        }
+  query BlogPostBySlug($slug: String!, $slugWithoutSlash: String!) {
+    site {
+      siteMetadata {
+        title
+        author
+      }
     }
+    mdx(fields: { slug: { eq: $slug } }) {
+      id
+      excerpt(pruneLength: 160)
+      frontmatter {
+        title
+        date(formatString: "MMMM DD, YYYY")
+        description
+        featuredimage {
+          childImageSharp {
+            original {
+              src
+            }
+          }
+        }
+        tags
+      }
+      fields {
+        timeToRead {
+          minutes
+          text
+          time
+          words
+        }
+      }
+    }
+    comments: allCommentsYaml(
+      filter: { slug: { eq: $slugWithoutSlash } }
+      sort: { date: ASC }
+    ) {
+      edges {
+        node {
+          _id
+          slug
+          name
+          date
+          message
+          replying_to_uid
+        }
+      }
+    }
+  }
 `;
 
 export function Head({ location, data }) {
   return (
     <Header
-        title={`${data.mdx.frontmatter.title} | ${data.site.siteMetadata.title}`}
-        pathname={location.pathname}
-        description={data.mdx.frontmatter.description || data.mdx.excerpt}
-        image={
-            data.mdx.frontmatter.featuredimage
-              ? data.mdx.frontmatter.featuredimage.childImageSharp.original
-                .src
-              : undefined
-        }
+      title={`${data.mdx.frontmatter.title} | ${data.site.siteMetadata.title}`}
+      pathname={location.pathname}
+      description={data.mdx.frontmatter.description || data.mdx.excerpt}
+      image={
+        data.mdx.frontmatter.featuredimage
+          ? data.mdx.frontmatter.featuredimage.childImageSharp.original.src
+          : undefined
+      }
     />
   );
 }
+
+const Title = ({ title }) => (
+  <h1
+    style={{
+      marginTop: rhythm(1 / 2),
+      marginBottom: rhythm(1 / 8),
+    }}
+  >
+    {title}
+  </h1>
+);
+
+const Date = ({ date }) => (
+  <span
+    style={{
+      ...scale(-1 / 5),
+      display: 'block',
+    }}
+  >
+    {date}
+  </span>
+);
+
+const TimeToRead = ({ timeToRead }) => (
+  <span
+    style={{
+      ...scale(-1 / 5),
+      display: 'block',
+      marginBottom: rhythm(1),
+    }}
+  >
+    <i>{timeToRead}</i>
+  </span>
+);

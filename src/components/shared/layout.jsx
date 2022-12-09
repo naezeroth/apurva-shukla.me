@@ -49,7 +49,39 @@ function Layout(props) {
             </Link>
           </h1>
         </div>
-        {ThemeTogglerUtil(false)}
+        <div style={{ display: 'flex' }}>
+          <h3
+            style={{
+              marginBlock: 'auto',
+              marginInline: '10px',
+            }}
+          >
+            <Link
+              style={{
+                color: 'inherit',
+              }}
+              to="/blog"
+            >
+              Blog
+            </Link>
+          </h3>
+          <h3
+            style={{
+              marginBlock: 'auto',
+              marginInline: '10px',
+            }}
+          >
+            <Link
+              style={{
+                color: 'inherit',
+              }}
+              to="/photos"
+            >
+              Photos
+            </Link>
+          </h3>
+          {ThemeTogglerUtil(false)}
+        </div>
       </div>
     );
   } else {
@@ -79,7 +111,39 @@ function Layout(props) {
             </Link>
           </h3>
         </div>
-        <div>{ThemeTogglerUtil(true)}</div>
+        <div style={{ display: 'flex' }}>
+          <h4
+            style={{
+              marginBlock: 'auto',
+              marginInline: '10px',
+            }}
+          >
+            <Link
+              style={{
+                color: 'inherit',
+              }}
+              to="/blog"
+            >
+              Blog
+            </Link>
+          </h4>
+          <h4
+            style={{
+              marginBlock: 'auto',
+              marginInline: '10px',
+            }}
+          >
+            <Link
+              style={{
+                color: 'inherit',
+              }}
+              to="/photos"
+            >
+              Photos
+            </Link>
+          </h4>
+          {ThemeTogglerUtil(true)}
+        </div>
       </div>
     );
   }
@@ -143,10 +207,11 @@ const ThemeTogglerUtil = (isPhoto) => (
       return (
         <div
           style={{
-            // paddingTop: isPhoto ? '0rem' : '0.5rem',
             transitionProperty: 'all',
             transitionTimingFunction: 'ease',
             transitionDuration: '2s',
+            marginLeft: '1rem',
+            minWidth: '3rem',
           }}
         >
           <i
