@@ -1,7 +1,7 @@
 import React from 'react';
 import { navigate } from 'gatsby';
 
-export function TagBar({ tags }) {
+export function TagBar({ tags, fontSize = '14px' }) {
   return (
     <div>
       {tags.map((tag) => (
@@ -11,7 +11,7 @@ export function TagBar({ tags }) {
             navigate(`/blog/tag/${tag}`);
           }}
           style={{
-            fontSize: '14px',
+            fontSize,
             color: 'var(--tagNormal)', // var(--tag-color),
             lineHeight: 1.3,
             borderRadius: '5px',

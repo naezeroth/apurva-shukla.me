@@ -50,6 +50,9 @@ function Blog(props) {
                 <Link
                   style={{ boxShadow: 'none' }}
                   to={`/blog${node.fields.slug}`}
+                  state={{
+                    referringPage: isFirst ? '/blog' : `/blog/${currentPage}`,
+                  }}
                 >
                   {title}
                 </Link>
@@ -80,9 +83,7 @@ function Blog(props) {
       >
         {!isFirst && <PageNumber text="«" link="/blog" />}
         {!isFirst && <PageNumber text="‹" link={`/blog/${prevPage}`} />}
-        {/* {!isFirst && <PageNumber text="1" link="/blog" />}
-        {!isFirst && <PageNumber text="2" link="/blog/2" />}
-        {!isFirst && <PageNumber text="3" link="/blog/3" />} */}
+        <NumberLinks currentPage={currentPage} numPages={numPages} />
         {!isLast && <PageNumber text="›" link={`/blog/${nextPage}`} />}
         {!isLast && <PageNumber text="»" link={`/blog/${numPages}`} />}
       </div>
@@ -132,3 +133,17 @@ export function Head({ location, data }) {
     />
   );
 }
+
+const NumberLinks = ({ currentPage, numPages }) => {
+  const prev = currentPage - 2 <= 1 ? 1 : currentPage - 2;
+  const next = currentPage + 2 >= numPages ? numPages : currentPage + 2;
+  const ret = [];
+  for (let i = prev; i <= next; i += 1) {
+    if (i === 1) {
+      ret.push(<PageNumber text={1} link="/blog/" />);
+    } else {
+      ret.push(<PageNumber text={i} link={`/blog/${i}`} />);
+    }
+  }
+  return ret;
+};
