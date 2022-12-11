@@ -17,7 +17,7 @@ function Layout(props) {
 
   const isDefault = location.pathname === homePath
     || location.pathname === blogPath
-    || location.pathname.includes(blogPath);
+    || location.pathname.includes(blogPath); // For all other /blog/ combinations
 
   return (
     <Wrapper
