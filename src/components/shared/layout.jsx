@@ -15,138 +15,10 @@ function Layout(props) {
   const homePath = withPrefix('/');
   const blogPath = withPrefix('/blog/');
 
-  let header;
-  if (
-    location.pathname === homePath
+  const isDefault = location.pathname === homePath
     || location.pathname === blogPath
-    || location.pathname.includes(blogPath) // For all other /blog/ combinations
-  ) {
-    header = (
-      <div
-        style={{
-          marginBottom: '1.75rem',
-          display: 'flex',
-          justifyContent: 'space-between',
-        }}
-      >
-        <div>
-          <h1
-            style={{
-              display: 'inline',
-              ...scale(1.5),
-              marginTop: 0,
-            }}
-          >
-            <Link
-              style={{
-                boxShadow: 'none',
-                textDecoration: 'none',
-                color: 'inherit',
-              }}
-              to="/"
-            >
-              {title}
-            </Link>
-          </h1>
-        </div>
-        <div style={{ display: 'flex' }}>
-          <h3
-            style={{
-              marginBlock: 'auto',
-              marginInline: '10px',
-            }}
-          >
-            <Link
-              style={{
-                color: 'inherit',
-              }}
-              to="/blog"
-            >
-              Blog
-            </Link>
-          </h3>
-          <h3
-            style={{
-              marginBlock: 'auto',
-              marginInline: '10px',
-            }}
-          >
-            <Link
-              style={{
-                color: 'inherit',
-              }}
-              to="/photos"
-            >
-              Photos
-            </Link>
-          </h3>
-          {ThemeTogglerUtil(false)}
-        </div>
-      </div>
-    );
-  } else {
-    header = (
-      <div
-        style={{
-          marginBottom: '1.75rem',
-          display: 'flex',
-          justifyContent: 'space-between',
-        }}
-      >
-        <div>
-          <h3
-            style={{
-              marginTop: 0,
-            }}
-          >
-            <Link
-              style={{
-                boxShadow: 'none',
-                textDecoration: 'none',
-                color: 'inherit',
-              }}
-              to="/"
-            >
-              {title}
-            </Link>
-          </h3>
-        </div>
-        <div style={{ display: 'flex' }}>
-          <h4
-            style={{
-              marginBlock: 'auto',
-              marginInline: '10px',
-            }}
-          >
-            <Link
-              style={{
-                color: 'inherit',
-              }}
-              to="/blog"
-            >
-              Blog
-            </Link>
-          </h4>
-          <h4
-            style={{
-              marginBlock: 'auto',
-              marginInline: '10px',
-            }}
-          >
-            <Link
-              style={{
-                color: 'inherit',
-              }}
-              to="/photos"
-            >
-              Photos
-            </Link>
-          </h4>
-          {ThemeTogglerUtil(true)}
-        </div>
-      </div>
-    );
-  }
+    || location.pathname.includes(blogPath); // For all other /blog/ combinations
+
   return (
     <Wrapper
       style={{
@@ -163,7 +35,9 @@ function Layout(props) {
           padding: `${rhythm(1.5)} ${rhythm(3 / 4)} 0 ${rhythm(3 / 4)}`,
         }}
       >
-        <header>{header}</header>
+        <header>
+          <HeaderGenerator title={title} isDefault={isDefault} />
+        </header>
         <main>{children}</main>
       </div>
       <Footer
@@ -229,3 +103,91 @@ const ThemeTogglerUtil = (isPhoto) => (
     }}
   </ThemeToggler>
 );
+
+const HeaderGenerator = ({ title, isDefault }) => (
+  <div
+    style={{
+      marginBottom: '1.75rem',
+      display: 'flex',
+      justifyContent: 'space-between',
+    }}
+  >
+    <div>
+      <Title isDefault={isDefault}>
+        <Link
+          style={{
+            boxShadow: 'none',
+            textDecoration: 'none',
+            color: 'inherit',
+          }}
+          to="/"
+        >
+          {title}
+        </Link>
+      </Title>
+    </div>
+    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+      <Subtitle isDefault={isDefault}>
+        <Link
+          style={{
+            color: 'inherit',
+          }}
+          to="/blog"
+        >
+          Blog
+        </Link>
+      </Subtitle>
+      <Subtitle isDefault={isDefault}>
+        <Link
+          style={{
+            color: 'inherit',
+          }}
+          to="/photos"
+        >
+          Photos
+        </Link>
+      </Subtitle>
+      {ThemeTogglerUtil(false)}
+    </div>
+  </div>
+);
+
+const Title = ({ isDefault, children }) => (isDefault ? (
+  <h1
+      style={{
+        display: 'inline',
+        ...scale(1.5),
+        marginTop: 0,
+      }}
+  >
+    {children}
+  </h1>
+) : (
+  <h3
+      style={{
+        marginTop: 0,
+      }}
+  >
+    {children}
+  </h3>
+));
+
+const Subtitle = ({ isDefault, children }) => (isDefault ? (
+  <h3
+      style={{
+        marginBlock: 'auto',
+        marginInline: '10px',
+      }}
+  >
+    {children}
+  </h3>
+) : (
+  <h4
+      style={{
+        marginBlock: 'auto',
+        marginInline: '10px',
+      }}
+  >
+    {children}
+  </h4>
+));
