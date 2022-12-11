@@ -79,6 +79,7 @@ function Blog(props) {
           display: 'flex',
           alignContent: 'center',
           justifyContent: 'center',
+          marginBottom: '1rem',
         }}
       >
         {!isFirst && <PageNumber text="«" link="/blog" />}
