@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, graphql } from 'gatsby';
 import Bio from '../components/shared/bio';
 import Layout from '../components/shared/layout';
@@ -9,20 +9,47 @@ import { RssButton } from '../components/blog/rss';
 import { PageNumber } from '../components/blog/page-number';
 import { SubscribeButton } from '../components/blog/blog-post/email-button';
 import { Header } from '../components/header/header';
+import { Search } from '../components/blog/search';
+import { useJsSearch } from '../hooks/use-js-search';
 
-function Blog(props) {
-  const { data } = props;
+function Blog({ data, pageContext, location }) {
   const siteTitle = data.site.siteMetadata.title;
-  const posts = data.allMdx.edges;
 
-  const { currentPage, numPages } = props.pageContext;
+  const { currentPage, numPages } = pageContext;
   const isFirst = currentPage === 1;
   const isLast = currentPage === numPages;
   const prevPage = currentPage - 1 === 1 ? '' : (currentPage - 1).toString();
   const nextPage = (currentPage + 1).toString();
 
+  const { search } = useJsSearch(pageContext.allBlogs);
+  const [blogs, setBlogs] = useState(data.allMdx.edges);
+  const [searched, setSearched] = useState(false);
+  const [initialQuery, setInitialQuery] = useState('');
+
+  // Handles query state and prevents unnecessary rerendering
+  useEffect(() => {
+    const params = new URLSearchParams(location.search.slice(1));
+    const q = params.get('q') ?? '';
+    // Check if we have searched
+    if (q !== initialQuery) {
+      setSearched(false);
+    }
+    setInitialQuery(q);
+    // If no query, reset blogs, also deal with case of empty search bar
+    if (!q || q === '') {
+      setBlogs(data.allMdx.edges);
+      return;
+    }
+    // If query exists and we haven't searched yet, execute search
+    if (q && !searched) {
+      const results = search(q);
+      setBlogs(results);
+      setSearched(true);
+    }
+  }, [searched, data.allMdx.edges, search, location.search, initialQuery]);
+
   return (
-    <Layout location={props.location} title={siteTitle}>
+    <Layout location={location} title={siteTitle}>
       <div
         style={{
           display: 'flex',
@@ -37,8 +64,9 @@ function Blog(props) {
           <RssButton />
         </div>
       </div>
+      <Search initialQuery={initialQuery} numResults={blogs.length} />
       <div style={{ margin: '20px 0 40px' }}>
-        {posts.map(({ node }) => {
+        {blogs.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug;
           return (
             <div key={node.fields.slug}>
@@ -74,20 +102,22 @@ function Blog(props) {
           );
         })}
       </div>
-      <div
-        style={{
-          display: 'flex',
-          alignContent: 'center',
-          justifyContent: 'center',
-          marginBottom: '1rem',
-        }}
-      >
-        {!isFirst && <PageNumber text="«" link="/blog" />}
-        {!isFirst && <PageNumber text="‹" link={`/blog/${prevPage}`} />}
-        <NumberLinks currentPage={currentPage} numPages={numPages} />
-        {!isLast && <PageNumber text="›" link={`/blog/${nextPage}`} />}
-        {!isLast && <PageNumber text="»" link={`/blog/${numPages}`} />}
-      </div>
+      {!initialQuery && (
+        <div
+          style={{
+            display: 'flex',
+            alignContent: 'center',
+            justifyContent: 'center',
+            marginBottom: '2rem',
+          }}
+        >
+          {!isFirst && <PageNumber text="«" link="/blog" />}
+          {!isFirst && <PageNumber text="‹" link={`/blog/${prevPage}`} />}
+          <NumberLinks currentPage={currentPage} numPages={numPages} />
+          {!isLast && <PageNumber text="›" link={`/blog/${nextPage}`} />}
+          {!isLast && <PageNumber text="»" link={`/blog/${numPages}`} />}
+        </div>
+      )}
       <Link to="/">
         <Button>Go Home</Button>
       </Link>
@@ -96,7 +126,6 @@ function Blog(props) {
 }
 
 export default Blog;
-
 export const query = graphql`
   query blogListQuery($skip: Int!, $limit: Int!) {
     site {
@@ -141,9 +170,9 @@ const NumberLinks = ({ currentPage, numPages }) => {
   const ret = [];
   for (let i = prev; i <= next; i += 1) {
     if (i === 1) {
-      ret.push(<PageNumber text={1} link="/blog/" />);
+      ret.push(<PageNumber key={i} text={1} link="/blog/" />);
     } else {
-      ret.push(<PageNumber text={i} link={`/blog/${i}`} />);
+      ret.push(<PageNumber key={i} text={i} link={`/blog/${i}`} />);
     }
   }
   return ret;
