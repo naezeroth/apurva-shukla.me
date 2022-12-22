@@ -8,25 +8,31 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const result = await graphql(
     `{
-    allMdx(sort: {frontmatter: {date: DESC}}, limit: 1000) {
-      nodes {
-        id
-        fields {
-          slug
-        }
-        frontmatter {
-          title
-        }
-        internal {          
-          contentFilePath        
+      allMdx(sort: {frontmatter: {date: DESC}}) {
+        nodes {
+          id
+          body
+          fields {
+            slug
+            timeToRead {
+              text
+            }
+          }
+          frontmatter {
+            title
+            tags
+            description
+          }
+          internal {          
+            contentFilePath        
+          }
         }
       }
-    }
-    tagsGroup: allMdx(limit: 2000) {
-      group(field: {frontmatter: {tags: SELECT}}) {
-        fieldValue
+      tagsGroup: allMdx {
+        group(field: {frontmatter: {tags: SELECT}}) {
+          fieldValue
+        }
       }
-    }
     }`,
   );
 
@@ -49,6 +55,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         skip: i * postsPerPage,
         numPages,
         currentPage: i + 1,
+        allBlogs: posts,
       },
     });
   }
