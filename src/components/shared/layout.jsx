@@ -138,14 +138,26 @@ const HeaderGenerator = ({ title, isDefault }) => (
         </Link>
       </Subtitle>
       <Subtitle isDefault={isDefault}>
-        <Link
+        <a
+          style={{
+            color: 'inherit',
+          }}
+          target="_blank"
+          href="https://photos.apurva-shukla.me"
+          aria-label="Photography Portfolio"
+          rel="noreferrer"
+        >
+          Photos
+        </a>
+
+        {/* <Link
           style={{
             color: 'inherit',
           }}
           to="/photos"
         >
           Photos
-        </Link>
+        </Link> */}
       </Subtitle>
       {ThemeTogglerUtil(false)}
     </div>
