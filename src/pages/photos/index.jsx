@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { Link, graphql, navigate } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
@@ -23,8 +24,8 @@ function Photos(props) {
 
   return (
     <Layout location={props.location} title={siteTitle}>
-      <Bio />
-      <div style={{ marginTop: '20px', marginInline: 'auto' }}>
+      {/* <Bio /> */}
+      {/* <div style={{ marginTop: '20px', marginInline: 'auto' }}>
         <Gallery
             photos={[
               { ...natural[naturalIndex], link: '/photos/natural', text: 'Natural' },
@@ -43,7 +44,8 @@ function Photos(props) {
               </span>
             )}
         />
-      </div>
+      </div> */}
+      <iframe title="photography" src="https://photos.apurva-shukla.me" frameBorder="0" scrolling="yes" seamless="seamless" style={{ display: 'block', width: '100%', height: '100vh' }} />
       <Link to="/">
         <Button marginTop="75px">Go Home</Button>
       </Link>
