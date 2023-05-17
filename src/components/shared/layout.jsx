@@ -1,23 +1,13 @@
 import React from 'react';
-import { Link, withPrefix } from 'gatsby';
+import { Link } from 'gatsby';
 import styled from 'styled-components';
 import './layout.css';
 import { ThemeToggler } from 'gatsby-plugin-dark-mode';
 import { rhythm, scale } from '../../utils/typography';
 import 'font-awesome/css/font-awesome.min.css';
-// eslint-disable-next-line import/no-unresolved
-import 'yet-another-react-lightbox/styles.css';
-// eslint-disable-next-line import/no-unresolved
-import 'yet-another-react-lightbox/plugins/captions.css';
 
 function Layout(props) {
-  const { location, title, children } = props;
-  const homePath = withPrefix('/');
-  const blogPath = withPrefix('/blog/');
-
-  const isDefault = location.pathname === homePath
-    || location.pathname === blogPath
-    || location.pathname.includes(blogPath); // For all other /blog/ combinations
+  const { title, children } = props;
 
   return (
     <Wrapper
@@ -36,7 +26,7 @@ function Layout(props) {
         }}
       >
         <header>
-          <HeaderGenerator title={title} isDefault={isDefault} />
+          <Header title={title} />
         </header>
         <main>{children}</main>
       </div>
@@ -69,7 +59,7 @@ const Footer = styled.footer`
   margin: 24px;
 `;
 
-const ThemeTogglerUtil = (isPhoto) => (
+const ThemeToggle = () => (
   <ThemeToggler>
     {({ theme, toggleTheme }) => {
       let iconClass;
@@ -91,7 +81,7 @@ const ThemeTogglerUtil = (isPhoto) => (
           <i
             className={iconClass}
             style={{
-              fontSize: isPhoto ? '2rem' : '3rem',
+              fontSize: '3rem',
             }}
             onClick={() => {
               const nextTheme = theme === 'light' ? 'dark' : 'light';
@@ -104,7 +94,7 @@ const ThemeTogglerUtil = (isPhoto) => (
   </ThemeToggler>
 );
 
-const HeaderGenerator = ({ title, isDefault }) => (
+const Header = ({ title }) => (
   <div
     style={{
       marginBottom: '1.75rem',
@@ -113,7 +103,7 @@ const HeaderGenerator = ({ title, isDefault }) => (
     }}
   >
     <div>
-      <Title isDefault={isDefault}>
+      <Title>
         <Link
           style={{
             boxShadow: 'none',
@@ -127,7 +117,7 @@ const HeaderGenerator = ({ title, isDefault }) => (
       </Title>
     </div>
     <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-      <Subtitle isDefault={isDefault}>
+      <Subtitle>
         <Link
           style={{
             color: 'inherit',
@@ -137,7 +127,7 @@ const HeaderGenerator = ({ title, isDefault }) => (
           Blog
         </Link>
       </Subtitle>
-      <Subtitle isDefault={isDefault}>
+      <Subtitle>
         <a
           style={{
             color: 'inherit',
@@ -149,22 +139,13 @@ const HeaderGenerator = ({ title, isDefault }) => (
         >
           Photos
         </a>
-
-        {/* <Link
-          style={{
-            color: 'inherit',
-          }}
-          to="/photos"
-        >
-          Photos
-        </Link> */}
       </Subtitle>
-      {ThemeTogglerUtil(false)}
+      <ThemeToggle />
     </div>
   </div>
 );
 
-const Title = ({ isDefault, children }) => (isDefault ? (
+const Title = ({ children }) => (
   <h1
       style={{
         display: 'inline',
@@ -174,17 +155,9 @@ const Title = ({ isDefault, children }) => (isDefault ? (
   >
     {children}
   </h1>
-) : (
-  <h3
-      style={{
-        marginTop: 0,
-      }}
-  >
-    {children}
-  </h3>
-));
+);
 
-const Subtitle = ({ isDefault, children }) => (isDefault ? (
+const Subtitle = ({ children }) => (
   <h3
       style={{
         marginBlock: 'auto',
@@ -193,13 +166,4 @@ const Subtitle = ({ isDefault, children }) => (isDefault ? (
   >
     {children}
   </h3>
-) : (
-  <h4
-      style={{
-        marginBlock: 'auto',
-        marginInline: '10px',
-      }}
-  >
-    {children}
-  </h4>
-));
+);
