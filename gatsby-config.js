@@ -15,14 +15,13 @@ module.exports = {
   siteMetadata: {
     title: 'Apurva Shukla',
     author: 'Apurva Shukla',
-    description: 'Here you can find my blog, photographs and projects',
+    description: 'Hi there! You can find my blog, photographs and projects here',
     image: '/profile.png',
     siteUrl: 'https://apurva-shukla.me',
     social: {
       linkedin: 'https://www.linkedin.com/in/apurva-shukla/',
       github: 'https://github.com/naezeroth/',
       mail: 'mailto:hello@apurva-shukla.me',
-      twitter: 'https://twitter.com/esaoky',
     },
   },
   plugins: [
@@ -59,27 +58,6 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: `${__dirname}/content/photos/built`,
-        name: 'built',
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: `${__dirname}/content/photos/natural`,
-        name: 'natural',
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: `${__dirname}/content/photos/people`,
-        name: 'people',
-      },
-    },
-    {
       resolve: 'gatsby-plugin-mdx',
       options: {
         extensions: ['.mdx', '.md'],
@@ -89,8 +67,7 @@ module.exports = {
             options: {
               maxWidth: 590,
               showCaptions: true,
-              wrapperStyle:
-                                'border-style: none; text-align: center',
+              wrapperStyle: 'border-style: none; text-align: center',
             },
           },
           {

@@ -11,7 +11,7 @@ import { Github, Linkedin, Email } from '../shared/social-icons';
 
 export function CustomTerminal() {
   const data = useStaticQuery(terminalQuery);
-  const resumeUrl = data.resume.publicURL;
+  // const resumeUrl = data.resume.publicURL;
   const { social } = data.site.siteMetadata;
 
   return (
@@ -44,10 +44,10 @@ export function CustomTerminal() {
           Blog: () => navigate('/blog'),
           // 'projects': () => {return("Projects here")},
           // 'Projects': () => {return("Projects here")},
-          photos: () => navigate('/photos'),
-          Photos: () => navigate('/photos'),
-          resume: () => navigate(resumeUrl),
-          Resume: () => navigate(resumeUrl),
+          photos: () => { window.open('https://photos.apurva-shukla.me', '_blank'); return 'Opened portfolio in new tab'; },
+          Photos: () => { window.open('https://photos.apurva-shukla.me', '_blank'); return 'Opened portfolio in new tab'; },
+          // resume: () => navigate(resumeUrl),
+          // Resume: () => navigate(resumeUrl),
           Help: helpCommand,
           help: helpCommand,
           show: showCommand,
@@ -129,9 +129,9 @@ const helpCommand = () => (
       - checkout my photography
       portfolio
     </p>
-    <b style={{ color: '#b58900' }}>resume</b>
+    {/* <b style={{ color: '#b58900' }}>resume</b>
     {' '}
-    - check out my resume
+    - check out my resume */}
   </span>
 );
 

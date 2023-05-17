@@ -37,10 +37,14 @@ function WelcomeBio() {
         </Link>
         ,
         {' '}
-
-        <Link to="/photos/" style={{ color: '#859900' }}>
+        <a
+        href="https://photos.apurva-shukla.me"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ color: '#859900' }}
+        >
           photographs
-        </Link>
+        </a>
         {' '}
         and projects. Type
         {' '}
