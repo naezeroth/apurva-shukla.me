@@ -42,10 +42,6 @@
     "prismjs": "^1.29.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-helmet": "^6.1.0",
-    "react-image-lightbox": "^5.1.4",
-    "react-images": "^1.1.7",
-    "react-photo-gallery": "^8.0.0",
     "react-typography": "^0.16.20",
     "reading-time": "^1.5.0",
     "remark-gfm": "^1.0.0",
@@ -53,8 +49,7 @@
     "styled-components": "^5.3.6",
     "terminal-in-react": "^4.3.1",
     "typography": "^0.16.21",
-    "typography-theme-fairy-gates": "^0.16.19",
-    "yet-another-react-lightbox": "^2.2.2"
+    "typography-theme-fairy-gates": "^0.16.19"
   },
   "devDependencies": {
     "eslint": "^8.28.0",
