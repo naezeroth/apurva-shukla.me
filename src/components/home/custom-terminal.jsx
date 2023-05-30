@@ -161,7 +161,15 @@ const whoamiCommand = (social) => (
       </Link>
       {' '}
       (please shoot through any recommendations!), trying my hand at
-      photography, or simply being
+      {' '}
+      <a
+        href="https://photos.apurva-shukla.me"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        photography
+      </a>
+      , or simply being
       {' '}
       <a
         href="https://zenhabits.net/be-still/"
