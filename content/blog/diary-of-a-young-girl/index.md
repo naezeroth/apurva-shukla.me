@@ -2,7 +2,7 @@
 date: 2023-05-17T11:29:13.401Z
 title: "The Diary of a Young Girl by Anne Frank"
 description: "A review of The Diary of a Young Girl"
-tags: ["bookshelf"]
+tags: ["bookshelf", "WW2", "war"]
 ---   
 ⭐ ⭐ ⭐ ⭐ ⭐ 
 
