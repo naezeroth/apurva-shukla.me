@@ -8,7 +8,11 @@ export function TagBar({ tags, fontSize = '14px' }) {
         <div
           key={tag}
           onClick={() => {
-            navigate(`/blog/tag/${tag}`);
+            if (tag === 'bookshelf') {
+              navigate('/blog/bookshelf');
+            } else {
+              navigate(`/blog/tag/${tag}`);
+            }
           }}
           style={{
             fontSize,
