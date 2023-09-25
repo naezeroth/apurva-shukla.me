@@ -22,7 +22,7 @@ export function Search({ initialQuery, numResults }) {
 
   return (
     <div style={{ marginTop: '5px' }}>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} style={{ marginBottom: 'auto' }}>
         <input
           type="text"
           placeholder="Search blogs"

@@ -92,6 +92,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       },
     });
   });
+
+  // Create all-tags page with list of all tags.
+  // Potential for pagination if the tags grow but for now can be one page.
+  const allTagsTemplate = path.resolve('./src/templates/all-tags.jsx');
+  createPage({
+    path: 'blog/all-tags',
+    component: allTagsTemplate,
+    context: {
+      tags: result.data.tagsGroup.group,
+    },
+  });
 };
 
 exports.onCreateNode = ({ node, actions, getNode }) => {

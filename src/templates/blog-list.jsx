@@ -64,7 +64,18 @@ function Blog({ data, pageContext, location }) {
           <RssButton />
         </div>
       </div>
-      <Search initialQuery={initialQuery} numResults={blogs.length} />
+      <div style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+      }}
+      >
+        <Search initialQuery={initialQuery} numResults={blogs.length} />
+        <Link to="/blog/all-tags">
+          All Tags
+        </Link>
+      </div>
       <div style={{ margin: '20px 0 40px' }}>
         {blogs.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug;
