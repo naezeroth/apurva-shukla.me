@@ -2,7 +2,7 @@
 date: 2020-01-19T08:00:00.000Z
 title: 'What We Talk About When We Talk About Love'
 description: 'A review of What We Talk About When We Talk About Love'
-tags: ['bookshelf']
+tags: ['bookshelf', 'love']
 ---   
 ⭐ ⭐ ⭐ ⭐ ⭐ 
 

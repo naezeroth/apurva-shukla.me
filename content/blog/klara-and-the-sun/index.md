@@ -2,7 +2,7 @@
 date: 2024-01-06T13:06:52.312Z
 title: "Klara and the Sun by Kazuo Ishiguro"
 description: "A review of Klara and the Sun"
-tags: ["bookshelf", "fiction", "humanity"]
+tags: ["bookshelf", "fiction", "humanity", "love"]
 ---   
 ⭐ ⭐ ⭐ ⭐ ⭐ 
 
