@@ -6,7 +6,7 @@ tags: ["bookshelf", "fiction", "love"]
 ---   
 ⭐ ⭐ ⭐ ⭐ ⭐
 
-In October, I had recently gone through my first breakup, and it was one where I felt regret, disappointment in myself, and an unfaltering desire to be a better person. That's when I came across this novel, and I picked it up and read it from start to finish on a flight - embarking my first long solo trip abroad, and it was an experience that left me in tears. 
+In October, I had recently gone through the end of my first and only relationship, and it was one where I felt regret, disappointment in myself, and an unfaltering desire to be a better person. That's when I came across this novel, and I picked it up and read it from start to finish on a flight - embarking my first long solo trip abroad, and it was an experience that left me in tears. 
 
 
 Diana Reid's Seeing Other People was a book I needed to read at that exact moment. It was a novel that explored the boundaries of love, and pain caused by love. Reid forces us to question morality, with what's right and wrong when balanced between how you should act, and how you want to act. It explores how people can hurt those they love, and the consequences of those actions and the raw humanity that exists when dealing with that.
