@@ -34,9 +34,9 @@ body.dark {
   --formShadow: 0 2px 15px 0 rgba(26,26,27,0.637);
 }
 
-body.dark img {
+/* body.dark img {
   filter: brightness(0.8) contrast(1.2);
-}
+} */
 
 .gatsby-resp-image-link {
   box-shadow: none;
