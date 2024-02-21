@@ -31,7 +31,7 @@ function AllTags(props) {
       </div>
       <div>
         <h1>All Tags</h1>
-        <Link to="/blog/">
+        <Link to={props?.location?.state?.prevPath ?? '/blog'}>
           <div
             style={{
               textDecoration: 'none !important',

@@ -3,7 +3,7 @@
 import { Link, navigate } from 'gatsby';
 import React, { useEffect, useState } from 'react';
 
-export function Search({ initialQuery, numResults }) {
+export function Search({ path, initialQuery, numResults }) {
   const [query, setQuery] = useState(initialQuery);
 
   useEffect(() => {
@@ -13,7 +13,7 @@ export function Search({ initialQuery, numResults }) {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      await navigate(`/blog/?q=${encodeURI(query)}`);
+      await navigate(`/${path}/?q=${encodeURI(query)}`);
     } catch (err) {
       // eslint-disable-next-line no-console
       console.error(err);
@@ -30,7 +30,7 @@ export function Search({ initialQuery, numResults }) {
           onChange={(e) => setQuery(e.target.value)}
         />
         {!!initialQuery && (
-          <Link to="/blog" style={{ boxShadow: 'none', paddingLeft: '5px' }}>
+          <Link to={`/${path}`} style={{ boxShadow: 'none', paddingLeft: '5px' }}>
             &#10005;
           </Link>
         )}

@@ -34,7 +34,7 @@ function Tags(props) {
       </div>
       <div>
         <h1>{tagHeader}</h1>
-        <Link to="/blog/">
+        <Link to={props?.location?.state?.prevPath ?? '/blog/'}>
           <div
             style={{
               textDecoration: 'none !important',
@@ -48,6 +48,7 @@ function Tags(props) {
         <ul>
           {edges.map(({ node }) => {
             const { title } = node.frontmatter;
+            const pageTitle = node.frontmatter.tags.includes('bookshelf') ? 'bookshelf' : 'blog';
             return (
               <div key={node.fields.slug}>
                 <h3
@@ -57,7 +58,7 @@ function Tags(props) {
                 >
                   <Link
                     style={{ boxShadow: 'none' }}
-                    to={`/blog${node.fields.slug}`}
+                    to={`/${pageTitle}${node.fields.slug}`}
                   >
                     {title}
                   </Link>

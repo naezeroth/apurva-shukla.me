@@ -128,6 +128,16 @@ const Header = ({ title }) => (
         </Link>
       </Subtitle>
       <Subtitle>
+        <Link
+          style={{
+            color: 'inherit',
+          }}
+          to="/bookshelf"
+        >
+          Bookshelf
+        </Link>
+      </Subtitle>
+      <Subtitle>
         <a
           style={{
             color: 'inherit',

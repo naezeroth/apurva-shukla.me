@@ -53,6 +53,13 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
+        path: `${__dirname}/content/bookshelf`,
+        name: 'bookshelf',
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
         path: `${__dirname}/content/assets`,
         name: 'assets',
       },
@@ -134,19 +141,22 @@ module.exports = {
           `,
         feeds: [
           {
-            serialize: ({ query: { site, allMdx } }) => allMdx.edges.map((edge) => ({
-              ...edge.node.frontmatter,
-              description: edge.node.excerpt,
-              date: edge.node.frontmatter.date,
-              url: `${site.siteMetadata.siteUrl}/blog${edge.node.fields.slug}`,
-              guid: `${site.siteMetadata.siteUrl}/blog${edge.node.fields.slug}`,
-              // eslint-disable-next-line camelcase
-              custom_elements: [
-                {
-                  'content:encoded': edge.node.html,
-                },
-              ],
-            })),
+            serialize: ({ query: { site, allMdx } }) => allMdx.edges.map((edge) => {
+              const pageTitle = edge.node.frontmatter.tags && edge.node.frontmatter.tags.includes('bookshelf') ? 'bookshelf' : 'blog';
+              return {
+                ...edge.node.frontmatter,
+                description: edge.node.excerpt,
+                date: edge.node.frontmatter.date,
+                url: `${site.siteMetadata.siteUrl}/${pageTitle}${edge.node.fields.slug}`,
+                guid: `${site.siteMetadata.siteUrl}/${pageTitle}${edge.node.fields.slug}`,
+                // eslint-disable-next-line camelcase
+                custom_elements: [
+                  {
+                    'content:encoded': edge.node.html,
+                  },
+                ],
+              };
+            }),
             // https://github.com/gatsbyjs/gatsby/discussions/25068 - html not working
             query: `{
                       allMdx(sort: {frontmatter: {date: DESC}}) {
@@ -159,6 +169,7 @@ module.exports = {
                                 frontmatter {
                                   title
                                   date
+                                  tags
                                 }
                             }
                           }

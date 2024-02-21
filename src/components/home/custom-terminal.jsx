@@ -156,7 +156,7 @@ const whoamiCommand = (social) => (
     <p>
       When I'm not typing away on my keyboard, you can find me
       {' '}
-      <Link to="/blog/bookshelf">
+      <Link to="/bookshelf/shelf">
         reading books
       </Link>
       {' '}

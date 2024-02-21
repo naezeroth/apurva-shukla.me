@@ -3,16 +3,16 @@ import { graphql } from 'gatsby';
 import { Header } from '../components/header/header';
 import CommonBlogComponent from '../components/blog/list-of-posts';
 
-const Blog = ({ data, pageContext, location }) => (
+const Bookshelf = ({ data, pageContext, location }) => (
   <CommonBlogComponent
     data={data}
     pageContext={pageContext}
     location={location}
-    pageTitle="blog"
+    pageTitle="bookshelf"
   />
 );
 
-export default Blog;
+export default Bookshelf;
 
 export const query = graphql`
   query blogListQuery($skip: Int!, $limit: Int!) {
@@ -21,7 +21,7 @@ export const query = graphql`
         title
       }
     }
-    allMdx(sort: { frontmatter: { date: DESC } }, limit: $limit, skip: $skip, filter: { frontmatter: { tags: { nin: ["bookshelf"] } } }) {
+    allMdx(sort: { frontmatter: { date: DESC } }, limit: $limit, skip: $skip, filter: { frontmatter: { tags: { in: ["bookshelf"] } } }) {
       edges {
         node {
           excerpt
@@ -47,7 +47,7 @@ export function Head({ location, data }) {
   return (
     <Header
       pathName={location.pathName}
-      title={`Blog | ${data.site.siteMetadata.title}`}
+      title={`Bookshelf | ${data.site.siteMetadata.title}`}
     />
   );
 }

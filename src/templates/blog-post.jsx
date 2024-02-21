@@ -18,7 +18,8 @@ function BlogPostTemplate({
   const siteTitle = site.siteMetadata.title;
   const { previous, next } = pageContext;
   const allComments = comments.edges;
-  const referringPage = location.state ? location.state.referringPage : '/blog';
+  const pageTitleFromURL = (window && window.location.href.includes('blog')) ? '/blog' : '/bookshelf';
+  const referringPage = location.state ? location.state.referringPage : pageTitleFromURL;
 
   return (
     <Layout location={location} title={siteTitle}>
