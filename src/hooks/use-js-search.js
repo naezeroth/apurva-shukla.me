@@ -16,8 +16,6 @@ export function useJsSearch(
   dataToSearch.addIndex(['node', 'body']);
 
   // Map types and filter out empty nodes
-  // console.log('Inside js-Search', blogs);
-
   const mapNodes = mapBlogsToIndexNodes(blogs);
   dataToSearch.addDocuments(mapNodes);
   const search = (query) => dataToSearch.search(query);

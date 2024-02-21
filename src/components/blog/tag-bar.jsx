@@ -9,9 +9,9 @@ export function TagBar({ tags, fontSize = '14px' }) {
           key={tag}
           onClick={() => {
             if (tag === 'bookshelf') {
-              navigate('/blog/bookshelf');
+              navigate('/bookshelf/shelf');
             } else {
-              navigate(`/blog/tag/${tag}`);
+              navigate(`/tag/${tag}`);
             }
           }}
           style={{

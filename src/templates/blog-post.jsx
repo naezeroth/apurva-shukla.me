@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, graphql } from 'gatsby';
 import Bio from '../components/shared/bio';
 import Layout from '../components/shared/layout';
@@ -18,7 +18,13 @@ function BlogPostTemplate({
   const siteTitle = site.siteMetadata.title;
   const { previous, next } = pageContext;
   const allComments = comments.edges;
-  const referringPage = location.state ? location.state.referringPage : '/blog';
+  const [pageTitleFromURL, setPageTitleFromURL] = useState(null);
+
+  useEffect(() => {
+    setPageTitleFromURL((window && window.location.href.includes('blog')) ? '/blog' : '/bookshelf');
+  }, []);
+
+  const referringPage = location.state ? location.state.referringPage : pageTitleFromURL;
 
   return (
     <Layout location={location} title={siteTitle}>
