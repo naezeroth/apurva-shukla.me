@@ -18,13 +18,16 @@ function BlogPostTemplate({
   const siteTitle = site.siteMetadata.title;
   const { previous, next } = pageContext;
   const allComments = comments.edges;
+
+  // Some magical code to try ascertain where the user came from
   const [pageTitleFromURL, setPageTitleFromURL] = useState(null);
 
   useEffect(() => {
     setPageTitleFromURL((window && window.location.href.includes('blog')) ? '/blog' : '/bookshelf');
   }, []);
 
-  const referringPage = location.state ? location.state.referringPage : pageTitleFromURL;
+  const referringPage = location.state.referringPage
+    ? location.state.referringPage : pageTitleFromURL;
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -51,7 +54,7 @@ function BlogPostTemplate({
       <SubscribeForm />
       <hr />
       {mdx.frontmatter.tags && (
-        <TagBar tags={mdx.frontmatter.tags} fontSize="100%" />
+        <TagBar tags={mdx.frontmatter.tags} fontSize="100%" location={location} />
       )}
       <hr
         style={{

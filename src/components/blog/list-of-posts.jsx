@@ -93,6 +93,7 @@ const CommonBlogComponent = ({
                   to={`/${pageTitle}${node.fields.slug}`}
                   state={{
                     referringPage: isFirst ? `/${pageTitle}` : `/${pageTitle}/${currentPage}`,
+                    prevPath: location?.pathname,
                   }}
                 >
                   {title}
@@ -110,7 +111,7 @@ const CommonBlogComponent = ({
                 }}
               />
               <small>{node.fields.timeToRead.text}</small>
-              {node.frontmatter.tags && <TagBar tags={node.frontmatter.tags} />}
+              {node.frontmatter.tags && <TagBar tags={node.frontmatter.tags} location={location} />}
             </div>
           );
         })}

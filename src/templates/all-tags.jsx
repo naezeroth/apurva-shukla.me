@@ -10,11 +10,12 @@ import { TagBar } from '../components/blog/tag-bar';
 
 function AllTags(props) {
   const { tags } = props.pageContext;
+  const { location } = props;
   const siteTitle = props.data.site.siteMetadata.title;
   const allTags = tags.map(({ fieldValue }) => fieldValue);
 
   return (
-    <Layout location={props.location} title={siteTitle}>
+    <Layout location={location} title={siteTitle}>
       <div
         style={{
           display: 'flex',
@@ -43,7 +44,7 @@ function AllTags(props) {
           </div>
         </Link>
         <br />
-        <TagBar tags={allTags} fontSize="24px" />
+        <TagBar tags={allTags} fontSize="24px" location={location} />
       </div>
     </Layout>
   );

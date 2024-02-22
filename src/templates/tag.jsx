@@ -78,7 +78,7 @@ function Tags(props) {
                 />
                 {/* <small>{node.timeToRead} min read</small> */}
                 {node.frontmatter.tags && (
-                <TagBar tags={node.frontmatter.tags} />
+                <TagBar tags={node.frontmatter.tags} location={props?.location} />
                 )}
               </div>
             );

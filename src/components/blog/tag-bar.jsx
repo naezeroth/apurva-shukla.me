@@ -1,19 +1,14 @@
 import React from 'react';
-import { navigate } from 'gatsby';
+import { Link } from 'gatsby';
 
-export function TagBar({ tags, fontSize = '14px' }) {
+export function TagBar({ tags, fontSize = '14px', location }) {
   return (
     <div>
       {tags.map((tag) => (
-        <div
+        <Link
           key={tag}
-          onClick={() => {
-            if (tag === 'bookshelf') {
-              navigate('/bookshelf/shelf');
-            } else {
-              navigate(`/tag/${tag}`);
-            }
-          }}
+          to={(tag === 'bookshelf') ? '/bookshelf/shelf' : `/tag/${tag}`}
+          state={{ prevPath: location?.pathname }}
           style={{
             fontSize,
             color: 'var(--tagNormal)', // var(--tag-color),
@@ -22,11 +17,12 @@ export function TagBar({ tags, fontSize = '14px' }) {
             padding: '0.25rem',
             display: 'inline-block',
             cursor: 'pointer',
+            boxShadow: 'unset',
           }}
         >
           #
           {tag}
-        </div>
+        </Link>
       ))}
     </div>
   );
