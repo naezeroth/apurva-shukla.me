@@ -26,7 +26,7 @@ function BlogPostTemplate({
     setPageTitleFromURL((window && window.location.href.includes('blog')) ? '/blog' : '/bookshelf');
   }, []);
 
-  const referringPage = location.state.referringPage
+  const referringPage = location.state && location.state.referringPage
     ? location.state.referringPage : pageTitleFromURL;
 
   return (
