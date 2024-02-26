@@ -1,8 +1,8 @@
 ---    
 date: 2024-02-25T13:28:10.434Z
 title: "Man's Search For Meaning by Viktor E. Frankl"
-description: "A review of Man's Search For Meaning"
-featuredimage: './cover.jpg'
+description: "A review of Man's Search For Meaning: Frankl explores how can we find meaning in our lives, as a Holocaust survivor"
+featuredimage: './cover.jpeg'
 tags: ["bookshelf", "WW2"]
 ---   
 ⭐ ⭐ ⭐ ⭐ ⭐
