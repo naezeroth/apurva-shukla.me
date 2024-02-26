@@ -24,15 +24,16 @@ function SEO({
   return (
     <>
       <title>{seo.title}</title>
-      <meta name="description" content={seo.description} />
-      <meta name="og:type" content="website" />
-      <meta name="image" content={seo.image} />
-      <meta name="og:image" content={seo.image} />
-      <meta name="twitter:card" content="summary_large_image" />
+      <meta property="description" content={seo.description} />
+      <meta property="og:type" content="website" />
+      <meta property="image" content={seo.image} />
+      <meta property="og:image" content={seo.image} />
+      <meta property="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={seo.title} />
       <meta name="twitter:url" content={seo.url} />
       <meta name="twitter:description" content={seo.description} />
       <meta name="description" content={seo.description} />
+      <meta property="og:description" content={seo.description} />
       <meta name="twitter:image" content={seo.image} />
       <meta name="twitter:creator" content={seo.author} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
