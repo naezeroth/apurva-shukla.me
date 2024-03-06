@@ -74,7 +74,7 @@ function BlogPostTemplate({
       >
         <li>
           {previous && (
-            <Link to={`/blog${previous.fields.slug}`} rel="prev">
+            <Link to={`${pageTitleFromURL || '/blog'}${previous.fields.slug}`} rel="prev">
               ←
               {' '}
               {previous.frontmatter.title}
@@ -83,7 +83,7 @@ function BlogPostTemplate({
         </li>
         <li>
           {next && (
-            <Link to={`/blog${next.fields.slug}`} rel="next">
+            <Link to={`${pageTitleFromURL || '/blog'}${next.fields.slug}`} rel="next">
               {next.frontmatter.title}
               {' '}
               →
