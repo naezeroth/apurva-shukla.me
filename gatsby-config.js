@@ -31,11 +31,10 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sharp',
       options: {
-        stripMetadata: false, // EXIF data in original should be preserved
+        stripMetadata: true, // EXIF data in original should be preserved
       },
     },
     'gatsby-plugin-dark-mode',
-    'gatsby-plugin-sharp-exif',
     {
       resolve: 'gatsby-source-filesystem',
       options: {

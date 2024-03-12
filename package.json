@@ -23,7 +23,6 @@
     "gatsby-plugin-mdx": "^5.0.0",
     "gatsby-plugin-remove-serviceworker": "^1.0.0",
     "gatsby-plugin-sharp": "^5.0.0",
-    "gatsby-plugin-sharp-exif": "^1.0.4",
     "gatsby-plugin-styled-components": "^6.0.0",
     "gatsby-plugin-twitter": "^5.0.0",
     "gatsby-plugin-typography": "^5.0.0",
