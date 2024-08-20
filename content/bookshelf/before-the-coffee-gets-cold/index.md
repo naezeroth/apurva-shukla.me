@@ -4,7 +4,7 @@ title: "Before the coffee gets cold by Toshikazu Kawaguchi"
 description: "A review of Before the coffee gets cold"
 tags: ["bookshelf"]
 ---   
-import { Collapsible } from './index';
+import { Collapsible } from '../index';
 
 ⭐ ⭐ ⭐ ⭐ ⭐ 
 

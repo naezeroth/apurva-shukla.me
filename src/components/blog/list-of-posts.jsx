@@ -74,9 +74,14 @@ const CommonBlogComponent = ({
       }}
       >
         <Search path={pageTitle} initialQuery={initialQuery} numResults={blogs.length} />
-        <Link to="/tag/all-tags" state={{ prevPath: location.pathname }}>
-          All Tags
-        </Link>
+        <span>
+          <Link to="/bookshelf/shelf" state={{ prevPath: location.pathname }} style={{ marginInline: '10px' }}>
+            All Books
+          </Link>
+          <Link to="/tag/all-tags" state={{ prevPath: location.pathname }}>
+            All Tags
+          </Link>
+        </span>
       </div>
       <div style={{ margin: '20px 0 40px' }}>
         {blogs.map(({ node }) => {
