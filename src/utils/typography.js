@@ -45,8 +45,6 @@ selectedTheme.overrideThemeStyles = () => ({
   },
 });
 
-delete selectedTheme.googleFonts;
-
 const typography = new Typography(selectedTheme);
 
 // Hot reload typography in development.
