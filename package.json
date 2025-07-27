@@ -8,6 +8,7 @@
     "url": "https://github.com/naezeroth/personal-website/issues"
   },
   "dependencies": {
+    "@hcaptcha/react-hcaptcha": "^1.12.0",
     "@mdx-js/mdx": "^2.1.5",
     "@mdx-js/react": "^2.1.5",
     "ajv": "^8.11.0",

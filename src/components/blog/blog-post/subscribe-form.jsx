@@ -1,8 +1,31 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
+import HCaptcha from '@hcaptcha/react-hcaptcha';
 import { rhythm } from '../../../utils/typography';
 import Button from '../../shared/button';
 
+const SITE_KEY = 'a21084c2-f56a-4330-87fc-a72862a80772';
+
 export function SubscribeForm() {
+  const formRef = useRef(null);
+  const captchaRef = useRef(null);
+  const [submitting, setSubmitting] = useState(false);
+
+  // Called after hCaptcha issues a valid token
+  const handleVerify = () => {
+    formRef.current.submit(); // send the form (token is already injected)
+  };
+
+  // Intercept browser submit → run validation → trigger invisible captcha
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (formRef.current.checkValidity()) {
+      setSubmitting(true); // disable button while captcha runs
+      captchaRef.current.execute(); // start invisible challenge
+    } else {
+      formRef.current.reportValidity();
+    }
+  };
+
   return (
     <div
       style={{
@@ -22,52 +45,64 @@ export function SubscribeForm() {
         }}
       >
         <form
+          ref={formRef}
+          id="newsletter"
           method="post"
           action="https://listmonk.apurva-shukla.me/subscription/form"
-          id="newsletter"
+          onSubmit={handleSubmit}
         >
-          <div>
-            <h3>Subscribe to my newsletter</h3>
-            <p>
-              I'll occasionally send you my writing, and things I've
-              found interesting
-            </p>
-            <p>
-              <input
-                type="text"
-                name="name"
-                placeholder="Your name"
-                required
-                style={{
-                  padding: '8px',
-                  borderColor: 'rgb(227, 227, 227)',
-                  borderRadius: '4px',
-                }}
-              />
-            </p>
-            <p>
-              <input
-                type="email"
-                name="email"
-                placeholder="Your email"
-                required
-                style={{
-                  padding: '8px',
-                  borderColor: 'rgb(227, 227, 227)',
-                  borderRadius: '4px',
-                }}
-              />
-            </p>
+          <h3>Subscribe to my newsletter</h3>
+          <p>I’ll occasionally send you my writing and interesting links.</p>
+
+          <p>
             <input
-              id="9ed94"
-              type="hidden"
-              name="l"
-              checked
-              value="9ed94b7c-8e2f-4e62-be2c-3dc2e3c5f5e3"
-              readOnly
+              type="text"
+              name="name"
+              placeholder="Your name"
+              required
+              style={{
+                padding: '8px',
+                borderColor: 'rgb(227, 227, 227)',
+                borderRadius: '4px',
+                width: '100%',
+              }}
             />
-            <Button marginRight="25px">Subscribe</Button>
-          </div>
+          </p>
+
+          <p>
+            <input
+              type="email"
+              name="email"
+              placeholder="Your email"
+              required
+              style={{
+                padding: '8px',
+                borderColor: 'rgb(227, 227, 227)',
+                borderRadius: '4px',
+                width: '100%',
+              }}
+            />
+          </p>
+
+          {/* list UUID that Listmonk expects */}
+          <input
+            type="hidden"
+            name="l"
+            value="9ed94b7c-8e2f-4e62-be2c-3dc2e3c5f5e3"
+            readOnly
+          />
+
+          {/* Invisible hCaptcha widget */}
+          <HCaptcha
+            ref={captchaRef}
+            sitekey={SITE_KEY}
+            size="invisible"
+            onVerify={handleVerify}
+          />
+
+          <Button type="submit" disabled={submitting}>
+            {submitting ? 'Submitting…' : 'Subscribe'}
+          </Button>
         </form>
       </div>
     </div>
