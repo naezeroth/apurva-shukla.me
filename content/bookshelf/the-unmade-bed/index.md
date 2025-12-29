@@ -14,18 +14,18 @@ One might think in these circumstances it would be easy to place blame, but Saga
 
 Françoise Sagan writes beautifully (powerfully translated by Abigail Israel’s). She captures the animalistic desire of sensuality in a way that contemporary authors veer away from; flaunting all the destruction that it can cause. 
 
-I cherish texts that show a frame of mind that’s so different to my own, growing an appreciation for the vastly different perspectives people can have. In this, I felt the hot-stinging tears of Edouard, and Beatrices’s inner turmoil of accepting love - the tenacity of choosing each other even if it hurts (or perhaps because it hurts). Finally, how the act of being seen elevates domestic love into something transcendent . 
+I cherish texts that show a frame of mind that’s so different to my own, growing an appreciation for the vastly different perspectives people can have. In this, I felt the hot-stinging tears of Edouard, and Beatrices’s inner turmoil of accepting love - the tenacity of choosing each other even if it hurts (or perhaps because it hurts). Ultimately, we see how the act of being seen can elevate domestic love into something transcendent. 
 
 Borrowed in November, finished in December 2025.
 
 ---
 
-Depending on their threshold of sensitivity, people who knew her spoke of her as either a tonic ora terrot, but all of them recognised that it was better to have this particular public menace on their side. Tony, of course, adored this definition of herself.
+Depending on their threshold of sensitivity, people who knew her spoke of her as either a tonic or a terror, but all of them recognised that it was better to have this particular public menace on their side. Tony, of course, adored this definition of herself.
 
 
 composed of a thousand closely related yet contradictory pieces, she was nonetheless always and in all circumstances wholly each and every one of those pieces. And as she never felt divided, never ar a distance from herself, she could be completely hard or completely tender in succession, completely idiotic or completely lucid. Indeed, perhaps the reason she could never share her feelings with anyone else was that she had never been able to admit the ambiguities in them. On the other hand, this counterfeit façade - an armour so shabby and patched that no medieval knight would have dared to put it on - had sheltered her from countless blows, to say nothing of hard knocks. She had never let herself slip into comfortable friendships or reassuring con-fidences. In fact, she had never slipped into anything that could be called a habit. Her entourage, including all friends, male and female, as well as her lovers, had always been alternately subject to savage ill-treatment or equally savage adoration, and none of those who approached her ever had the right to trust her. Yet if they could expect anything and everything from her, they could also take a certain comfort in her unpredictability. They could be sure, absolutely sure, that she was as capable of holding out her hand to pull them from the water or of stepping on their heads while they drowned. And they could also be sure she would do both with the same absence of calculation and the same clear conscience.
-But Édouard did feel a certain pleasure in the desolate lobby.
 
+But Édouard did feel a certain pleasure in the desolate lobby.
 It was a sinister day in a sinister place, but he knew that nothing in the world could tear him away from it. It's one of love's greatest charms, he thought, not to have to wonder any more what I'm doing here, but to find myself asking how I can manage to stay...
 
 ‘You've become involved with a wild animal, he told Édouard. 'With a woman like her, you have to love less than you're loved. Or in any case, you have to pretend to love her less. If you don't, you're a loser from the start.?
