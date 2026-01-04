@@ -37,6 +37,7 @@ function SEO({
       <meta name="twitter:image" content={seo.image} />
       <meta name="twitter:creator" content={seo.author} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="google-site-verification" content="Ezr8fgBX3WH2ejp5QTvclrnbcTsq2wudXWoL-DPhwAk" />
       {seo.keywords && <meta name="keywords" content={seo.keywords} />}
       {children}
     </>
