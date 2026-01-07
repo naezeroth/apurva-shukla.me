@@ -48,6 +48,10 @@ body.dark {
   margin: auto;
 }
 
+p {
+  line-height: 1.5;
+}
+
 body.dark .tg td {border-color:white;border-style:solid;border-width:1px;}
 .tg td{border-color:black;border-style:solid;border-width:1px;}
 
