@@ -46,7 +46,12 @@ function WelcomeBio() {
           photographs
         </a>
         {' '}
-        and projects. Type
+        and
+        {' '}
+        <Link to="/bookshelf/shelf" style={{ color: '#859900' }}>
+          bookshelf
+        </Link>
+        . Type
         {' '}
         <b style={{ color: '#d33682' }}>help</b>
         {' '}
