@@ -137,7 +137,7 @@ const Header = ({ title }) => (
           Bookshelf
         </Link>
       </Subtitle>
-      <Subtitle>
+      {/* <Subtitle>
         <a
           style={{
             color: 'inherit',
@@ -149,7 +149,7 @@ const Header = ({ title }) => (
         >
           Photos
         </a>
-      </Subtitle>
+      </Subtitle> */}
       <ThemeToggle />
     </div>
   </div>
