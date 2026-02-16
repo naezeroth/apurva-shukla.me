@@ -1,7 +1,7 @@
 ---    
 date: 2026-01-17T06:51:16.441Z
 title: "Things Fall Apart by Chinua Achebe"
-description: "As one sun sets, another rises, and what we observe is the dissolution of a world that was overpowered by another. What makes one right and one wrong?"
+description: "As one sun sets, another rises, and what we observe is the dissolution of a world that was overpowered by another - what makes one right and one wrong?"
 featuredimage: './cover.jpg'
 tags: ["bookshelf", "fiction", "international", "bookclub", "Africa", "colonialism", "storytelling"]
 ---   
@@ -36,7 +36,7 @@ Observing how religion expands is fascinating. In the beginning we see a clear d
 
 This also demonstrates the reason religious movements in the past have led to persecution, because the very nature of power is questioned. 
 
-As one sun sets, another rises, and what we observe is the dissolution of a world that was overpowered by another. What makes one right and one wrong? 
+As one sun sets, another rises, and what we observe is the dissolution of a world that was overpowered by another - what makes one right and one wrong? 
 
 > ‘Those were the days that men were men.’ 
 
