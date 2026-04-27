@@ -42,10 +42,10 @@ export function CustomTerminal() {
           Whoami: () => whoamiCommand(social),
           blog: () => navigate('/blog'),
           Blog: () => navigate('/blog'),
-          // 'projects': () => {return("Projects here")},
-          // 'Projects': () => {return("Projects here")},
-          photos: () => { window.open('https://photos.apurva-shukla.me', '_blank'); return 'Opened portfolio in new tab'; },
-          Photos: () => { window.open('https://photos.apurva-shukla.me', '_blank'); return 'Opened portfolio in new tab'; },
+          bookshelf: () => navigate('/bookshelf'),
+          Bookshelf: () => navigate('/bookshelf'),
+          // photos: () => { window.open('https://photos.apurva-shukla.me', '_blank'); return 'Opened portfolio in new tab'; },
+          // Photos: () => { window.open('https://photos.apurva-shukla.me', '_blank'); return 'Opened portfolio in new tab'; },
           // resume: () => navigate(resumeUrl),
           // Resume: () => navigate(resumeUrl),
           Help: helpCommand,
@@ -124,11 +124,16 @@ const helpCommand = () => (
       - checkout my blog
     </p>
     <p>
+      <b style={{ color: '#b58900' }}>bookshelf</b>
+      {' '}
+      - checkout my bookshelf
+    </p>
+    {/* <p>
       <b style={{ color: '#b58900' }}>photos</b>
       {' '}
       - checkout my photography
       portfolio
-    </p>
+    </p> */}
     {/* <b style={{ color: '#b58900' }}>resume</b>
     {' '}
     - check out my resume */}

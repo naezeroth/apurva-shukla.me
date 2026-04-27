@@ -35,9 +35,9 @@ function WelcomeBio() {
         <Link to="/blog/" style={{ color: '#859900' }}>
           blog
         </Link>
-        ,
+        {/* , */}
         {' '}
-        <a
+        {/* <a
         href="https://photos.apurva-shukla.me"
         target="_blank"
         rel="noopener noreferrer"
@@ -45,8 +45,13 @@ function WelcomeBio() {
         >
           photographs
         </a>
+        {' '} */}
+        and
         {' '}
-        and projects. Type
+        <Link to="/bookshelf/shelf" style={{ color: '#859900' }}>
+          bookshelf
+        </Link>
+        . Type
         {' '}
         <b style={{ color: '#d33682' }}>help</b>
         {' '}
