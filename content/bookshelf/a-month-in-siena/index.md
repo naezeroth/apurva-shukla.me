@@ -15,7 +15,7 @@ I was given this book as a parting gift by someone I admire.
 
 He stood staring at a piece for hours at a time, letting it slowly unfold before him, as if each brushstroke held a Mecca. 
 
-The prose and contents of this book are layered and strong, leaving you swirling with your own thoughts.
+The prose and contents of this book are layered and strong, leaving you swirling with your own meandering thoughts.
 
 Matar guides us into a painting, describing it with an intimacy that comes from a conversation with the artwork. His way of somatically experiencing a city is inspiring, and it's convincing me to follow a day in the life of a stranger too. 
 
