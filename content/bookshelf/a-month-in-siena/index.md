@@ -1,7 +1,7 @@
 ---    
 date: 2026-05-12T14:26:30.994Z
 title: "A Month in Siena by Hisham Matar"
-description: "The prose and contents of this book are layered and strong, leaving you swirling with your own thoughts"
+description: "He stood staring at a piece for hours at a time, letting it slowly unfold before him, as if each brushstroke held a Mecca"
 tags: ["bookshelf", "non-fiction", "travel", "spirituality"]
 featuredimage: './cover.jpg'
 ---   
@@ -11,7 +11,9 @@ I was given this book as a parting gift by someone I admire.
 ![](./cover.jpg)
 <br/>
 
-*A Month in Siena* unfolds in the medieval Italian city where Matar had long dreamt of going. It was a deeply personal quest forged by the disappearance of his father when he was much younger; one which lodged him deep into Sienese art sphere. 
+*A Month in Siena* unfolds in the medieval Italian city where Matar had long dreamt of going. It was a deeply personal quest forged by the disappearance of his father when he was much younger; forlorn and stumbling into an art gallery, it was there he discovered the Sienese art sphere. 
+
+He stood staring at a piece for hours at a time, letting it slowly unfold before him, as if each brushstroke held a Mecca. 
 
 The prose and contents of this book are layered and strong, leaving you swirling with your own thoughts.
 
@@ -27,7 +29,7 @@ Read in April 2026
 
 “to demonstrate the transformative possibility of crossing a threshold. We often never think of this, of how our sense of being is subtly changed by walking into even the most inconsequential of buildings or transitioning from one room to the next.”
 
-“ Siena resists this. It is as though the wall that encircles the city like a ribbon is as much a physical boundary as it is a spiritual veil.”
+“Siena resists this. It is as though the wall that encircles the city like a ribbon is as much a physical boundary as it is a spiritual veil.”
 
 “as though our exchanges over what freedom and assertiveness might be were the means by which we had entered the city.”
 
@@ -35,7 +37,7 @@ Read in April 2026
 
 “Desire, its continuum, is reliant on yearning, on the unfulfilled wish, the frustrated appetite.”
 
-“ “there is a contradiction between what desire wants—complete conquest—and what it needs in order to continue to exist: mystery, the unknowable. Desire is that animal that remains fit only through undernourishment. In evolutionary terms, failure is its prerequisite, frustration its generator.”
+“there is a contradiction between what desire wants—complete conquest—and what it needs in order to continue to exist: mystery, the unknowable. Desire is that animal that remains fit only through undernourishment. In evolutionary terms, failure is its prerequisite, frustration its generator.”
 
 “And hadn’t we always done this in our childhood, spent hours slinging pebbles at the stars, knowing full well that, even before we fired them, the stones would fall right back and probably on our own heads? And isn’t this the way one must surely live, for all time; that the true pleasure is not in hitting the target but in aiming at it?”
 
