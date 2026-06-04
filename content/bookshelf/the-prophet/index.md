@@ -6,7 +6,7 @@ featuredimage: './cover.jpg'
 tags: ["bookshelf", "favourites", "spirituality"]
 ---   
 
-Khalil Gibran’s The Prophet maps continents of the human experience. In it, we follow an unnamed person who comes to the island, living among the people in the city for years as if they were his brothers and sisters. Before he leaves for his home, he rises to their call; answering their questions on what constitutes a good life.
+Khalil Gibran’s *The Prophet* maps continents of the human experience. In it, we follow Almustafa, a prophet who comes to the island of Orphalese, living among the people in the city for years as if they were his brothers and sisters. Before he leaves for his home, he rises to their call; answering their questions on what constitutes a good life.
 
 ![](./cover.jpg)
 <br/>
